@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Dizon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BC+Minimal&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="messenger.css">
+
+    <style>
+        .bio-paragraph {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-item">
+            <a href="#" onclick="goHome()">Home</a>
+        </div>
+        <div class="menu-item">
+            <a href="#">About</a>
+            <div class="dropdown">
+                <div class="dropdown-item">
+                    <a href="#" onclick="showBio()">Bio</a>
+                </div>
+                <div class="dropdown-item" onclick="showResume()">
+                    <a href="#">Resume</a>
+                </div>
+                <div class="dropdown-item" onclick="showPortfolio()">
+                    <a href="#">Portfolio</a>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#">Blog</a>
+            <div class="dropdown">
+              <div class="dropdown-item"><a href="#" title="STILL EMPTY!">Personal</a></div>
+              <div class="dropdown-item"><a href="#" title="STILL EMPTY!">Political</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#">Skills</a>
+            <div class="dropdown">
+                <div class="dropdown-item"><a href="#">Sleeping</a></div>
+                <div class="dropdown-item"><a href="#">Eating</a></div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#">Gallery</a>
+            <div class="dropdown">
+              <div class="dropdown-item">
+                  <a href="#" onclick="showpfolder()">Photos</a>
+              </div>
+              <div class="dropdown-item" onclick="showvfolder()">
+                  <a href="#">Videos</a>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- <div class="intro">
+            <p>Welcome to my website!<br> I'm Faith Dizon, a Quality Assurance professional<br> with experience in the BPO industry.<br> With a passion for delivering high-quality solutions,<br> I help businesses achieve their goals through meticulous<br> quality assurance and strategic process optimization.</p>
+        </div>-->
+
+        <div class="bio-section">
+            <img src="img/me.jpg" alt="Bio Photo" class="bio-photo">
+            <div class="profession">Quality Assurance Specialist</div>
+            <div class="bio-paragraph">
+                <p>I am Faith Mercullo Dizon, born on April 29, 1989. I graduated with a degree in BS Information Technology. With over 13 years of experience in the BPO industry, specifically in quality assurance, I have honed my skills in ensuring exceptional customer experiences. I love watching movies, having quality time with my family and friends, eating, sleeping, playing volleyball, and exploring nature. I am also an avid dog lover, with a pet named Cocong. Currently, I work as a Quality Assurance specialist in a BPO call center company, and I'm grateful to have a loving and handsome partner who has skillfully crafted this website.</p>
+            </div> 
+        </div>
+
+        <div id="resume-section" style="display: flex;">
+            <img src="img/resume.jpg" alt="Resume Image">
+            <div style="margin-left: 1em; font-size: 0.8em; color: #000; animation: shine 2s infinite, zoom 2s infinite;">Click image to view full resolution</div>
+          </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Boy Labo. All rights reserved.</p>
+        </div>
+    </div>
+
+    <div class="icons">
+        <div class="icon">
+            <img src="icons/fb.webp" alt="Facebook" onclick="window.open('https://www.facebook.com/faithdizon13', '_blank');">
+          </div>
+          
+        <div class="icon">
+          <img src="icons/link.JPG" alt="LinkedIn">
+        </div>
+        <div class="icon">
+          <img src="icons/tiktok.png" alt="TikTok">
+        </div>
+        <div class="icon">
+          <img src="icons/insta.jpg" alt="Instagram">
+        </div>
+        
+      </div>
+
+      <div class="Portfolio-Section">
+        <h2>INTRODUCTION</h2>
+       
+        <p>As a dedicated and results-driven professional with a strong background in customer service and quality assurance, I am excited to share my portfolio with you. With 2 years of experience as a Call Center Agent and 8 years as a Quality Assurance (QA) specialist, I have developed a unique blend of communication, problem-solving, and analytical skills. In addition to my primary role, I have also successfully managed various online sideline projects in my free time, demonstrating my ability to adapt, prioritize, and manage multiple responsibilities. This portfolio showcases my achievements, skills, and passion for delivering exceptional results, and I look forward to exploring new opportunities where I can leverage my expertise to drive success.</p>
+      </div>
+      
+      
+      <div class="folder-container">
+        <h5>Explore My Career Highlights</h5>
+        <div class="folder-row">
+          <a href="edu.html">
+            <img src="icons/folder.png" class="folder-icon">
+            <span class="folder-label">Education</span>
+          </a>
+          <a href="#">
+            <img src="icons/folder.png" class="folder-icon">
+            <span class="folder-label">Internship</span>
+          </a>
+        </div>
+        <div class="folder-row">
+          <a href="bdo.html">
+            <img src="icons/folder.png" class="folder-icon">
+            <span class="folder-label">BPO industry</span>
+          </a>
+          <a href="#">
+            <img src="icons/folder.png" class="folder-icon">
+            <span class="folder-label">Online Job</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="my-image">
+        <img src="img/face.jpg" alt="Your Image" class="my-face">
+        <img src="icons/folder1.jpg" alt="Your Image" class="my-icon">
+      </div>
+      <div class="skills-section-container">
+        <div class="skills-section">
+          <h5>Skills Overview</h5>
+          <ul>
+            <li><strong>Quality Assurance:</strong> Proficient in evaluating and improving call quality to ensure exceptional customer experiences.</li>
+            <li><strong>Call Handling:</strong> Experienced in handling customer calls, resolving issues, and providing timely solutions.</li>
+            <li><strong>Communication Skills:</strong> Knowledgeable in effective communication techniques to build rapport with customers and resolve conflicts.</li>
+            <li><strong>Problem-Solving:</strong> Ability to analyze customer issues and identify creative solutions to meet their needs.</li>
+            <li><strong>Attention to Detail:</strong> Meticulous in reviewing and evaluating call recordings to ensure high-quality standards.</li>
+            <li><strong>Time Management:</strong> Proven ability to manage time effectively, prioritize tasks, and meet deadlines in a fast-paced environment.</li>
+            <li><strong>Teamwork:</strong> Experienced in working collaboratively with team members to achieve shared goals and objectives.</li>
+            <li><strong>Customer Service:</strong> Dedicated to providing exceptional customer service, ensuring customer satisfaction and loyalty.</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- PHOTOFOLDER SECTION -->
+      <div class="pfolder-wrapper">
+        <div class="grid-container">
+            <!-- Your folder items here -->
+            <figure class="folder-item">
+              <a href="Me & I.html">
+                <img src="icons/folder.png" alt="Folder">
+              </a>
+              <a>
+                <figcaption>Me & I</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="friends.html">
+                <img src="icons/friends.jpg" alt="Folder">
+              </a>
+              <a>
+                <figcaption>Friends</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="family.html">
+                <img src="icons/family.jpg" alt="Folder">
+              </a>
+              <a>
+                <figcaption>family</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/love.jpg" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>lovez</figcaption>
+            </figure>
+        </div>
+    </div>
+     <!-- PHOTOFOLDER SECTION -->
+
+       <!-- VIDEOFOLDER SECTION -->
+       <div class="vfolder-wrapper">
+        <div class="grid-container">
+            <!-- Your folder items here -->
+            <figure class="folder-item">
+              <a href="myVidz.html">
+                <img src="icons/vfolder.webp" alt="Folder">
+              </a>
+              <a>
+                <figcaption>MyVidz</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="Princess Sarah.html">
+                <img src="icons/vfolder.webp" alt="Folder">
+              </a>
+              <a>
+                <figcaption>P. Sara</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="family.html">
+                <img src="icons/vfolder.webp" alt="Folder">
+              </a>
+              <a>
+                <figcaption>family</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/vfolder.webp" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>lovez</figcaption>
+            </figure>
+        </div>
+    </div>
+       <!-- VIDEOFOLDER SECTION -->
+
+    <script src="script.js"></script>
+</body>
+</html>
