@@ -54,19 +54,23 @@
         <div class="menu-item">
             <a href="#">Gallery</a>
             <div class="dropdown">
-              <div class="dropdown-item"><a href="pfolder.html">Photos</a></div>
-                <div class="dropdown-item"><a href="vfolder.html">Videos</a></div>
-            </div>
+              <div class="dropdown-item">
+                  <a href="#" onclick="showpfolder()">Photos</a>
+              </div>
+              <div class="dropdown-item" onclick="showvfolder()">
+                  <a href="#">Videos</a>
+              </div>
+          </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="intro">
+        <!-- <div class="intro">
             <p>Welcome to my website!<br> I'm Faith Dizon, a Quality Assurance professional<br> with experience in the BPO industry.<br> With a passion for delivering high-quality solutions,<br> I help businesses achieve their goals through meticulous<br> quality assurance and strategic process optimization.</p>
-        </div>
+        </div>-->
 
         <div class="bio-section">
-            <img src="img/Faith.JPG" alt="Bio Photo" class="bio-photo">
+            <img src="img/me.jpg" alt="Bio Photo" class="bio-photo">
             <div class="profession">Quality Assurance Specialist</div>
             <div class="bio-paragraph">
                 <p>I am Faith Mercullo Dizon, born on April 29, 1989. I graduated with a degree in BS Information Technology. With over 13 years of experience in the BPO industry, specifically in quality assurance, I have honed my skills in ensuring exceptional customer experiences. I love watching movies, having quality time with my family and friends, eating, sleeping, playing volleyball, and exploring nature. I am also an avid dog lover, with a pet named Cocong. Currently, I work as a Quality Assurance specialist in a BPO call center company, and I'm grateful to have a loving and handsome partner who has skillfully crafted this website.</p>
@@ -79,23 +83,23 @@
           </div>
 
         <div class="footer">
-            <p>&copy; 2025 Faith Dizon. All rights reserved.</p>
+            <p>&copy; 2025 Boy Labo. All rights reserved.</p>
         </div>
     </div>
 
     <div class="icons">
         <div class="icon">
-            <img src="icons/images.png" alt="Facebook" onclick="window.open('https://www.facebook.com/faithdizon13', '_blank');">
+            <img src="icons/fb.webp" alt="Facebook" onclick="window.open('https://www.facebook.com/faithdizon13', '_blank');">
           </div>
           
         <div class="icon">
-          <img src="icons/link.png" alt="LinkedIn">
+          <img src="icons/link.JPG" alt="LinkedIn">
         </div>
         <div class="icon">
           <img src="icons/tiktok.png" alt="TikTok">
         </div>
         <div class="icon">
-          <img src="icons/insta.png" alt="Instagram">
+          <img src="icons/insta.jpg" alt="Instagram">
         </div>
         
       </div>
@@ -111,21 +115,21 @@
         <h5>Explore My Career Highlights</h5>
         <div class="folder-row">
           <a href="edu.html">
-            <img src="icons/folder.webp" class="folder-icon">
+            <img src="icons/folder.png" class="folder-icon">
             <span class="folder-label">Education</span>
           </a>
           <a href="#">
-            <img src="icons/folder.webp" class="folder-icon">
+            <img src="icons/folder.png" class="folder-icon">
             <span class="folder-label">Internship</span>
           </a>
         </div>
         <div class="folder-row">
           <a href="bdo.html">
-            <img src="icons/folder.webp" class="folder-icon">
+            <img src="icons/folder.png" class="folder-icon">
             <span class="folder-label">BPO industry</span>
           </a>
           <a href="#">
-            <img src="icons/folder.webp" class="folder-icon">
+            <img src="icons/folder.png" class="folder-icon">
             <span class="folder-label">Online Job</span>
           </a>
         </div>
@@ -150,6 +154,85 @@
           </ul>
         </div>
       </div>
+      
+      <!-- PHOTOFOLDER SECTION -->
+      <div class="pfolder-wrapper">
+        <div class="grid-container">
+            <!-- Your folder items here -->
+            <figure class="folder-item">
+              <a href="Me & I.html">
+                <img src="icons/folder.png" alt="Folder">
+              </a>
+              <a>
+                <figcaption>Me & I</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="friends.html">
+                <img src="icons/friends.jpg" alt="Folder">
+              </a>
+              <a>
+                <figcaption>Friends</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="family.html">
+                <img src="icons/family.jpg" alt="Folder">
+              </a>
+              <a>
+                <figcaption>family</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/love.jpg" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>lovez</figcaption>
+            </figure>
+        </div>
+    </div>
+     <!-- PHOTOFOLDER SECTION -->
+
+       <!-- VIDEOFOLDER SECTION -->
+       <div class="vfolder-wrapper">
+        <div class="grid-container">
+            <!-- Your folder items here -->
+            <figure class="folder-item">
+              <a href="myVidz.html">
+                <img src="icons/vfolder.webp" alt="Folder">
+              </a>
+              <a>
+                <figcaption>MyVidz</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="Princess Sarah.html">
+                <img src="icons/vfolder.webp" alt="Folder">
+              </a>
+              <a>
+                <figcaption>P. Sara</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="family.html">
+                <img src="icons/vfolder.webp" alt="Folder">
+              </a>
+              <a>
+                <figcaption>family</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/vfolder.webp" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>lovez</figcaption>
+            </figure>
+        </div>
+    </div>
+       <!-- VIDEOFOLDER SECTION -->
+
     <script src="script.js"></script>
 </body>
 </html>
