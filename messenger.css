@@ -112,16 +112,16 @@
       animation: shining-effect 2s infinite;
       }
       @keyframes shining-effect {
-      0% {
-      box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-      }
-      50% {
-      box-shadow: 0 0 30px rgba(152, 255, 152, 1);
-      }
-      100% {
-      box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-      }
-      }
+    0% {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 50px rgba(255, 255, 255, 1);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+  }
 
       .profession {
           position: relative;
