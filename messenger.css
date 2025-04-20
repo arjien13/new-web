@@ -21,7 +21,7 @@
       top: 2vh; /* Increase the top value to move the menu down */
       left: 50vw;
       transform: translateX(-50%);
-      background-image: linear-gradient(to bottom, #B2FFFC, #ffffff);
+      background: linear-gradient(to bottom, #333333, #CCCCCC);
       display: flex;
       justify-content: center;
       text-align: center;
