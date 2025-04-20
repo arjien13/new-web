@@ -5,8 +5,8 @@
       width: 92vw;
       height: 90vh;
       background-color: rgba(0, 0, 0, 0.1);
-      border: 0.1vw solid #ddd;
-      box-shadow: 0 0 1vh rgba(0,0,0,0.5);
+      
+      box-shadow: 0 0 1vh rgba(0,0,0,0.1);
       position: absolute;
       top: 53vh;
       left: 50vw;
