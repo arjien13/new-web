@@ -266,9 +266,10 @@
   height: auto; /* image height */
   mix-blend-mode: multiply;
 }
-
-
 /**skills-section*/
+  .grid-container {
+  transform: translate(-50%, -50%) scale(1.3); /* increase size by 20% */
+}
 
 /********************* PORTFOLIO *********************/  
 }
