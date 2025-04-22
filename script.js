@@ -65,3 +65,31 @@ if (localStorage.getItem('showPortfolio') === 'true') {
   showPortfolio();
   localStorage.removeItem('showPortfolio');
 }
+
+
+// Shuriken Explotion Effects
+
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 10; i++) {
+                let shuriken = document.createElement('div');
+                shuriken.classList.add('shuriken');
+                shuriken.style.left = `${e.clientX}px`;
+                shuriken.style.top = `${e.clientY}px`;
+                shuriken.style.transform = `rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(shuriken);
+                
+                let directionX = Math.random() * 200 - 100;
+                let directionY = Math.random() * 200 - 100;
+                shuriken.animate([
+                    { transform: `translate(0, 0) rotate(${Math.random() * 360}deg)` },
+                    { transform: `translate(${directionX}px, ${directionY}px) rotate(${Math.random() * 360 + 360}deg)` }
+                ], {
+                    duration: 1000,
+                    fill: 'forwards'
+                });
+                
+                setTimeout(() => {
+                    shuriken.remove();
+                }, 1000);
+            }
+        });
