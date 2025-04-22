@@ -252,5 +252,63 @@
 
 /********************* SOC MED ICON *********************/   
 
+/********************* RESUME *********************/  
+#resume-section {
+  text-align: center;
+  z-index: 1000;
+  position: relative;
+  
+}
+
+#resume-section div {
+  font-size: 3vw !important;
+}
+
+#resume-section img {
+  width: 100vw;
+  height: auto;
+  max-width: 800px; 
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+#text {
+  display: none;
+  
+}
+
+#resume-section.show-text #text {
+  display: block;
+ 
+  
+}
+
+@keyframes shine {
+  0% {
+    text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FFFFFF;
+  }
+  50% {
+    text-shadow: 0 0 20px #FFFFFF, 0 0 40px #FFFFFF, 0 0 60px #FFFFFF, 0 0 80px #FFFFFF;
+  }
+  100% {
+    text-shadow: 0 0 10px #FFFFFF, 0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FFFFFF;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/********************* RESUME *********************/  
+
 }
 
