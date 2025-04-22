@@ -5,8 +5,7 @@
       width: 92vw;
       height: 90vh;
       background-color: rgba(0, 0, 0, 0.1);
-      border: 0.1vw solid #ddd;
-      box-shadow: 0 0 1vh rgba(0,0,0,0.5);
+      box-shadow: 0 0 1vh rgba(0,0,0,0.3);
       position: absolute;
       top: 53vh;
       left: 50vw;
@@ -18,7 +17,7 @@
     }
     .menu {
       position: absolute;
-      top: 2vh; /* Increase the top value to move the menu down */
+      top: 2vh; 
       left: 50vw;
       transform: translateX(-50%);
       background: linear-gradient(to bottom, #333333, #CCCCCC);
@@ -41,50 +40,8 @@
 .dropdown-item > a {
   font-size: 4vw;
 }
+   
 
-    .intro {
-      width: 90vw;
-      font-size: 3vw;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid #33cc33;
-      box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-      animation: shining-borders 5s infinite;
-     
-      
-      animation: shining-borders 3s infinite;
-      }
-      @keyframes shining-borders {
-      0% {
-      border-color: #33cc33;
-      box-shadow: 0 0 5px rgba(152, 255, 152, 0.5);
-      }
-      50% {
-      border-color: #ccffcc;
-      box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-      }
-      100% {
-      border-color: #33cc33;
-      box-shadow: 0 0 5px rgba(152, 255, 152, 0.5);
-      }
-      }
-
-    .icon img {
-      width: 3vw;
-      height: 3vw;
-      mix-blend-mode: multiply;
-    }
-
-    .icons {
-      position: absolute;
-      top: 73vh;
-      right: 10vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
 
     .footer {
   position: absolute;
@@ -107,21 +64,21 @@
       height: 30vw !important;
       object-fit: cover;
       border-radius: 50%;
-       transform: scale(1.5); /* Increase size by 50% */
-      box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-      animation: shining-effect 2s infinite;
-      }
-      @keyframes shining-effect {
-      0% {
-      box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-      }
-      50% {
-      box-shadow: 0 0 30px rgba(152, 255, 152, 1);
-      }
-      100% {
-      box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-      }
-      }
+       transform: scale(1.5); 
+       box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+       animation: shining-light 1.5s infinite;
+       }
+       @keyframes shining-light {
+         0% {
+           box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+         }
+         50% {
+           box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+         }
+         100% {
+           box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+         }
+       }
 
       .profession {
           position: relative;
@@ -165,8 +122,8 @@
   
  .Portfolio-Section p {
     font-size: 1px !important;
-    width: 80vw; /* Adjust width to 80% of viewport width */
-    height: auto; /* Change height to auto */
+    width: 80vw; 
+    height: auto; 
     transform: scale(1.1); 
     box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
     padding: 1vh;   
@@ -184,33 +141,33 @@
   display: flex;
   flex-direction: column;
   margin-left: -30px;
-  margin-top: -80px; /* adjust this value to move it up */
+  margin-top: -80px; 
 }
 
 .folder-row {
   display: flex;
-  justify-content: space-around; /* Distribute folders evenly */
-  margin-bottom: -8px; /* Add margin between rows */
+  justify-content: space-around; 
+  margin-bottom: -8px; 
 }
 
 .folder-row a {
-  text-align: center; /* Center the folder label */
+  text-align: center; 
 }
 
 .folder-icon {
-  width: 23vw; /* Increase the width of the folder icon */
-  height: auto; /* Increase the height of the folder icon */
+  width: 23vw; 
+  height: auto; 
 }
  .folder-label {
   position: relative;
   top: -15.5vw;
-  left: -3.7vw; /* increase the negative value to move it to the left */
+  left: -3.7vw; 
   font-size: .7vw;
   font-weight: 400;
 }
   a[href="bdo.html"] .folder-label {
   position: relative;
-  left: -2vw; /* increase the negative value to move it to the left */  
+  left: -2vw;  
 }
 
 /**folder icon*/
@@ -225,7 +182,7 @@
   color: #ffff;
 }
   li {
-  margin-bottom: 5px; /* adjust the value as needed */
+  margin-bottom: 5px; 
 }
   .skills-section h5 {
   position: absolute;
@@ -243,31 +200,30 @@
 
 @media (max-width: 768px) {
   .skills-section-container {
-    bottom: 0rem; /* Adjust for smaller screens */
-    left: 3vh; /* Adjust for smaller screens */
+    bottom: 0rem; 
+    left: 3vh;
     
   }
 
 }
 .my-face {
   position: absolute;
-  top: 37.5vh; /* distance from top */
-  left: 6vw; /* distance from left */
-  width: 25vw; /* image width */
-  height: auto; /* image height */
+  top: 37.5vh; 
+  width: 25vw;
+  height: auto;
   mix-blend-mode: multiply;
 }
 
 .my-icon {
   position: absolute;
-  top: 42vh; /* distance from top */
-  left: 22.2vw; /* distance from left */
-  width: 21vw; /* image width */
-  height: auto; /* image height */
+  top: 42vh; 
+  left: 22.2vw;
+  width: 21vw; 
+  height: auto; 
   mix-blend-mode: multiply;
 }
 .grid-container {
-  transform: translate(-50%, -50%) scale(1.3); /* increase size by 20% */
+  transform: translate(-50%, -50%) scale(1.3); 
 }
 
 /**skills-section*/
@@ -278,13 +234,13 @@
   /* relocate the icons */
   position: absolute;
   bottom: 20px;
-  left: 91vw;
+  left: 92.5vw;
   transform: translateX(-50%);
   display: flex;
 }
 
 .social-media-icons a {
-  margin: 0 1px; /* adjust the margin value to reduce the gap */
+  margin: 0 1px;
 }
 
 .social-media-icons i {
