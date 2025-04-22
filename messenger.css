@@ -21,7 +21,7 @@
       top: 2vh; /* Increase the top value to move the menu down */
       left: 50vw;
       transform: translateX(-50%);
-      background-image: linear-gradient(to bottom, #B2FFFC, #ffffff);
+      background: linear-gradient(to bottom, #333333, #CCCCCC);
       display: flex;
       justify-content: center;
       text-align: center;
@@ -222,6 +222,7 @@
   padding: 1rem;
    max-width: 97%;
   box-shadow: rgba(0, 0, 0, 0.1);
+  color: #ffff;
 }
   li {
   margin-bottom: 5px; /* adjust the value as needed */
