@@ -113,38 +113,7 @@ body {
     padding: 2vh;
     text-align: center;
   }
-
-  .intro {
-    font-size: 1.5vw;
     
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #33cc33;
-    box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-    animation: shining-borders 5s infinite;
-    margin: 0; /* Reset margin */
-    padding: 0.5em; /* Use em for padding */
-    height: fit-content; /* Set height to fit content */
-    animation: shining-borders 5s infinite;
-    }
-    @keyframes shining-borders {
-    0% {
-    border-color: #33cc33;
-    box-shadow: 0 0 5px rgba(152, 255, 152, 0.5);
-    }
-    50% {
-    border-color: #ccffcc;
-    box-shadow: 0 0 10px rgba(152, 255, 152, 0.9);
-    }
-    100% {
-    border-color: #33cc33;
-    box-shadow: 0 0 5px rgba(152, 255, 152, 0.5);
-    }
-    }
-  
-  
   .footer {
     position: absolute;
     bottom: 0;
@@ -179,13 +148,13 @@ body {
   }
   @keyframes shining-effect {
     0% {
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
     50% {
       box-shadow: 0 0 50px rgba(255, 255, 255, 1);
     }
     100% {
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
   }
 
