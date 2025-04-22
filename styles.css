@@ -602,7 +602,26 @@ body {
 /* POLITICAL SECTION */
 
 
-/* PERSONAL SECTION */
+/* EXPLOTION EFFECTS */
+
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  z-index: 1000 !important;
+}
+
+.shuriken {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #4d4949;
+  clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+  transform-origin: center;
+}
 
 
-/* PERSONAL SECTION */
+/* EXPLOTION EFFECTS */
