@@ -17,6 +17,13 @@
             display: none;
             margin-top: 20px;
         }
+
+        #sparkle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
  
     </style>
 </head>
@@ -42,7 +49,7 @@
         <div class="menu-item">
             <a href="#">Blog</a>
             <div class="dropdown">
-               <div class="dropdown-item"><a href="#" onclick="alert('It\'s still empty! Check Political instead.'); return false;">Personal</a></div>
+              <div class="dropdown-item"><a href="#" onclick="alert('It\'s still empty! Check Political instead.'); return false;">Personal</a></div>
               <div class="dropdown-item" onclick="showPolitical()">
                 <a href="#">Political</a>
             </div>
@@ -275,5 +282,47 @@
         document.getElementById('dialog-box').style.display = 'none';
       });
     </script>
+
+<!-- SPARKLE TRAIL EFFECTS -->
+<canvas id="sparkle"></canvas>
+<script>
+    let sparkles = [];
+    const canvas = document.getElementById('sparkle');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    document.addEventListener('mousemove', (e) => {
+        sparkles.push({
+            x: e.clientX,
+            y: e.clientY,
+            vx: Math.random() * 2 - 1,
+            vy: Math.random() * 2 - 1,
+            size: Math.random() * 2 + 1,
+            alpha: 1
+        });
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = sparkles.length - 1; i >= 0; i--) {
+            const sparkle = sparkles[i];
+            sparkle.x += sparkle.vx;
+            sparkle.y += sparkle.vy;
+            sparkle.alpha -= 0.01;
+
+            ctx.fillStyle = `rgba(255, 255, 255, ${sparkle.alpha})`;
+            ctx.fillRect(sparkle.x, sparkle.y, sparkle.size, sparkle.size);
+
+            if (sparkle.alpha <= 0) {
+                sparkles.splice(i, 1);
+            }
+        }
+    }
+    animate();
+</script>
+<!-- SPARKLE TRAIL EFFECTS -->
+
 </body>
 </html>
