@@ -265,7 +265,7 @@
 }
 
 #resume-section img {
-  width: 100vw;
+  width: 90vw;
   height: auto;
   max-width: 800px; 
   margin: 0 auto;
@@ -297,13 +297,13 @@
 
 @keyframes zoom {
   0% {
-    transform: scale(1);
+    transform: scale(.9);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
   100% {
-    transform: scale(1);
+    transform: scale(.9);
   }
 }
 
