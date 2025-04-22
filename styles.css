@@ -210,39 +210,29 @@ body {
 
 
 /******************Social Media Section************************/
-.icons {
-  position: absolute;
-  top: 73vh;
-  right: 20.5vw;
+.social-media-icons {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
- 
+  position: fixed;
+  bottom: 10vh;
+  right: 21vw; 
+}
+.social-media-icons i {
+  font-family: "Font Awesome 6 Brands" !important;
+}
+.social-media-icons a {
+  color: #333;
+  transition: color 0.3s ease;
+  margin: 10px 0;
+  font-size: 24px;
 }
 
-.icon {
-  margin: 0.5vh 0;
-  padding: 0.2vw;
-  border-radius: 0.5vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s;
-  mix-blend-mode: multiply;
-  box-shadow: 0 0 1vh rgba(0,0,0,0.3);
+.social-media-icons a:hover {
+  color: #555;
 }
-
-.icon img {
-  width: 1.3vw;
-  height: 1.3vw;
-  
-}
-
-.icon:hover {
-  transform: scale(1.3); 
- 
+.social-icons i {
+  font-family: "Font Awesome 6 Brands" !important;
 }
 /******************Social Media Section************************/
 
@@ -489,7 +479,6 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
- 
   max-height: 80vh; /* Adjusted height */
   max-width: 80vw; /* Adjusted width */
   border-radius: 10px; /* Optional: rounded corners */
@@ -541,7 +530,8 @@ a {
   border-radius: 1rem;
 }
 
-/* PHOTOFOLDER SECTION */
+
+
 
 .folder-item figcaption {
   color: white;
