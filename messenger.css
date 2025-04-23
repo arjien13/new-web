@@ -241,9 +241,11 @@
 }
 
 .social-media-icons a {
-  margin: -3px 0; /* Reduced margin from 10px to 5px */
   color: #3d0555; /* Neon purple color */
+  margin: 8px 0;
+  font-size: 1vw;
 }
+
 
 .social-media-icons i {
   /* reduce the icon size */
