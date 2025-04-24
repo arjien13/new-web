@@ -1,0 +1,152 @@
+@media only screen and (min-width: 414px) and (max-height: 896px){
+    .menu {
+        position: absolute;
+        top: 1vh;
+        left: 50vw;
+        transform: translateX(-50%);
+        background: linear-gradient(to bottom, #333333, #CCCCCC);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        gap: 8vw;
+        padding: 1vw;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, .3);
+        z-index: 1;
+        font-size: 3.8em; /* Added font size */
+      }
+      .dropdown-item > a {
+        font-size: 3.1vw;
+      }
+
+      .dropdown-item {
+        margin-bottom: .1vh;
+    }
+
+      .container {
+        width: 96vw;
+        height: 93.5vh;
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 1vh rgba(0,0,0,0.1);
+        position: absolute;
+        top: 51.6vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5vw !important;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: #aca4a4;
+        padding: 1vh;
+        width: 50vw;
+        font-size: 2vw !important;
+      }
+
+/**Bio Section**/
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+  .bio-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+  }
+  .profession {
+    text-align: center;
+    width: 100%;
+    font-size: 2.1em;
+  }
+  
+  .bio-section {
+    text-align: center;
+  }
+  
+  .bio-paragraph {
+    font-size: 2.1em;
+    margin-top: 10px;
+  
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+/**Bio Section**/
+
+/**Portfolio Section**/
+.Portfolio-Section {
+    margin-top: -100px; /* Adjust the value to your desired amount */
+  }
+.Portfolio-Section h2 {
+    font-size: 2.5em !important;
+    text-align: center !important;
+    position: absolute;
+    top: -3vh !important;
+    left: 39.5vw;
+    transform: translateX(-50%);
+  }
+  
+  
+  .Portfolio-Section p {
+    font-size: 1.8em !important;
+    line-height: 1.5 !important;
+    width: 350px !important;
+    text-align: justify !important;
+    margin: 0 auto !important;
+  }
+
+  .skills-section-container {
+    margin-top: 100px; /* Adjust the value to your desired amount */
+  }
+/**Portfolio Section**/
+
+
+/**Social Media Section**/
+      .social-media-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 4vh;
+        right: 4vw; 
+      }
+      .social-media-icons a {
+        font-size: 3.5vw;
+      }
+/**Social Media Section**/
+
+/**Jarviz Section**/
+.jarviz-container {
+    position: absolute;
+    top: 6vh;
+    left: 83vw;
+}
+
+.jarviz-container img {
+    width: 7.5vw; /* changed to fixed vw unit */
+    height: 7.5vw; /* changed to fixed vw unit */
+  }
+  
+  h3 {
+    font-size: 2.6vw; /* adjusted font size to be more readable */
+    font-weight: 600;
+    color: #9b97a0;
+  }
+
+/**Jarviz Section**/
+
+}
