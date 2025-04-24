@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+       * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to right, #808080, #666666);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2vh;
+    font-size: 6vw;
+    font-weight: 650;
+    color: #ffffff;
+}
+
+.hobby-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hobby-card {
+    margin: 2vh 0;
+    width: 80vw;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 1vh rgba(0,0,0,0.1);
+    padding: 2vh;
+}
+
+.hobby-card img {
+    width: 60vw;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+.hobby-card h2 {
+    text-align: center;
+    font-size: 5vw;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.hobby-card p {
+    text-align: center;
+    font-size: 3vw;
+    color: #ffffff;
+}
+
+.back-button-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+}
+
+.back-button {
+    background-color: #acadac;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #676966;
+}
+
+@media only screen and (min-width: 768px) {
+    h1 {
+        font-size: 2vw;
+    }
+    
+    .hobby-card {
+        width: 50vw;
+    }
+    
+    .hobby-card img {
+        width: 30vw;
+    }
+    
+    .hobby-card h2 {
+        font-size: 1vw;
+    }
+    
+    .hobby-card p {
+        font-size: .5vw;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    h1 {
+        font-size: 2vw;
+    }
+    
+    .hobby-card {
+        width: 40vw;
+    }
+    
+    .hobby-card img {
+        width: 25vw;
+    }
+    
+    .hobby-card h2 {
+        font-size: 1.5vw;
+    }
+    
+    .hobby-card p {
+        font-size: 1vw;
+    }
+}
+ 
+    </style>
+</head>
+<body>
+    <div class="back-button-container">
+        <a href="index.html" class="back-button"> Back</a>
+      </div>
+
+    <header>
+        <h1>My Hobbies</h1>
+    </header>
+    <main>
+        <div class="hobby-container">
+            <div class="hobby-card">
+                <h2>Traveling</h2>
+                <img src="images/manjuyod-white-sandbar.jpg" alt="A camera">
+                <p>Traveling is my passion, and I'm always eager to explore new destinations. For now, I'm excited to discover the hidden gems in my own province, where breathtaking landscapes, rich culture, and warm hospitality await. From scenic coastal roads to majestic mountains, I'm looking forward to immersing myself in the local way of life, trying new foods, and capturing unforgettable memories. Whether it's a spontaneous road trip or a carefully planned itinerary, I know that each journey will bring its own unique adventures and experiences that will leave me feeling inspired and refreshed.</p>
+            </div>
+            <div class="hobby-card">
+                <h2>building hobby</h2>
+                <img src="images/TS.jpg" alt="A mountain">
+                <p>As I've grown older, my hobbies have taken an unexpected turn. Despite spending my career studying computers and related fields, I've discovered a new passion for building things. With no formal training as a carpenter, I've had to learn through trial and error. I'd search online tutorials, make mistakes, and redo things until I got it right. The process has been exhilarating, and the sense of accomplishment I feel when I complete a project is unmatched. I've become surprisingly self-sufficient, tackling projects like building a fishpond, outdoor kitchen, parking space, and even piggery cages. Without needing to hire a carpenter, I've taken on the challenge and learned as I go. It's been a rewarding journey, and I'm proud of what I've created with my own two hands.</p>
+            </div>
+            <div class="hobby-card">
+                <h2>Pig Farming</h2>
+                <img src="images/pig.jpg" alt="A book">
+                <p>Pig farming is more than just a hobby for me - it's a labor of love that brings both joy and challenge. Despite the many obstacles and discouragements that come with it, I find myself drawn to the simple yet rewarding process of raising these intelligent and social animals. For now, it's a passion project that allows me to connect with nature and learn new skills. But I envision a future where it becomes a sustainable source of income for me and my family. With every hurdle, I take a deep breath, close my eyes, and press on, fueled by the hope of partial success and the thrill of nurturing life. Even if it starts as just a hobby, I'm excited to see where this journey takes me.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
