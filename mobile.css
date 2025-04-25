@@ -45,7 +45,7 @@
 
   .footer {
     position: absolute;
-    bottom: 0;
+    bottom: 3vh;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -232,14 +232,14 @@
   
   .social-media-icons a {
     color: #3d0555; /* Neon purple color */
-    margin: 10px 0;
+    margin: 3vh 0;
     font-size: 1vw;
   }
   
   
   .social-media-icons i {
     /* reduce the icon size */
-     font-size: 3.5em;
+     font-size: 3.3em;
   }
 
   #resume-section {
