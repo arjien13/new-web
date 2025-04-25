@@ -45,7 +45,7 @@
 
   .footer {
     position: absolute;
-    bottom: 3vh;
+    bottom: 6vh;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -232,7 +232,7 @@
   
   .social-media-icons a {
     color: #3d0555; /* Neon purple color */
-    margin: 3vh 0;
+     margin: 1.3vh 0;
     font-size: 1vw;
   }
   
