@@ -159,14 +159,14 @@
 }
  .folder-label {
   position: absolute;
-  top: -10.5vh !important;
+  top: -10.7vh !important;
   left: -2vw; 
   font-size: .4rem !important;
   font-weight: 400;
 }
   a[href="bdo.html"] .folder-label {
   position: relative;
-  left: -2vw !important;  
+  left: -1vw !important;  
 }
 
 /**folder icon*/
