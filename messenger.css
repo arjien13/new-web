@@ -160,7 +160,7 @@
  .folder-label {
   position: absolute;
   top: -10.7vh !important;
-  left: 2vw; 
+  left: 2vw !important; 
   font-size: .4rem !important;
   font-weight: 400;
 }
