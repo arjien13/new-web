@@ -1,12 +1,17 @@
 @media only screen and (max-width: 768px) {
 
+
+  body {
+    overflow-y: auto;
+  }
+
   .container {
     width: 94vw !important;
     height: 93vh !important;
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 1vh rgba(0,0,0,0.3);
     position: absolute;
-     margin-top: -1.8vh !important;
+    margin-top: -1.8vh !important;
     left: 50vw;
     transform: translate(-50%, -50%);
     display: flex;
@@ -232,14 +237,14 @@
   
   .social-media-icons a {
     color: #3d0555; /* Neon purple color */
-     margin: 1.3vh 0;
+    margin: 1.3vh 0;
     font-size: 1vw;
   }
   
   
   .social-media-icons i {
     /* reduce the icon size */
-     font-size: 3.3em;
+    font-size: 3.5em;
   }
 
   #resume-section {
