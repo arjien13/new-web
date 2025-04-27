@@ -109,7 +109,7 @@
 
   .Portfolio-Section {
     position: absolute;
-    top: 17vh !important;
+    top: 20vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -306,7 +306,4 @@
     height: 9vw;
   }
 
-  h3 {
-    font-size: 3vw;
-  }
 }
