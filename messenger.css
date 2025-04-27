@@ -108,7 +108,7 @@
 
 .Portfolio-Section {
   position: absolute;
-  margin-top: -2vh !important;
+  margin-top: -4vh !important;
 }
   
 .Portfolio-Section h2 {
@@ -124,7 +124,7 @@
           transform: scale(1.1); 
           box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
           padding: 1vh;  
-          position: relative; /* Ensure position is set if top doesn't work without it */
+        
       }
 
 /**folder icon*/
