@@ -157,13 +157,9 @@
   height: auto; 
 }
  .folder-label {
-  position: absolute;
   text-align: center;
   display: block;
-  top: -10.7vh !important;
-  left: -1vw !important; 
-  font-size: .4rem !important;
-  font-weight: 400;
+  margin-top: -35px; 
 }
   a[href="bdo.html"] .folder-label {
   position: relative;
