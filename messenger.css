@@ -108,14 +108,14 @@
 
 .Portfolio-Section {
   position: absolute;
-  margin-top: 2vh !important;
+  margin-top: -2vh !important;
 }
   
 .Portfolio-Section h2 {
   position: absolute;
   left: 39.5vw;
   transform: translateX(-50%);
-  margin-top: 0.4vh !important; /* Decrease the value */
+  
 }
         .Portfolio-Section p {
           font-size: 1px !important;
@@ -123,8 +123,7 @@
           height: auto; 
           transform: scale(1.1); 
           box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
-          padding: 1vh;   
-          top: 1vh !important; /* Increased the value */
+          padding: 1vh;  
           position: relative; /* Ensure position is set if top doesn't work without it */
       }
 
