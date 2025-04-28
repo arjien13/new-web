@@ -151,11 +151,12 @@
 .folder-icon {
   width: 25vw !important; 
   height: auto; 
+  margin-top: 2vh;
 }
  .folder-label {
   text-align: center;
   display: block;
-  margin-top: -38px;
+  margin-top: -43px;
   left: -2vw;
   font-size: 1.6vw;
 }
