@@ -184,7 +184,7 @@
 }
   li {
   margin-bottom: 5px; 
-  font-size: 18px; /* adjust the value as needed */
+  font-size: 1vw; /* adjust the value as needed */
 }
   .skills-section h5 {
   position: absolute;
