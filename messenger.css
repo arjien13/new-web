@@ -107,23 +107,28 @@
     margin-top: -4vh !important;
   }
   
-  .Portfolio-Section h2 {
-    position: absolute;
-    left: 50vw; /* adjusted to 50vw for better centering */
-    transform: translateX(-50%);
-    text-align: center;
-    margin-bottom: 0; /* added to remove margin */
-  }
-  
-  .Portfolio-Section p {
-    font-size: 1px !important; /* adjusted font-size from 1px to a readable size */
-    width: 80vw;
-    height: auto;
-    transform: scale(1.1);
-    box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1);
-    padding: 1vh;
-    margin-top: 0vh; 
-  }
+.Portfolio-Section h2 {
+  position: absolute;
+  left: 50vw;
+  transform: translateX(-50%);
+  text-align: center;
+  margin-bottom: 0;
+  top: 0vh; /* assuming h2 is at the top */
+}
+
+.Portfolio-Section p {
+  font-size: 16px !important;
+  width: 80vw;
+  height: auto;
+  transform: scale(1.1);
+  box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1);
+  padding: 1vh;
+  position: absolute;
+  left: 50vw;
+  transform: translateX(-50%);
+  top: 5vh; /* adjust this value based on h2 height */
+  margin: 0;
+}
 
 /**folder icon*/
 
