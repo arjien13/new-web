@@ -180,6 +180,7 @@
   box-shadow: rgba(0, 0, 0, 0.1);
   color: #ffff;
   left: 2.5vw !important; /* increase the negative value */
+  fontsize: 1vw;
 }
   li {
   margin-bottom: 5px; 
@@ -313,9 +314,6 @@ left: 0vw !important;
 .jarviz-container img {
   width: 9vw;
   height: 9vw;
-}
-h3 {
-  font-size: 3vw;
 }
 /* Ask jarviz */
 
