@@ -104,12 +104,12 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    margin-top: 2.5vh;
+    margin-top: 1.5vh;
   }
 
   .Portfolio-Section h2 {
     position: absolute;
-    top: 0vh !important;
+    top: 1vh !important;
     left: 50%; /* changed from 39.5vw to 50% */
     transform: translateX(-50%);
     font-size: 2.5em !important;
