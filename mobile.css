@@ -133,7 +133,7 @@
     position: absolute;
     top: -1vh;
     font-size: 1.2vh;
-    left: -4vw;
+    left: 2vw !important;
     white-space: nowrap;
   }
 
