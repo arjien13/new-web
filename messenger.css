@@ -141,7 +141,7 @@
 .folder-row {
   display: flex;
   justify-content: space-around; 
-  margin-bottom: 20px; 
+  margin-bottom: 10px; 
 }
 
 .folder-row a {
@@ -151,7 +151,7 @@
 .folder-icon {
   width: 25vw !important; 
   height: auto; 
-  margin-top: 4vh;
+  margin-top: 4.5vh;
 }
  .folder-label {
   text-align: center;
