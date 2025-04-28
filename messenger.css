@@ -109,7 +109,7 @@
 
   .Portfolio-Section h2 {
     position: absolute;
-    margin-bottom: 1.5vh !important;
+    margin-bottom: 2vh !important;
     left: 50%; /* changed from 39.5vw to 50% */
     transform: translateX(-50%);
     font-size: 2.5em !important;
@@ -157,7 +157,7 @@
   text-align: center;
   display: block;
   margin-top: -.5vh;
-  left: -1.3vw !important;
+  left: -2.5vw !important;
   font-size: .7vw;
 }
   a[href="bdo.html"] .folder-label {
