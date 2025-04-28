@@ -115,7 +115,7 @@
 }
 .Portfolio-Section p {
   font-size: 1px !important;
-  width: 83vw; 
+  width: 82vw; 
   height: auto; 
   transform: scale(1.1) translateY(-23px); 
   box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
@@ -125,14 +125,14 @@
 .folder-container h5 {
   position: absolute;
   font-size: 1.5vh;
-  left: 2vw !important; 
+  left: 1vw !important; 
   white-space: nowrap;
 }
 .folder-container {
   display: flex;
   flex-direction: column;
   margin-left: -30px;
-  margin-top: -80px; 
+  margin-top: -85px; 
 }
 
 .folder-row {
