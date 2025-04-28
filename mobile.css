@@ -179,7 +179,7 @@
   max-width: 95%;
   box-shadow: rgba(0, 0, 0, 0.1);
   color: #ffff;
-  left: 3vw !important; /* increase the negative value */
+  left: 4.5vw !important; /* increase the negative value */
   fontsize: 1vw;
 }
   li {
