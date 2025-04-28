@@ -115,10 +115,10 @@
 }
 .Portfolio-Section p {
   font-size: 1px !important;
-  width: 80vw;
-  height: auto;
-  text-align: center;
-  top: -6vh; /* adjust this value to move it up */
+  width: 80vw; 
+  height: auto; 
+  transform: scale(1.1) translateY(-20px); 
+  box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
 }
 /**folder icon*/
 
