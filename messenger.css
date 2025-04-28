@@ -116,7 +116,7 @@
   }
   
   .Portfolio-Section p {
-    font-size: 16px !important; /* adjusted font-size from 1px to a readable size */
+    font-size: 1px !important; /* adjusted font-size from 1px to a readable size */
     width: 80vw;
     height: auto;
     transform: scale(1.1);
