@@ -133,7 +133,7 @@
     position: absolute;
     top: -1vh;
     font-size: 1.2vh;
-    left: -3vw;
+    left: -4vw;
     white-space: nowrap;
   }
 
@@ -184,6 +184,7 @@
 }
   li {
   margin-bottom: 5px; 
+  font-size: 18px; /* adjust the value as needed */
 }
   .skills-section h5 {
   position: absolute;
