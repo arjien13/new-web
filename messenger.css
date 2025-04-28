@@ -157,8 +157,8 @@
   text-align: center;
   display: block;
   margin-top: -.5vh;
-  left: -2vw;
-  font-size: .8vw;
+  left: 2vw;
+  font-size: .7vw;
 }
   a[href="bdo.html"] .folder-label {
   position: relative;
