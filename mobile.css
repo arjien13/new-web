@@ -147,7 +147,7 @@
   .folder-row {
     display: flex;
     justify-content: space-around; 
-    margin-bottom: -8px; 
+    margin-bottom: -10px; 
   }
 
   .folder-row a {
@@ -161,7 +161,7 @@
 
   .folder-label {
     position: relative;
-    top: -16.9vw;
+    top: -18vw;
     left: -3.6vw; 
     font-size: 1.6vw;
     font-weight: 400;
