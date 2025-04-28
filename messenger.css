@@ -104,7 +104,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    top: 20vh !important;
+    top: 22vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -157,7 +157,7 @@
   text-align: center;
   display: block;
   margin-top: -.5vh;
-  left: 2vw;
+  left: 3vw;
   font-size: .7vw;
 }
   a[href="bdo.html"] .folder-label {
