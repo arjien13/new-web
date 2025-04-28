@@ -102,28 +102,28 @@
       
 
   /********************* PORTFOLIO *********************/
-        
-
 .Portfolio-Section {
-  position: absolute;
-  margin-top: -4vh !important;
-}
+    position: absolute;
+    margin-top: -4vh !important;
+  }
   
-.Portfolio-Section h2 {
-  position: absolute;
-  left: 39.5vw;
-  transform: translateX(-50%);
+  .Portfolio-Section h2 {
+    position: absolute;
+    left: 50vw; /* adjusted to 50vw for better centering */
+    transform: translateX(-50%);
+    text-align: center;
+    margin-bottom: 0; /* added to remove margin */
+  }
   
-}
-        .Portfolio-Section p {
-          font-size: 1px !important;
-          width: 80vw; 
-          height: auto; 
-          transform: scale(1.1); 
-          box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
-          padding: 1vh;  
-        
-      }
+  .Portfolio-Section p {
+    font-size: 16px !important; /* adjusted font-size from 1px to a readable size */
+    width: 80vw;
+    height: auto;
+    transform: scale(1.1);
+    box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1);
+    padding: 1vh;
+    margin-top: 5vh; /* added margin-top to position paragraph below heading */
+  }
 
 /**folder icon*/
 
@@ -157,7 +157,8 @@
  .folder-label {
   text-align: center;
   display: block;
-  margin-top: -38px; 
+  margin-top: -38px;
+  left: -2vw; 
 }
   a[href="bdo.html"] .folder-label {
   position: relative;
