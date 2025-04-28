@@ -133,7 +133,7 @@
     position: absolute;
     top: -1vh;
     font-size: 1.2vh;
-    left: 2vw !important;
+    left: 1.3vw !important;
     white-space: nowrap;
   }
 
@@ -176,10 +176,10 @@
   position: absolute;
   top: 63vh;
   padding: 1rem;
-  max-width: 97%;
+  max-width: 96%;
   box-shadow: rgba(0, 0, 0, 0.1);
   color: #ffff;
-  left: 2.5vw !important; /* increase the negative value */
+  left: 3vw !important; /* increase the negative value */
   fontsize: 1vw;
 }
   li {
