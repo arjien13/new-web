@@ -113,7 +113,7 @@
   transform: translateX(-50%);
   text-align: center;
   margin-bottom: 0;
-  top: 0vh; /* assuming h2 is at the top */
+  top: 45vh;
 }
 
 .Portfolio-Section p {
@@ -126,7 +126,7 @@
   position: absolute;
   left: 50vw;
   transform: translateX(-50%);
-  top: 5vh; /* adjust this value based on h2 height */
+  top: 50vh;
   margin: 0;
 }
 
