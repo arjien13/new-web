@@ -125,14 +125,14 @@
 .folder-container h5 {
   position: absolute;
   font-size: 1.5vh;
-  left: 1vw !important; 
+  left: -1vw !important; 
   white-space: nowrap;
 }
 .folder-container {
   display: flex;
   flex-direction: column;
   margin-left: -30px;
-  margin-top: -135px; /* increased the negative margin */
+  margin-top: -120px; /* increased the negative margin */
 }
 
 .folder-row {
