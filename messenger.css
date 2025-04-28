@@ -113,20 +113,19 @@
   transform: translateX(-50%);
   text-align: center;
   margin-bottom: 0;
-  top: 45vh;
+  top: 0vh;
 }
 
 .Portfolio-Section p {
   font-size: 1px !important;
   width: 80vw;
   height: auto;
-  transform: scale(1.1);
+  transform: translateX(-50%) scale(1.1);
   box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1);
   padding: 1vh;
   position: absolute;
   left: 50vw;
-  transform: translateX(-50%);
-  top: 50vh;
+  top: 5vh;
   margin: 0;
 }
 
