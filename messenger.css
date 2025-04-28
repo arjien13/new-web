@@ -108,13 +108,13 @@
   }
   
 .Portfolio-Section h2 {
- 
   text-align: center;
- 
 }
 
 .Portfolio-Section p {
   font-size: 1px !important;
+   transform: scale(1.1);
+  text-align: center;
  
 }
 
