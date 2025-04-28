@@ -111,14 +111,14 @@
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  bottom: 1vh;
+  bottom: 0vh;
 }
 .Portfolio-Section p {
   font-size: 1px !important;
   width: 80vw;
   height: auto;
   text-align: center;
-  bottom: 3vh;
+  bottom: 0vh;
 }
 /**folder icon*/
 
