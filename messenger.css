@@ -106,17 +106,16 @@
     position: absolute;
     margin-top: -4vh !important;
   }
-  
 .Portfolio-Section h2 {
   text-align: center;
+  margin: 0 auto;
+  width: fit-content;
 }
-
 .Portfolio-Section p {
   font-size: 1px !important;
   width: 80vw;
-    height: auto;
+  height: auto;
   text-align: center;
- 
 }
 
 /**folder icon*/
