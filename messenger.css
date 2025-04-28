@@ -102,24 +102,27 @@
       
 
   /********************* PORTFOLIO *********************/
- .Portfolio-Section {
+  .Portfolio-Section {
     position: absolute;
-    margin-top: -6vh !important;
+    top: 18vh !important;
   }
-.Portfolio-Section h2 {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  bottom: 0vh;
-}
-.Portfolio-Section p {
-  font-size: 1px !important;
-  width: 82vw; 
-  height: auto; 
-  transform: scale(1.1) translateY(-23px); 
-  box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
-}
+
+  .Portfolio-Section h2 {
+    position: absolute;
+    top: -2.8vh !important;
+    left: 50%; /* changed from 39.5vw to 50% */
+    transform: translateX(-50%);
+    font-size: 2.5em !important;
+  }
+
+  .Portfolio-Section p {
+   font-size: 2.5em !important;
+    width: 80vw; 
+    height: auto; 
+    transform: scale(1.1); 
+    box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
+    padding:  .5vw;   
+  }
 /**folder icon*/
 
 .folder-container h5 {
