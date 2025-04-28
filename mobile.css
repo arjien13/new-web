@@ -174,9 +174,9 @@
 
  .skills-section-container {
   position: absolute;
-  top: 63vh;
+  top: 60vh;
   padding: 1rem;
-  max-width: 96%;
+  max-width: 95%;
   box-shadow: rgba(0, 0, 0, 0.1);
   color: #ffff;
   left: 3vw !important; /* increase the negative value */
@@ -188,7 +188,7 @@
 }
   .skills-section h5 {
   position: absolute;
-  font-size: 1.5vh;
+  font-size: 1.2vh;
   left: 12vw;
   transform: translateX(-50%);
   top: -1vh !important;
