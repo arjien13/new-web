@@ -113,7 +113,8 @@
 
 .Portfolio-Section p {
   font-size: 1px !important;
-   transform: scale(1.1);
+  width: 80vw;
+    height: auto;
   text-align: center;
  
 }
