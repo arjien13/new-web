@@ -355,60 +355,6 @@ a {
 
 /********************* PORTFOLIO *********************/
 
-@media only screen and (min-width: 769px) and (min-height: 600px) {
-  .skills-section-container {
-    position: relative;
-    top: 50vh; /* Move down 50% from the top */
-    transform: translateY(-50%); /* Adjust the position to center vertically */
-    margin-left: -21vw;
-    padding: 2rem;
-    max-width: 38%;
-    font-size: 1vw;
-    color: #ffffff;
-  }
-  /* Remove margin-top from media queries */
-  @media (max-width: 768px) {
-    .skills-section-container {
-      margin-left: 5%;
-    }
-    .skills-section {
-      padding: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .skills-section-container {
-      margin-left: 2%;
-    }
-  }
-  .skills-section ul li {
-    margin-bottom: 0.4rem; 
-  }
-
-  .skills-section strong {
-    font-weight: 450;
-  }
-
-  .folder-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 100vh;
-    left: 106vw;
-    transform: translate(-50vw, -50vh);
-  }
-
-  .folder-label {
-    position: relative;
-    top: -8.5vw;
-    left: 2vw;
-    font-size: .8vw;
-    font-weight: 400;
-  }
- 
-}
-
 /* PHOTO FOLDER SECTION*/
 .grid-container {
   display: grid;
