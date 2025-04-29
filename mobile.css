@@ -109,7 +109,7 @@
 
   .Portfolio-Section {
     position: absolute;
-    top: 18.2vh !important;
+    top: 19vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -161,7 +161,7 @@
 
   .folder-label {
     position: relative;
-    top: 0vw;
+    top: -4vw;
     left: -3.6vw; 
     font-size: 1.6vw;
     font-weight: 400;
@@ -174,7 +174,7 @@
 
  .skills-section-container {
   position: absolute;
-  top: 60vh;
+  top: 63vh;
   padding: 1rem;
   max-width: 95%;
   box-shadow: rgba(0, 0, 0, 0.1);
