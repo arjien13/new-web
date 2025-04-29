@@ -1,4 +1,4 @@
-@media only screen and (max-height: 1400px) and (max-width: 800px) and (orientation: portrait) {
+@media only screen  (orientation: portrait) {
 
   * {
   margin: 0;
