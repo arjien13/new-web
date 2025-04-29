@@ -161,9 +161,9 @@
 
   .folder-label {
     position: relative;
-    top: -4vw;
+    top: -4vw !important;
     left: -3.6vw; 
-    font-size: 1.6vw;
+    font-size: 1.6vw !important;
     font-weight: 400;
   }
 
@@ -200,13 +200,16 @@
     font-weight: 470;
   }
 
-@media (max-width: 768px) {
-  .skills-section-container {
-    bottom: 0rem; 
-    left: 3vh;
-    
-  }
+.skills-section-container ul {
+  font-size: 20px;
+}
 
+.skills-section-container li {
+  margin-bottom: 15px;
+}
+
+.skills-section-container strong {
+  font-size: 22px;
 }
 
  .my-image{
