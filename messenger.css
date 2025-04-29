@@ -113,7 +113,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    margin-top: 1vh;
+    margin-top: -3.5vh;
   }
 
   .Portfolio-Section h2 {
@@ -165,7 +165,7 @@
  .folder-label {
   text-align: center;
   display: block;
-  margin-top: -.5vh;
+  top: 2vh;
   left: -2.5vw !important;
   font-size: .7vw;
 }
