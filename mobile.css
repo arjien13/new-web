@@ -172,42 +172,10 @@
     left: -2vw;  
   }
 
- .skills-section-container {
-  position: absolute;
-  top: 63vh;
-  padding: 1rem;
-  max-width: 95%;
-  box-shadow: rgba(0, 0, 0, 0.1);
-  color: #ffff;
-  left: 4.5vw !important; /* increase the negative value */
-  fontsize: 1vw;
-}
+ 
 
-  .skills-section h5 {
-  position: absolute;
-  font-size: 1.2vh;
-  left: 12vw;
-  transform: translateX(-50%);
-  top: -1vh !important;
-  font-weight: 500;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
-}
-  .skills-section strong {
-    font-weight: 470;
-  }
+ 
 
-.skills-section-container ul {
-  font-size: 20px;
-}
-
-.skills-section-container li {
-  margin-bottom: 15px;
-}
-
-.skills-section-container strong {
-  font-size: 22px;
-}
 
  .my-image{
 position: absolute;
