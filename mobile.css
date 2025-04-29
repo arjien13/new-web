@@ -1,5 +1,5 @@
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px), (max-height: 766px) {
   
   body {
     overflow-y: auto;
@@ -182,10 +182,7 @@
   left: 4.5vw !important; /* increase the negative value */
   fontsize: 1vw;
 }
-  li {
-  margin-bottom: 5px; 
-  fontsize: 1vw !important; /* adjust the value as needed */
-}
+
   .skills-section h5 {
   position: absolute;
   font-size: 1.2vh;
