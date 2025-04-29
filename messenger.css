@@ -1,4 +1,4 @@
-@media only screen and (max-height: 850px) and (max-width: 800px) and (orientation: portrait) {
+@media only screen and (max-height: 1500px) and (max-width: 800px) and (orientation: portrait) {
 
   * {
   margin: 0;
@@ -131,7 +131,7 @@
     transform: scale(1.1); 
     box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
     padding:  .5vw;
-   bottom: 4vh;
+   bottom: 5vh !important;
   }
 /**folder icon*/
 
