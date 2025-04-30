@@ -344,7 +344,7 @@ h3 {
   font-weight: 500;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   color: #ffffff;
-  text-align: center;
+  left: 2vw;
 }
 .skills-section li {
   font-size: 2.5em !important;
@@ -354,12 +354,11 @@ h3 {
   width: 90vw;
   height: auto;
 }
- .skills-section ul {
-  list-style: none;
+.skills-section ul {
+  list-style: disc;
   padding: 0;
   margin: 0;
 }
-
 .skills-section strong {
   font-weight: 550;
 }
