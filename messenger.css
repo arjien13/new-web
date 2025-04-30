@@ -209,8 +209,19 @@ left: 0vw !important;
 /**skills-section*/
 
 /********************* PORTFOLIO *********************/ 
- /********************* SOC MED ICON *********************/ 
-
+ /********************* SOC MED ICON *********************/
+ .social-media-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 4vh;
+  right: 7vw;
+}
+ .social-media-icons a i {
+  font-size: 2em !important;
+  transform: scale(1.1);
+}
 /********************* SOC MED ICON *********************/   
 
 /********************* RESUME *********************/  
