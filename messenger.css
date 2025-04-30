@@ -335,7 +335,7 @@ h3 {
   position: fixed;
   bottom: 2vh;
   left: 21vw;
-  width: 80vw;
+  width: 100vw;
   padding: .5vh .5vw;
   border-radius: 1vh;
   box-shadow: 0 0 2vh rgba(0, 0, 0, 0.1);
