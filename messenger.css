@@ -332,20 +332,43 @@ h3 {
 }
 /* Ask jarviz */
 
- /****************** Skills Section ******************/
+/****************** Skills Section ******************/
 .skills-section-container {
   position: fixed;
   bottom: 2vh;
   left: 21vw;
-  width: 50vw;
+  width: 35vw;
   padding: .5vh .5vw;
   border-radius: 1vh;
   box-shadow: 0 0 2vh rgba(0, 0, 0, 0.1);
   max-height: 75vh;
   color: #ffffff;
-  font-size: 1vh;
 }
- /****************** Skills Section ******************/
+
+.skills-section h5 {
+  position: absolute;
+  top: -3vh; /* Adjust this value to move it up or down */
+  font-size: 1.5vh;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.skills-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-section li {
+  font-size: 2vh;
+  margin-bottom: .5vh;
+}
+
+.skills-section strong {
+  font-weight: 550;
+}
+/****************** Skills Section ******************/
 
 }
 
