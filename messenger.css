@@ -347,13 +347,17 @@ h3 {
   text-align: center;
 }
 .skills-section li {
-  font-size: 2vh;
   font-size: 2.5em !important;
   border-radius: 1vh;
   box-shadow: 0 0 2vh rgba(0, 0, 0, 0.1);
   padding: .5vh .5vw;
   width: 90vw;
   height: auto;
+}
+ .skills-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .skills-section strong {
