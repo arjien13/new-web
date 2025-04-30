@@ -195,6 +195,7 @@ body {
   color: #3d0555;
   transition: color 0.3s ease;
   font-size: 1.1vw;
+  margin-top: 2vh;
 }
 
 .social-media-icons a:hover {
