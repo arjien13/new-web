@@ -224,11 +224,12 @@ left: 0vw !important;
   transition: color 0.3s ease;
   margin: 10px 0;
 }
-
+.social-media-icons a {
+  margin: 5px 0; /* adjust the value as needed */
+}
 .social-media-icons a i {
   font-size: 2em !important; 
   transform: scale(1.1);
-  
 }
 /********************* SOC MED ICON *********************/   
 
