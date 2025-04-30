@@ -210,21 +210,21 @@ left: 0vw !important;
 
 /********************* PORTFOLIO *********************/ 
  /********************* SOC MED ICON *********************/ 
- .social-media-icons {
-  /* relocate the icons */
-  position: absolute;
-  bottom: 20px;
-  left: 92.5vw;
-  transform: translateX(-50%);
+  .social-media-icons {
   display: flex;
-  transform: scale(1.1); 
-}
-.social-media-icons a {
-  color: #3d0555; /* Neon purple color */
-  margin: 8px 0;
- 
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 4vh;
+  right: 7vw;
 }
 
+.social-media-icons a {
+  color: #3d0555;
+  transition: color 0.3s ease;
+  margin: 10px 0;
+  font-size: 15px;
+}
 /********************* SOC MED ICON *********************/   
 
 /********************* RESUME *********************/  
