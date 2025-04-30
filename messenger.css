@@ -334,8 +334,8 @@ h3 {
 .skills-section-container {
   position: fixed;
   bottom: 2vh;
-  left: 25vw;
-  width: 85vw;
+  left: 30vw;
+  width: 88vw;
   padding: .5vh .5vw;
   border-radius: 1vh;
   box-shadow: 0 0 2vh rgba(0, 0, 0, 0.1);
@@ -345,12 +345,12 @@ h3 {
 
 .skills-section h5 {
   position: absolute;
-  top: -13vh; /* Adjust this value to move it up or down */
+  top: -18vh; /* Adjust this value to move it up or down */
   font-size: 1.5vh;
   font-weight: 500;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   color: #ffffff;
-  left: 10vw;
+  left: 13vw;
 }
 
 .skills-section ul {
