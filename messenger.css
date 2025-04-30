@@ -223,7 +223,11 @@ left: 0vw !important;
   color: #3d0555;
   transition: color 0.3s ease;
   margin: 10px 0;
-  font-size: 15px;
+}
+
+.social-media-icons a i {
+  font-size: 24px;
+  font-family: "Font Awesome 6 Brands" !important;
 }
 /********************* SOC MED ICON *********************/   
 
