@@ -217,12 +217,10 @@ left: 0vw !important;
   position: absolute;
   bottom: 4vh;
   right: 7vw;
-  gap: 10px !important;
+  
 
 .social-media-icons a {
-  color: #3d0555;
-  transition: color 0.3s ease;
-  margin: 10px 0;
+  margin-bottom: 20px; /* adjust the value as needed */
 }
 .social-media-icons a i {
   font-size: 2em !important; 
