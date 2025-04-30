@@ -8,6 +8,9 @@
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
+ body {
+  overflow-y: auto;
+}
   .container {
       width: 94vw !important;
       height: 93vh !important;
