@@ -439,7 +439,6 @@ a {
   justify-content: center;
   align-items: center;
 }
-
 .dialog-content {
   background-color: #7a7171;
   padding: 10px;
@@ -454,7 +453,6 @@ a {
   color: #f1ebf1;
   margin-bottom: 10px;
 }
-
 #dialog-close {
   background-color: #b1aaad;
   color: #ffffff;
@@ -463,13 +461,9 @@ a {
   border-radius: 5px;
   cursor: pointer;
 }
-
 #dialog-close:hover {
   background-color: #494646;
 }
-
-
-
 /* ICON DIALOG BOX */
 
 /* POLITICAL SECTION */
@@ -480,9 +474,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  
 }
-
 .political-wrapper {
   display: flex;
   flex-direction: column;
@@ -490,7 +482,6 @@ body {
   width: 35vw;
   max-width: 100%;
 }
-
 .video-wrapper {
   display: flex;
   flex-direction: column;
@@ -499,21 +490,18 @@ body {
   width: 100%;
   margin-top: 11.5vh; /* Move content down */
 }
-
 .video-title {
   font-size: 1vw;
   font-weight: bold;
   margin-bottom: 5px;
   text-align: center;
 }
-
 .video-container {
   position: relative;
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
 }
-
 .video-container iframe {
   position: absolute;
   top: 0;
@@ -523,7 +511,6 @@ body {
   border: none;
 }
 /* POLITICAL SECTION */
-
 
 /* EXPLOTION EFFECTS */
 body {
@@ -546,7 +533,6 @@ body {
 }
 /* EXPLOTION EFFECTS */
 
-
 /* Ask jarviz */
 .jarviz-container {
   position: absolute;
@@ -557,7 +543,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 .jarviz-container img {
   width: 3vw; /* changed to fixed vw unit */
   height: 3vw; /* changed to fixed vw unit */
@@ -566,18 +551,47 @@ body {
   cursor: pointer;
   mix-blend-mode: multiply;
 }
-
 h3 {
   font-size: .8vw; /* adjusted font size to be more readable */
   font-weight: 600;
   color: #9b97a0;
 }
-
 .jarviz-container img:hover {
   transform: scale(1.2);
   filter: drop-shadow(0 0 1vw rgba(255, 255, 255, 0.5)); /* adjusted drop-shadow */
 }
-
-
-
 /* Ask jarviz */
+
+/****************** Skills Section ******************/
+.skills-section-container {
+  position: fixed;
+  bottom: 2vh;
+  left: 21vw;
+  width: 35vw;
+  padding: .5vh .5vw;
+  border-radius: 1vh;
+  box-shadow: 0 0 2vh rgba(0, 0, 0, 0.1);
+  max-height: 75vh;
+  color: #ffffff;
+}
+.skills-section h5 {
+  position: absolute;
+  top: -3vh; /* Adjust this value to move it up or down */
+  font-size: 1.5vh;
+  font-weight: 500;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+.skills-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.skills-section li {
+  font-size: 2vh;
+  margin-bottom: .5vh;
+}
+.skills-section strong {
+  font-weight: bold;
+}
+/****************** Skills Section ******************/
