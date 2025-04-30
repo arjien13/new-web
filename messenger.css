@@ -7,7 +7,6 @@
   box-sizing: border-box !important;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-   overflow-y: auto;
 }
   .container {
       width: 94vw !important;
