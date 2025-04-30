@@ -217,17 +217,14 @@ left: 0vw !important;
   left: 92.5vw;
   transform: translateX(-50%);
   display: flex;
+  transform: scale(1.1); 
 }
 .social-media-icons a {
   color: #3d0555; /* Neon purple color */
   margin: 8px 0;
  
 }
-.social-media-icons i {
-  /* reduce the icon size */
-  font-size: 11px;
-  transform: scale(1.1); 
-}
+
 /********************* SOC MED ICON *********************/   
 
 /********************* RESUME *********************/  
