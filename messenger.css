@@ -71,9 +71,7 @@
       margin: 0 auto;
       width: 30vw !important;
       height: 30vw !important;
-      object-fit: cover;
-      border-radius: 50%;
-       transform: scale(1.5); 
+      object-fit: cover; 
        box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
        animation: shining-light 1.5s infinite;
        }
@@ -172,7 +170,7 @@ figure {
   left: 47%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: .6vw !important; /* reduced font size */
+  font-size: 5px !important; /* reduced font size */
   width: 100%; /* ensure text is centered */
   color: black;
   font-weight: 400;
