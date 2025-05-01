@@ -136,47 +136,6 @@
     
   }
 /**folder icon*/
-.folder-container h5 {
-  position: absolute;
-  font-size: 1.5vh;
-  left: -1vw !important; 
-  white-space: nowrap;
-}
-.folder-container {
-  display: flex;
-  flex-direction: column;
-  margin-left: -30px;
-  margin-top: -95px; 
-}
-
-.folder-row {
-  display: flex;
-  justify-content: space-around; 
- transform: scale(1.1); 
-  
-}
-
-.folder-row a {
-  text-align: center; 
-}
-
-.folder-icon {
-  width: 25vw !important; 
-  height: auto; 
-  margin-top: 0vh;
-}
- .folder-label {
-  text-align: center;
-  display: block;
-  top: -10.2vh;
-  left: -4.3vw !important;
-  font-size: 1.5vw;
-}
-  a[href="bdo.html"] .folder-label {
-  position: relative;
-  left: -3vw !important;  
-}
-
 /**folder icon*/
  
 .my-image{
