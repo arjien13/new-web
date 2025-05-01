@@ -147,12 +147,12 @@
   flex-direction: column;
   margin-left: -30px;
   margin-top: -95px; 
-  transform: scale(1.1); 
 }
 
 .folder-row {
   display: flex;
   justify-content: space-around; 
+ transform: scale(1.1); 
   
 }
 
