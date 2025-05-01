@@ -172,7 +172,7 @@ figure {
   left: 47%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: .9vw; /* reduced font size */
+  font-size: .9vw !important; /* reduced font size */
   width: 100%; /* ensure text is centered */
   color: black;
   font-weight: 400;
