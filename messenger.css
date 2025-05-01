@@ -304,9 +304,8 @@ h3 {
 /* Ask jarviz */
 
 /****************** Skills Section ******************/
-
 .skills-section-container {
-  width: 150vw;
+  width: 100vw;
   height: auto;
   color: #ffffff;
   margin-left: 20vw;
@@ -314,30 +313,31 @@ h3 {
   transform: translateX(-10vw);
 }
 
+.skills-section {
+  width: 90vw; 
+}
 .skills-section h5 {
   font-size: 1.5vh;
   font-weight: 500;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   color: #ffffff;
   text-align: center;
-  margin-bottom: .5vh; /* add gap */
-  
+  margin-bottom: .5vh;
 }
 
 .skills-section ul {
   list-style: disc outside;
-  padding: 0 0 0 5vw;
+  padding: 0 2vw 0 5vw; 
   margin: 0;
   border-radius: 1vw;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: fit-content; 
 }
-
 .skills-section li {
   font-size: 2.5vw;
   margin-bottom: 1%;
   text-align: left;
 }
-
 .skills-section strong {
   font-weight: 530;
 }
