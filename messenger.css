@@ -136,7 +136,7 @@
     
   }
 /**folder icon*/
- .folder-container h5 {
+.folder-container h5 {
   position: absolute;
   font-size: 1.5vh;
   left: -1vw !important; 
@@ -148,26 +148,34 @@
   margin-left: -30px;
   margin-top: -90px; /* increased the negative margin */
 }
+
 .folder-row {
   display: flex;
   justify-content: space-around; 
   
 }
+
 .folder-row a {
   text-align: center; 
 }
+
 .folder-icon {
-  width: 20vw !important;
-  max-width: 80px; /* add max-width to prevent oversizing */
-  height: auto;
+  width: 25vw !important; 
+  height: auto; 
+  margin-top: 0vh;
 }
-.folder-label {
-  font-size: min(1vw, 8px); /* scale font size */
+ .folder-label {
+  text-align: center;
+  display: block;
+  top: -10.2vh;
+  left: -4.3vw !important;
+  font-size: 1.5vw;
 }
   a[href="bdo.html"] .folder-label {
   position: relative;
   left: -3vw !important;  
 }
+
 /**folder icon*/
  
 .my-image{
