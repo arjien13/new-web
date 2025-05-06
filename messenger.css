@@ -1,4 +1,5 @@
-@media only screen and (max-width: 900px) and (max-height: 1280px) {
+@media only screen and (max-width: 1024px) {
+
 
   * {
   margin: 0;
@@ -45,7 +46,7 @@
      transition: transform 0.3s ease-in-out; 
   }
   .menu-item > a {
-  font-size: 4vw !important; 
+  font-size: 5vw !important; 
 }
 
 .dropdown-item > a {
@@ -128,7 +129,7 @@
   }
 
   .Portfolio-Section p {
-   font-size: .5em !important;
+   font-size: .8em !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
@@ -143,7 +144,7 @@
   position: absolute;
   width: 45vw;
   height: auto; 
-  top: 33vh; 
+  top: 28vh; 
   left: 46vw;
   padding: 1vmin;
   box-sizing: border-box;
@@ -194,7 +195,7 @@ left: 0vw !important;
 
 .my-face {
   position: absolute;
-  top: 37.5vh; 
+  top: 36vh; 
   left: 4vw !important;
   width: 25vw;
   height: auto;
@@ -203,7 +204,7 @@ left: 0vw !important;
 
 .my-icon {
   position: absolute;
-  top: 46vh !important; 
+  top: 48vh !important; 
   left: 20vw !important;
   width: 21vw; 
   height: auto; 
@@ -242,34 +243,6 @@ left: 0vw !important;
   font-size: 2vw;
 }
 /********************* SOC MED ICON *********************/   
-
-/********************* RESUME *********************/  
-#resume-section {
-  text-align: center;
-  z-index: 1000;
-  position: relative;
-  
-}
-
-#resume-section div {
-  font-size: 3vw !important;
-}
-
-#resume-section img {
-  width: 90vw;
-  height: auto;
-  max-width: 800px; 
-  margin: 0 auto;
-  cursor: pointer;
-}
-
-#text {
-  display: none; 
-}
-#resume-section.show-text #text {
-  display: block; 
-}
-/********************* RESUME *********************/  
 
 
 /********************* POLITICAL *********************/  
@@ -344,9 +317,10 @@ h3 {
   width: fit-content; 
 }
 .skills-section li {
-  font-size: 2.5vw;
+  font-size: .8em !important;
   margin-bottom: 1%;
   text-align: left;
+
 }
 .skills-section strong {
   font-weight: 530;
