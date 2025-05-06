@@ -1,4 +1,4 @@
-@media only screen and (max-width: 800px) (max-width: 1000px) {
+@media only screen and (max-width: 1024px) {
   * {
   margin: 0;
   padding: 0;
@@ -23,7 +23,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-     
+      font-size: 1.5vw !important;
     }
     .menu {
       position: absolute;
@@ -43,12 +43,12 @@
       position: relative;
      transition: transform 0.3s ease-in-out; 
   }
- .menu-item > a {
-  font-size: 5vw !important; /* adjust this value to your desired font size */
+  .menu-item > a {
+  font-size: 4.5vw;
 }
 
 .dropdown-item > a {
-  font-size: 4vw !important;
+  font-size: 4vw;
 }
     .footer {
    font-size: 1.5em !important;
@@ -329,7 +329,7 @@ h3 {
   height: auto;
   color: #ffffff;
   margin-left: 20vw;
-  margin-top: 60vh;
+  margin-top: 63vh;
   transform: translateX(-10vw);
 }
 
