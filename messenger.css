@@ -1,6 +1,4 @@
-@media only screen and (max-width: 1180px) {
-
-
+@media only screen and (max-width: 1024px) {
   * {
   margin: 0;
   padding: 0;
@@ -14,8 +12,8 @@
   overflow-y: auto;
 }
   .container {
-      width: 100vw !important;
-      height: 100vh !important;
+      width: 94vw !important;
+      height: 96vh !important;
       background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 0 1vh rgba(0,0,0,0.3);
       position: absolute;
@@ -25,7 +23,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      
+      font-size: 1.5vw !important;
     }
     .menu {
       position: absolute;
@@ -46,11 +44,11 @@
      transition: transform 0.3s ease-in-out; 
   }
   .menu-item > a {
-  font-size: 4.5vw !important; 
+  font-size: 4.5vw;
 }
 
 .dropdown-item > a {
-  font-size: 4.5vw;
+  font-size: 4vw;
 }
     .footer {
    font-size: 1.5em !important;
@@ -125,11 +123,11 @@
     top: -3vh; /* adjust this value to move it up or down */
     left: 50%;
     transform: translateX(-50%);
-    font-size: .8em !important;
+    font-size: 2.5em !important;
   }
 
   .Portfolio-Section p {
-   font-size: .8em !important;
+   font-size: 2.5em !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
@@ -144,7 +142,7 @@
   position: absolute;
   width: 45vw;
   height: auto; 
-  top: 28vh; 
+  top: 33vh; 
   left: 46vw;
   padding: 1vmin;
   box-sizing: border-box;
@@ -161,7 +159,18 @@
   gap: 1vmin;
   
 }
-
+.folder-text {
+  position: absolute;
+  top: 5.6vh;
+  left: 4.2vw;
+  transform: translate(-50%, -50%);
+  color: #000000;
+  font-size: .3vh;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+}
 .photo-item {
   aspect-ratio: 1 / 1;
   overflow: hidden;
@@ -195,7 +204,7 @@ left: 0vw !important;
 
 .my-face {
   position: absolute;
-  top: 36vh; 
+  top: 37.5vh; 
   left: 4vw !important;
   width: 25vw;
   height: auto;
@@ -204,7 +213,7 @@ left: 0vw !important;
 
 .my-icon {
   position: absolute;
-  top: 48vh !important; 
+  top: 46vh !important; 
   left: 20vw !important;
   width: 21vw; 
   height: auto; 
@@ -243,6 +252,34 @@ left: 0vw !important;
   font-size: 2vw;
 }
 /********************* SOC MED ICON *********************/   
+
+/********************* RESUME *********************/  
+#resume-section {
+  text-align: center;
+  z-index: 1000;
+  position: relative;
+  
+}
+
+#resume-section div {
+  font-size: 3vw !important;
+}
+
+#resume-section img {
+  width: 90vw;
+  height: auto;
+  max-width: 800px; 
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+#text {
+  display: none; 
+}
+#resume-section.show-text #text {
+  display: block; 
+}
+/********************* RESUME *********************/  
 
 
 /********************* POLITICAL *********************/  
@@ -292,7 +329,7 @@ h3 {
   height: auto;
   color: #ffffff;
   margin-left: 20vw;
-  margin-top: 60vh;
+  margin-top: 63vh;
   transform: translateX(-10vw);
 }
 
@@ -317,10 +354,9 @@ h3 {
   width: fit-content; 
 }
 .skills-section li {
-  font-size: .8em !important;
+  font-size: 2.5vw;
   margin-bottom: 1%;
   text-align: left;
-
 }
 .skills-section strong {
   font-weight: 530;
