@@ -44,11 +44,11 @@
      transition: transform 0.3s ease-in-out; 
   }
   .menu-item > a {
-  font-size: 3vw;
+  font-size: 3.5vw;
 }
 
 .dropdown-item > a {
-  font-size: 2.8vw;
+  font-size: 3.3vw;
 }
     .footer {
    font-size: 1.5em !important;
