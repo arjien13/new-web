@@ -44,11 +44,11 @@
      transition: transform 0.3s ease-in-out; 
   }
   .menu-item > a {
-  font-size: 4.5vw;
+  font-size: 4vw;
 }
 
 .dropdown-item > a {
-  font-size: 4vw;
+  font-size: 3.5vw;
 }
     .footer {
    font-size: 1.5em !important;
@@ -306,7 +306,7 @@ left: 0vw !important;
 /* Ask jarviz */
 .jarviz-container {
   position: absolute;
-  top: 7vh !important;
+  top: 8vh !important;
   left: 79.5vw;
   display: flex;
   flex-direction: column;
