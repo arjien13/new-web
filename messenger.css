@@ -127,7 +127,7 @@
   }
 
   .Portfolio-Section p {
-   font-size: 2.5em !important;
+   font-size: 1vh !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
