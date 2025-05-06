@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1024px) {
+@media only screen and (width: 800px) and (height: 1280px) {
   * {
   margin: 0;
   padding: 0;
