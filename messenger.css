@@ -23,7 +23,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.5vw !important;
+     
     }
     .menu {
       position: absolute;
@@ -44,11 +44,11 @@
      transition: transform 0.3s ease-in-out; 
   }
   .menu-item > a {
-  font-size: 7vw;
+  font-size: 7vw !important;
 }
 
 .dropdown-item > a {
-  font-size: 6.5vw;
+  font-size: 6.5vw !important;
 }
     .footer {
    font-size: 1.5em !important;
