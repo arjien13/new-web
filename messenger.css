@@ -123,11 +123,11 @@
     top: -3vh; /* adjust this value to move it up or down */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1vh !important;
+    font-size: 1vw !important;
   }
 
   .Portfolio-Section p {
-   font-size: 1vh !important;
+   font-size: 1vw !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
