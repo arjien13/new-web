@@ -14,8 +14,8 @@
   overflow-y: auto;
 }
   .container {
-      width: 94vw !important;
-      height: 96vh !important;
+      width: 100vw !important;
+      height: 100vh !important;
       background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 0 1vh rgba(0,0,0,0.3);
       position: absolute;
@@ -46,11 +46,11 @@
      transition: transform 0.3s ease-in-out; 
   }
   .menu-item > a {
-  font-size: 5vw !important; 
+  font-size: 4.5vw !important; 
 }
 
 .dropdown-item > a {
-  font-size: 3.5vw;
+  font-size: 4.5vw;
 }
     .footer {
    font-size: 1.5em !important;
