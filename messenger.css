@@ -43,12 +43,12 @@
       position: relative;
      transition: transform 0.3s ease-in-out; 
   }
-  .menu-item > a {
-  font-size: 7vw !important;
+ .menu-item > a {
+  font-size: 5vw !important; /* adjust this value to your desired font size */
 }
 
 .dropdown-item > a {
-  font-size: 6.5vw !important;
+  font-size: 4vw !important;
 }
     .footer {
    font-size: 1.5em !important;
