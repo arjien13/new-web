@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRAGonbALLZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+.video-episodes {
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 6vw;
+  height: 6vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+@media only screen and (max-width: 1024px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .episode img {
+    width: 8vw;
+    height: 8vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .pagination button {
+    padding: 1.5vh 1.5vw;
+    font-size: 2.5vw;
+  }
+  .episode img {
+    width: 10vw;
+    height: 10vw;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .pagination button {
+    padding: 1vw 2vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+  }
+}
+
+.back-button-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+    
+  </style>
+</head>
+<body>
+  <section class="video-episodes">
+    <h2><span style="color: yellow;">DRAG<span style="color: gold;">o</span>n</span><span style="color: red;">bALLZ</span></h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+  </section>
+
+  <script>
+    const episodesPerPage = 16;
+    const episodes = Array(200).fill(0).map((_, i) => [
+  `Episode ${i + 1}`,
+  i === 0 ? "https://www.facebook.com/batutedbz/videos/1142610740512715" : 
+  i === 1 ? "https://www.facebook.com/batutedbz/videos/1438127544263940" : 
+  i === 2 ? "https://www.facebook.com/batutedbz/videos/650861220787463" :
+  i === 3 ? "https://www.facebook.com/watch/?ref=search&v=610194131998619":
+  i === 4 ? "https://www.facebook.com/watch/?ref=search&v=627284620231851":
+  i === 5 ? "https://www.facebook.com/watch/?ref=search&v=2623967307794486":
+  i === 6 ? "https://www.facebook.com/batutedbz/videos/28670668712581257":
+  i === 7 ? "https://www.facebook.com/watch/?ref=search&v=646447994632093":
+  i === 8 ? "https://www.facebook.com/watch/?ref=search&v=1383892063046089":
+  i === 9 ? "https://www.facebook.com/watch/?ref=search&v=677757187932881":
+  i === 10 ? "https://www.facebook.com/watch/?ref=search&v=998112625096808":
+  i === 11 ? "https://www.facebook.com/watch/?ref=search&v=1059902002583526":
+  i === 12 ? "https://www.facebook.com/watch/?ref=search&v=1155762825765154":
+  i === 13 ? "https://www.facebook.com/61568664853922/videos/1095698202085699":
+  i === 14 ? "https://www.facebook.com/watch/?ref=search&v=949028627443308":
+  i === 15 ? "https://www.facebook.com/watch/?ref=search&v=1277658763531537":
+  i === 16 ? "https://www.facebook.com/watch/?ref=search&v=9386755638027021":
+  i === 17 ? "https://www.facebook.com/watch/?ref=search&v=1195778441930908":
+  i === 18 ? "https://www.facebook.com/watch/?ref=search&v=623994757195861":
+  i === 19 ? "https://www.facebook.com/100065851388062/videos/899585661938983":
+  i === 20 ? "https://www.facebook.com/watch/?ref=search&v=1151962556215864":
+  i === 21 ? "https://www.facebook.com/watch/?ref=search&v=976763444436488":
+  i === 22 ? "https://www.facebook.com/watch/?ref=search&v=607817635586141":
+  i === 23 ? "https://www.facebook.com/watch/?ref=search&v=9489243607764770":
+  i === 24 ? "https://www.facebook.com/61575161232484/videos/1332012968096091":
+  i === 25 ? "https://www.facebook.com/watch/?ref=search&v=617609651257034":
+  i === 26 ? "https://www.facebook.com/watch/?ref=search&v=1208261567661141":
+  i === 27 ? "https://www.facebook.com/watch/?ref=search&v=1380467673144930":
+  i === 28 ? "https://www.facebook.com/61560708357011/videos/3979943388986883":
+  i === 29 ? "https://www.facebook.com/watch/?ref=search&v=1167309991700130":
+  i === 30 ? "https://www.facebook.com/61560708357011/videos/521926777466070":
+  i === 31 ? "https://www.facebook.com/watch?ref=search&v=992567012381385":
+  `episode-${i + 1}-id`,
+  i === 0 ? "https://media.tenor.com/CiQnDWeesDQAAAAM/goku.gif": 
+  i === 1 ? "https://media.tenor.com/JjE2ugI5IAsAAAAM/raditz-tail.gif": 
+  i === 2 ? "https://img.wattpad.com/0f2f367246af537189475465785c78f858804c2a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f557a473469564e746c78395255673d3d2d3735333437313631302e313637373433393966376231316264613437333433393136373733352e676966" : 
+  i === 3 ? "https://media.tenor.com/e-QkiaIM_EkAAAAM/dbz-raditz.gif": 
+  i === 4 ? "https://i.gifer.com/8SO9.gif":
+  i === 5 ? "https://media.tenor.com/HyH1aTpEbxYAAAAM/kid-gohan.gif":
+  i === 6 ? "https://media.tenor.com/pxm4diXSzfUAAAAM/gohan-cry.gif":
+  i === 7 ? "https://static.wikia.nocookie.net/ecb005f2-a00e-4269-a196-b1740e84ba27/scale-to-width/370":    
+  i === 8 ? "https://i.gifer.com/MwZt.gif":  
+  i === 9 ? "https://64.media.tumblr.com/1efd36db3c66325fd2c9c47f718e8c70/tumblr_px2o80aBNv1uq2sr8o1_500.gif":
+  i === 10 ? "https://64.media.tumblr.com/841759f27b86c939511dce30185be8f1/7f1c8bc55120b086-5d/s540x810/ab41609f5efd534db75af1be5b4704173e45077f.gif":
+  i === 11 ? "https://pa1.aminoapps.com/6421/4316cc61da8a2084324a440ed09cf07bf44b0e43_hq.gif":
+  i === 12 ? "https://i.gifer.com/F3vu.gif":
+  i === 13 ? "https://i.makeagif.com/media/5-04-2023/ZWr6Bd.gif":
+  i === 14 ? "https://i.pinimg.com/originals/ac/0b/7f/ac0b7fe825362112137579c4740782b7.gif":
+  i === 15 ? "https://i.gifer.com/8XGo.gif":
+  i === 16 ? "https://64.media.tumblr.com/3e2a5637b7323d0b3c5761a73e9724ef/c8e04d4b36b8b43b-79/s400x600/fb525a0fcd9980e92a89cf9759693f1dbed69b60.gif":
+  i === 17 ? "https://media.tenor.com/kY8-i1CCb88AAAAM/dvz.gif":
+  i === 18 ? "https://media.tenor.com/b1PtiGZosIsAAAAM/laugh-songoku.gif":
+  i === 19 ? "https://media.tenor.com/_igw3R0wfCsAAAAM/pan-goku.gif":
+  i === 20 ? "https://64.media.tumblr.com/3bbd34e6cf4134c739f93abef5f26f62/tumblr_mi9w21MtbT1qgs0jno1_500.gif":
+  i === 21 ? "https://media.tenor.com/CIfQYP6kRwsAAAAM/nappa-vegeta.gif":
+  i === 22 ? "https://media.tenor.com/ihHWD6OAz2EAAAAM/nappa-got.gif":
+  i === 23 ? "https://i.makeagif.com/media/4-26-2022/bWWIaT.gif":
+  i === 24 ? "https://i.makeagif.com/media/6-20-2016/VdbsrC.gif":
+  i === 25 ? "https://64.media.tumblr.com/b54f1af847ab54ecc99040d731db07bf/tumblr_p3p9hpmDcg1v4u49oo1_540.gif":
+  i === 26 ? "https://i.pinimg.com/originals/6e/58/ef/6e58ef6a97474d18cb448c9028eeca2a.gif":
+  i === 27 ? "https://64.media.tumblr.com/0a64078cd99e1858f77c8e955d3b571d/tumblr_ne3jsxX0id1tgy4o5o1_500.gif":
+  i === 28 ? "https://i.makeagif.com/media/12-22-2017/Hw94kM.gif":
+  i === 29 ? "https://media.tenor.com/yOVxyIBVmvEAAAAM/songokuvs-vegeta-stare.gif":
+  i === 30 ? "https://i.makeagif.com/media/9-13-2015/eTmRUn.gif":
+  i === 31 ? "https://i.makeagif.com/media/1-24-2016/8P8DvN.gif":
+  
+  ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+  <div class="back-button-container">
+    <a href="index.html" onclick="localStorage.setItem('showvfolder', true); return true;" class="back-button"> Back</a>
+  </div>
+</body>
+</html>
