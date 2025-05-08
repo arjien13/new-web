@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRAGonbALLZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+.video-episodes {
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 6vw;
+  height: 6vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.dbz-logo {
+    width: 300px;
+    height: auto;
+}
+
+@media only screen and (max-width: 1024px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .episode img {
+    width: 8vw;
+    height: 8vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .pagination button {
+    padding: 1.5vh 1.5vw;
+    font-size: 2.5vw;
+  }
+  .episode img {
+    width: 10vw;
+    height: 10vw;
+  }
+  .dbz-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -20px;
+}
+}
+
+@media only screen and (max-width: 480px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .pagination button {
+    padding: 1vw 2vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+  }
+  .dbz-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -20px;
+}
+}
+
+.back-button-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}
+
+    
+  </style>
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <img src="icons/dbz.png" alt="DRAGoN BALLZ" class="dbz-logo">
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 16;
+    const episodes = Array(200).fill(0).map((_, i) => [
+  `Episode ${i + 1}`,
+  i === 0 ? "https://www.facebook.com/batutedbz/videos/1142610740512715" : 
+  i === 1 ? "https://www.facebook.com/batutedbz/videos/1438127544263940" : 
+  i === 2 ? "https://www.facebook.com/batutedbz/videos/650861220787463" :
+  i === 3 ? "https://www.facebook.com/watch/?ref=search&v=610194131998619":
+  i === 4 ? "https://www.facebook.com/watch/?ref=search&v=627284620231851":
+  i === 5 ? "https://www.facebook.com/watch/?ref=search&v=2623967307794486":
+  i === 6 ? "https://www.facebook.com/batutedbz/videos/28670668712581257":
+  i === 7 ? "https://www.facebook.com/watch/?ref=search&v=646447994632093":
+  i === 8 ? "https://www.facebook.com/watch/?ref=search&v=1383892063046089":
+  i === 9 ? "https://www.facebook.com/watch/?ref=search&v=677757187932881":
+  i === 10 ? "https://www.facebook.com/watch/?ref=search&v=998112625096808":
+  i === 11 ? "https://www.facebook.com/watch/?ref=search&v=1059902002583526":
+  i === 12 ? "https://www.facebook.com/watch/?ref=search&v=1155762825765154":
+  i === 13 ? "https://www.facebook.com/61568664853922/videos/1095698202085699":
+  i === 14 ? "https://www.facebook.com/watch/?ref=search&v=949028627443308":
+  i === 15 ? "https://www.facebook.com/watch/?ref=search&v=1277658763531537":
+  i === 16 ? "https://www.facebook.com/watch/?ref=search&v=9386755638027021":
+  i === 17 ? "https://www.facebook.com/watch/?ref=search&v=1195778441930908":
+  i === 18 ? "https://www.facebook.com/watch/?ref=search&v=623994757195861":
+  i === 19 ? "https://www.facebook.com/100065851388062/videos/899585661938983":
+  i === 20 ? "https://www.facebook.com/watch/?ref=search&v=1151962556215864":
+  i === 21 ? "https://www.facebook.com/watch/?ref=search&v=976763444436488":
+  i === 22 ? "https://www.facebook.com/watch/?ref=search&v=607817635586141":
+  i === 23 ? "https://www.facebook.com/watch/?ref=search&v=9489243607764770":
+  i === 24 ? "https://www.facebook.com/61575161232484/videos/1332012968096091":
+  i === 25 ? "https://www.facebook.com/watch/?ref=search&v=617609651257034":
+  i === 26 ? "https://www.facebook.com/watch/?ref=search&v=1208261567661141":
+  i === 27 ? "https://www.facebook.com/watch/?ref=search&v=1380467673144930":
+  i === 28 ? "https://www.facebook.com/61560708357011/videos/3979943388986883":
+  i === 29 ? "https://www.facebook.com/watch/?ref=search&v=1167309991700130":
+  i === 30 ? "https://www.facebook.com/61560708357011/videos/521926777466070":
+  i === 31 ? "https://www.facebook.com/watch?ref=search&v=992567012381385":
+  i === 32 ? "https://www.facebook.com/batutedbz/videos/1171348780868089":
+  i === 33 ? "https://www.facebook.com/batutedbz/videos/1216320843828752":
+  i === 34 ? "https://www.facebook.com/batutedbz/videos/1086296656643166":
+  i === 35 ? "https://www.facebook.com/batutedbz/videos/1338580080808783":
+  i === 36 ? "https://www.facebook.com/batutedbz/videos/3363961490407459":
+  i === 37 ? "https://www.facebook.com/batutedbz/videos/1283338926073853":
+  i === 38 ? "https://www.facebook.com/batutedbz/videos/1741424023389059":
+  i === 39 ? "https://www.facebook.com/batutedbz/videos/4143006952589251":
+  i === 40 ? "https://www.facebook.com/batutedbz/videos/660833836341895":
+  i === 41 ? "https://www.facebook.com/batutedbz/videos/961337926150509":
+  i === 42 ? "https://www.facebook.com/batutedbz/videos/2391016504600866":
+  i === 43 ? "https://www.facebook.com/batutedbz/videos/1174831480882552":
+  i === 44 ? "https://www.facebook.com/batutedbz/videos/566750642399038":
+  i === 45 ? "https://www.facebook.com/batutedbz/videos/628277686768469":
+  i === 46 ? "https://www.facebook.com/batutedbz/videos/650095151051831":
+  i === 47 ? "https://www.facebook.com/batutedbz/videos/2461705724163760":
+  i === 48 ? "https://www.facebook.com/batutedbz/videos/1630597160920940":
+  i === 49 ? "https://www.facebook.com/batutedbz/videos/506745525844437":
+  i === 50 ? "https://www.facebook.com/batutedbz/videos/1301039414530494":
+  i === 51 ? "https://www.facebook.com/batutedbz/videos/644826355174625":
+  i === 52 ? "https://www.facebook.com/batutedbz/videos/658392346882389":
+  i === 53 ? "https://www.facebook.com/batutedbz/videos/666618349159785":
+  i === 54 ? "https://www.facebook.com/batutedbz/videos/1657519681637503":
+  i === 55 ? "https://www.facebook.com/batutedbz/videos/1206167744553925":
+  i === 56 ? "https://www.facebook.com/batutedbz/videos/1317994262763810":
+  i === 57 ? "https://www.facebook.com/batutedbz/videos/1030017022354409":
+  i === 58 ? "https://www.facebook.com/batutedbz/videos/1725708658359963":
+  i === 59 ? "https://www.facebook.com/batutedbz/videos/1298335307893722":
+  i === 60 ? "http://facebook.com/batutedbz/videos/2959874620980735":
+  i === 61 ? "https://www.facebook.com/batutedbz/videos/1291087075318643":
+  i === 62 ? "https://www.facebook.com/batutedbz/videos/675230895034251":
+  i === 63 ? "https://www.facebook.com/batutedbz/videos/3071038416378813":
+  i === 64 ? "https://www.facebook.com/batutedbz/videos/3878905422255102":
+  i === 65 ? "https://www.facebook.com/61575232151106/videos/2516030245408884":
+  i === 66 ? "https://www.facebook.com/batutedbz/videos/505794619276566":
+  i === 67 ? "https://www.facebook.com/batutedbz/videos/9436344516445583":
+  i === 68 ? "https://www.facebook.com/batutedbz/videos/581732848218553":
+  i === 69 ? "https://www.facebook.com/batutedbz/videos/9494449270634685":
+  i === 70 ? "https://www.facebook.com/batutedbz/videos/29889495637315834":
+  i === 71 ? "https://www.facebook.com/batutedbz/videos/1325237852017234":
+  i === 72 ? "https://www.facebook.com/batutedbz/videos/1338278857420670":
+  i === 73 ? "https://www.facebook.com/batutedbz/videos/1013729567341226":
+  i === 74 ? "https://www.facebook.com/batutedbz/videos/1308321216919154":
+  i === 75 ? "https://www.facebook.com/batutedbz/videos/2417833421890034":
+  i === 76 ? "https://www.facebook.com/batutedbz/videos/957862466332723":
+  i === 77 ? "https://www.facebook.com/batutedbz/videos/995996562102501":
+  i === 78 ? "https://www.facebook.com/batutedbz/videos/1042281777922112":
+  i === 79 ? "https://www.facebook.com/batutedbz/videos/1610896249601362":
+  i === 80 ? "https://www.facebook.com/batutedbz/videos/1319026259387760":
+  i === 81 ? "https://www.facebook.com/batutedbz/videos/518400824403815":
+  i === 82 ? "https://www.facebook.com/batutedbz/videos/702258555471880":
+  i === 83 ? "https://www.facebook.com/batutedbz/videos/1356314975406121":
+  i === 84 ? "https://www.facebook.com/batutedbz/videos/1330136634777629":
+  i === 85 ? "https://www.facebook.com/61575344611673/videos/1183113249784562":
+  i === 86 ? "https://www.facebook.com/batutedbz/videos/1319216449169977":
+  i === 87 ? "https://www.facebook.com/batutedbz/videos/977067997867613":
+  i === 88 ? "https://www.facebook.com/batutedbz/videos/697830415934912":
+  i === 89 ? "https://www.facebook.com/batutedbz/videos/535161502971404":
+  i === 90 ? "https://www.facebook.com/batutedbz/videos/1202201204850442":
+  i === 91 ? "https://www.facebook.com/batutedbz/videos/1457302291915539":
+  i === 92 ? "http://facebook.com/batutedbz/videos/655644520755042":
+  i === 93 ? "https://www.facebook.com/batutedbz/videos/1182147866331353":
+  i === 94 ? "https://www.facebook.com/batutedbz/videos/1235325247964528":
+  i === 95 ? "facebook.com/batutedbz/videos/676136434973619":
+  i === 96 ? "http://facebook.com/61575344611673/videos/1231730001998738":
+  i === 97 ? "https://www.facebook.com/batutedbz/videos/953480906809463":
+  i === 98 ? "https://www.facebook.com/batutedbz/videos/1177347103316785":
+  i === 99 ? "https://www.facebook.com/batutedbz/videos/994692262293038":
+  i === 100 ? "https://www.facebook.com/batutedbz/videos/4014192898805670":
+  i === 101 ? "https://www.facebook.com/batutedbz/videos/1395057421666902":
+  i === 102 ? "https://www.facebook.com/batutedbz/videos/655703894063732":
+  i === 103 ? "https://www.facebook.com/batutedbz/videos/1712086142714272":
+  i === 104 ? "https://www.facebook.com/batutedbz/videos/674975691709147":
+  i === 105 ? "https://www.facebook.com/batutedbz/videos/1661785701098667":
+  i === 106 ? "https://www.facebook.com/batutedbz/videos/1203507644691899":
+  i === 107 ? "https://www.facebook.com/batutedbz/videos/1029603052366841":
+  i === 108 ? "https://www.facebook.com/batutedbz/videos/1720484188851294":
+  i === 109 ? "https://www.facebook.com/batutedbz/videos/1212626913572515":
+  i === 110 ? "https://www.facebook.com/batutedbz/videos/1163104945058140":
+  i === 111 ? "https://www.facebook.com/batutedbz/videos/1399269424399195":
+  i === 112 ? "http://facebook.com/batutedbz/videos/1172040024295922":
+  i === 113 ? "https://www.facebook.com/batutedbz/videos/668364985653710":
+  i === 114 ? "https://www.facebook.com/batutedbz/videos/659123426526177":
+  i === 115 ? "https://www.facebook.com/batutedbz/videos/1461091951345385":
+  i === 116 ? "https://www.facebook.com/batutedbz/videos/1340008023899351":
+  i === 117 ? "https://www.facebook.com/batutedbz/videos/637597562318950":
+  i === 118 ? "https://www.facebook.com/batutedbz/videos/1380050306772395":
+  i === 119 ? "https://www.facebook.com/batutedbz/videos/1417989282899689":
+  i === 120 ? "https://www.facebook.com/batutedbz/videos/2197488607334982":
+  i === 121 ? "https://www.facebook.com/batutedbz/videos/555000127608945":
+  i === 122 ? "https://www.facebook.com/batutedbz/videos/657246243562405":
+  i === 123 ? "https://www.facebook.com/batutedbz/videos/1176387014071701":
+  i === 124 ? "https://www.facebook.com/batutedbz/videos/649365264680215":
+  i === 125 ? "https://www.facebook.com/batutedbz/videos/1778401476141267":
+  i === 126 ? "https://www.facebook.com/batutedbz/videos/1033895388800028":
+  i === 127 ? "facebook.com/batutedbz/videos/1185984985805026":
+  i === 128 ? "https://www.facebook.com/batutedbz/videos/519354074575705":
+  i === 129 ? "http://facebook.com/batutedbz/videos/512846891875369":
+  i === 130 ? "https://www.facebook.com/batutedbz/videos/1305454897193081":
+  i === 131 ? "https://www.facebook.com/batutedbz/videos/1194923825351795":
+  i === 132 ? "https://www.facebook.com/batutedbz/videos/1993300981507833":
+  i === 133 ? "https://www.facebook.com/johnlloyd.arino.98/videos/516613244647502":
+  i === 134 ? "https://www.facebook.com/johnlloyd.arino.98/videos/4156392057915642":
+  i === 135 ? "https://www.facebook.com/batutedbz/videos/911314124316764":
+  i === 136 ? "https://www.facebook.com/batutedbz/videos/964901369139567":
+  i === 137 ? "https://www.facebook.com/batutedbz/videos/971166231463720":
+  i === 138 ? "https://www.facebook.com/batutedbz/videos/1868506863895790":
+  i === 139 ? "https://www.facebook.com/batutedbz/videos/2261196750943425":
+  i === 140 ? "https://www.facebook.com/batutedbz/videos/2007912942951841":
+  i === 141 ? "https://www.facebook.com/batutedbz/videos/1353318035942383":
+  i === 142 ? "http://facebook.com/batutedbz/videos/522801143959638":
+  i === 143 ? "https://www.facebook.com/batutedbz/videos/1163448225090036":
+  i === 144 ? "https://www.facebook.com/batutedbz/videos/2390645107985462":
+  i === 145 ? "https://www.facebook.com/batutedbz/videos/1352828642435097":
+  i === 146 ? "https://www.facebook.com/batutedbz/videos/1830740907726600":
+  i === 147 ? "https://www.facebook.com/batutedbz/videos/1051623850350734":
+  i === 148 ? "https://www.facebook.com/batutedbz/videos/1176239423582805":
+  i === 149 ? "https://www.facebook.com/batutedbz/videos/641919195288721":
+  i === 150 ? "https://www.facebook.com/batutedbz/videos/628581436619773":
+  i === 151 ? "https://www.facebook.com/batutedbz/videos/1740692489994504":
+  i === 152 ? "https://www.facebook.com/batutedbz/videos/1452173689081708":
+  i === 153 ? "https://www.facebook.com/batutedbz/videos/456969587439955":
+  i === 154 ? "https://www.facebook.com/batutedbz/videos/659013220064640":
+  i === 155 ? "http://facebook.com/batutedbz/videos/2596090727247046":
+  i === 156 ? "https://www.facebook.com/batutedbz/videos/1920618668699992":
+  i === 157 ? "https://www.facebook.com/batutedbz/videos/1146565000541160":
+  i === 158 ? "https://www.facebook.com/batutedbz/videos/848373017479256":
+  i === 159 ? "https://www.facebook.com/batutedbz/videos/625310177145359":
+  i === 160 ? "https://www.facebook.com/batutedbz/videos/2416779608687095":
+  i === 161 ? "https://www.facebook.com/batutedbz/videos/997625971978175":
+  i === 162 ? "https://www.facebook.com/batutedbz/videos/1342691403667008":
+  i === 163 ? "http://facebook.com/batutedbz/videos/551762974146663":
+  i === 164 ? "http://facebook.com/batutedbz/videos/2505413219808941":
+  i === 165 ? "https://www.facebook.com/batutedbz/videos/1752285985719323":
+  i === 166 ? "https://www.facebook.com/batutedbz/videos/624726857105764":
+  i === 167 ? "https://www.facebook.com/batutedbz/videos/1007985804625507":
+  i === 168 ? "https://www.facebook.com/batutedbz/videos/1781903159333501":
+  i === 169 ? "https://www.facebook.com/batutedbz/videos/1737694976815066":
+  i === 170 ? "https://www.facebook.com/batutedbz/videos/1191494969017699":
+  i === 171 ? "https://www.facebook.com/batutedbz/videos/1170192481564194":
+  i === 172 ? "https://www.facebook.com/batutedbz/videos/980221700900463":
+  i === 173 ? "https://www.facebook.com/batutedbz/videos/634209129407030":
+  i === 174 ? "https://www.facebook.com/batutedbz/videos/689774373711826":
+  i === 175 ? "https://www.facebook.com/batutedbz/videos/2272974996474797":
+  i === 176 ? "https://www.facebook.com/batutedbz/videos/1153407223251910":
+  i === 177 ? "https://www.facebook.com/batutedbz/videos/1564423317578504":
+  i === 178 ? "https://www.facebook.com/batutedbz/videos/993556389544400":
+  i === 179 ? "https://www.facebook.com/batutedbz/videos/1383035062726304":
+  i === 180 ? "https://www.facebook.com/batutedbz/videos/501954859515993":
+  i === 181 ? "https://www.facebook.com/batutedbz/videos/1019630029498721":
+  i === 182 ? "https://www.facebook.com/batutedbz/videos/1724437725147155":
+  i === 183 ? "https://www.facebook.com/batutedbz/videos/1875041989923195":
+  i === 184 ? "http://facebook.com/batutedbz/videos/1189634309324798":
+  i === 185 ? "https://www.facebook.com/batutedbz/videos/1649192642657353":
+  i === 186 ? "https://www.facebook.com/batutedbz/videos/1037719201579722":
+  i === 187 ? "https://www.facebook.com/batutedbz/videos/1351632752781844":
+  i === 188 ? "https://www.facebook.com/batutedbz/videos/690744463401284":
+  i === 189 ? "https://www.facebook.com/batutedbz/videos/1018047722990677":
+  i === 190 ? "https://www.facebook.com/batutedbz/videos/1804522926996989":
+  i === 191 ? "https://www.facebook.com/batutedbz/videos/1221869736000314":
+  i === 192 ? "https://www.facebook.com/batutedbz/videos/1759495497977486":
+  i === 193 ? "https://www.facebook.com/batutedbz/videos/690777596966123":
+  i === 194 ? "https://www.facebook.com/batutedbz/videos/1033640351980180":
+  i === 195 ? "https://www.facebook.com/61571795182973/videos/640229308856469":
+  i === 196 ? "https://www.facebook.com/batutedbz/videos/659922939961462":
+  i === 197 ? "https://www.facebook.com/batutedbz/videos/3083838938438782":
+  i === 198 ? "https://www.facebook.com/batutedbz/videos/1874780006629364":
+  i === 199 ? "https://www.facebook.com/batutedbz/videos/678158357996285":
+  `episode-${i + 1}-id`,
+  i === 0 ? "https://media.tenor.com/CiQnDWeesDQAAAAM/goku.gif": 
+  i === 1 ? "https://media.tenor.com/JjE2ugI5IAsAAAAM/raditz-tail.gif": 
+  i === 2 ? "https://img.wattpad.com/0f2f367246af537189475465785c78f858804c2a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f557a473469564e746c78395255673d3d2d3735333437313631302e313637373433393966376231316264613437333433393136373733352e676966" : 
+  i === 3 ? "https://media.tenor.com/e-QkiaIM_EkAAAAM/dbz-raditz.gif": 
+  i === 4 ? "https://i.gifer.com/8SO9.gif":
+  i === 5 ? "https://media.tenor.com/HyH1aTpEbxYAAAAM/kid-gohan.gif":
+  i === 6 ? "https://media.tenor.com/pxm4diXSzfUAAAAM/gohan-cry.gif":
+  i === 7 ? "https://static.wikia.nocookie.net/ecb005f2-a00e-4269-a196-b1740e84ba27/scale-to-width/370":    
+  i === 8 ? "https://i.gifer.com/MwZt.gif":  
+  i === 9 ? "https://64.media.tumblr.com/1efd36db3c66325fd2c9c47f718e8c70/tumblr_px2o80aBNv1uq2sr8o1_500.gif":
+  i === 10 ? "https://64.media.tumblr.com/841759f27b86c939511dce30185be8f1/7f1c8bc55120b086-5d/s540x810/ab41609f5efd534db75af1be5b4704173e45077f.gif":
+  i === 11 ? "https://pa1.aminoapps.com/6421/4316cc61da8a2084324a440ed09cf07bf44b0e43_hq.gif":
+  i === 12 ? "https://i.gifer.com/F3vu.gif":
+  i === 13 ? "https://i.makeagif.com/media/5-04-2023/ZWr6Bd.gif":
+  i === 14 ? "https://i.pinimg.com/originals/ac/0b/7f/ac0b7fe825362112137579c4740782b7.gif":
+  i === 15 ? "https://i.gifer.com/8XGo.gif":
+  i === 16 ? "https://64.media.tumblr.com/3e2a5637b7323d0b3c5761a73e9724ef/c8e04d4b36b8b43b-79/s400x600/fb525a0fcd9980e92a89cf9759693f1dbed69b60.gif":
+  i === 17 ? "https://media.tenor.com/kY8-i1CCb88AAAAM/dvz.gif":
+  i === 18 ? "https://media.tenor.com/b1PtiGZosIsAAAAM/laugh-songoku.gif":
+  i === 19 ? "https://media.tenor.com/_igw3R0wfCsAAAAM/pan-goku.gif":
+  i === 20 ? "https://64.media.tumblr.com/3bbd34e6cf4134c739f93abef5f26f62/tumblr_mi9w21MtbT1qgs0jno1_500.gif":
+  i === 21 ? "https://media.tenor.com/CIfQYP6kRwsAAAAM/nappa-vegeta.gif":
+  i === 22 ? "https://media.tenor.com/ihHWD6OAz2EAAAAM/nappa-got.gif":
+  i === 23 ? "https://i.makeagif.com/media/4-26-2022/bWWIaT.gif":
+  i === 24 ? "https://i.makeagif.com/media/6-20-2016/VdbsrC.gif":
+  i === 25 ? "https://64.media.tumblr.com/b54f1af847ab54ecc99040d731db07bf/tumblr_p3p9hpmDcg1v4u49oo1_540.gif":
+  i === 26 ? "https://i.pinimg.com/originals/6e/58/ef/6e58ef6a97474d18cb448c9028eeca2a.gif":
+  i === 27 ? "https://64.media.tumblr.com/0a64078cd99e1858f77c8e955d3b571d/tumblr_ne3jsxX0id1tgy4o5o1_500.gif":
+  i === 28 ? "https://i.makeagif.com/media/12-22-2017/Hw94kM.gif":
+  i === 29 ? "https://media.tenor.com/yOVxyIBVmvEAAAAM/songokuvs-vegeta-stare.gif":
+  i === 30 ? "https://static.wikia.nocookie.net/733f194b-e9c7-4ef0-933c-d035017e9371/scale-to-width/370":
+  i === 31 ? "https://i.makeagif.com/media/1-24-2016/8P8DvN.gif":
+  i === 32 ? "https://i.makeagif.com/media/6-19-2017/SzydjZ.gif":
+  i === 33 ? "https://media.tenor.com/vxC6Q9w8sKkAAAAM/squeeze-dragonball-z.gif":
+  i === 34 ? "https://i.pinimg.com/originals/ef/f8/8b/eff88ba73e46b1354a668d50f67ded3b.gif":
+  i === 35 ? "https://comicvine.gamespot.com/a/uploads/original/11177/111777233/9101293-1000006124.gif":
+  i === 36 ? "https://i.makeagif.com/media/1-25-2016/7kaHz6.gif":
+  i === 37 ? "https://i.makeagif.com/media/9-24-2015/Oe4cgu.gif":
+  i === 38 ? "https://64.media.tumblr.com/c734d5000fa9cf99fad5df3fb61c61a4/tumblr_mfx7ygB5x91r1qoq4o1_500.gif":
+  i === 39 ? "https://64.media.tumblr.com/4b394a615e509eb8ff00c7d5cd0997a2/8c6175cc35bced22-b2/s540x810/2e29d28f2ee422c5231a89b9f4e0f73b88380485.gif":
+  i === 40 ? "https://media.tenor.com/29uy3MLZyf8AAAAM/vegeta-recovery.gif":
+  i === 41 ? "https://i.pinimg.com/originals/df/e8/35/dfe835489733e857f868cf011fa16dbc.gif":
+  i === 42 ? "https://i.gifer.com/C74x.gif":
+  i === 43 ? "https://media.tenor.com/2rFNWeW2pOAAAAAM/bulma-dragon-ball-z.gif":
+  i === 44 ? "https://media.tenor.com/vwPghojvEP4AAAAM/vegeta-scanning.gif":
+  i === 45 ? "https://64.media.tumblr.com/df3362bd0a074b5b21f6ccd52813ed18/tumblr_n2bqdsoC1p1tu0hbzo1_400.gif":
+  i === 46 ? "https://i.pinimg.com/originals/c9/57/b2/c957b245da9ea38c02aa08b7f9fd8ec8.gif":
+  i === 47 ? "https://static.wikia.nocookie.net/af22ee61-a9e2-448a-bc7f-f4f8d490aec4":
+  i === 48 ? "https://media.tenor.com/x1upZyu_bsYAAAAM/gohan-kid-bang.gif":
+  i === 49 ? "https://64.media.tumblr.com/f130026619609179e33528b032130097/tumblr_ppgso3Wl2J1s15h3qo1_500.gif":
+  i === 50 ? "https://pa1.aminoapps.com/7175/d30f21cfccdab0999bbe400b952d3c610ff96da3r1-400-225_hq.gif":
+  i === 51 ? "https://i.redd.it/3ttkmqqi3xrc1.gif":
+  i === 52 ? "https://media.tenor.com/_SLO7CVy5JEAAAAM/dbz-dragon-ball-z-kai.gif":
+  i === 53 ? "https://i.pinimg.com/originals/b5/e3/b0/b5e3b00682f2feb104e27c47af0e70ec.gif":
+  i === 54 ? "https://64.media.tumblr.com/2fca537bcde75b1602c6364ac61d2476/tumblr_n2j9ocry1u1tu0hbzo5_r1_400.gifv":
+  i === 55 ? "https://i.makeagif.com/media/5-21-2019/DusyPN.gif":
+  i === 56 ? "https://media.tenor.com/-xSs6dHqj2kAAAAM/dbz.gif":
+  i === 57 ? "https://media.tenor.com/qPfkpYOBS48AAAAM/vegeta-vegeta-gohan.gif":
+  i === 58 ? "https://media.tenor.com/aqXWxPCQlEkAAAAM/goku-training-in-space-goku.gif":
+  i === 59 ? "https://media.tenor.com/1cfm5OSUllYAAAAM/goku-power.gif":
+  i === 60 ? "https://media.tenor.com/WN9Ln_eKG6oAAAAM/ginyu-force-pose.gif":
+  i === 61 ? "https://i.gifer.com/9P3v.gif":
+  i === 62 ? "https://64.media.tumblr.com/394d58188288eab457e1ba1601d4ee70/tumblr_pq14yrALqz1s15h3qo1_500.gif":
+  i === 63 ? "https://media.tenor.com/7_1y2QAGLg4AAAAM/recoome-bricko.gif":
+  i === 64 ? "https://i.imgur.com/YgOZYt4.gif":
+  i === 65 ? "https://64.media.tumblr.com/8fb63e1489bf5b60686fb5e38616e9c9/tumblr_nmx5qnWROb1uomckno1_r1_400.gifv":
+  i === 66 ? "https://media.tenor.com/KI19UTSii84AAAAM/dragon-ball-z-goku.gif":
+  i === 67 ? "https://64.media.tumblr.com/ad4367d5be15acae87491147d9d86c68/tumblr_oxodf8etOS1r2hy3ro1_540.gif":
+  i === 68 ? "https://pa1.aminoapps.com/6524/696ccea7a172ef689526c58d829828230d6e0031_hq.gif":
+  i === 69 ? "https://64.media.tumblr.com/aa993d3606592481da688db37559b609/tumblr_nymjz5cLK41ua2wbgo6_400.gif":
+  i === 70 ? "https://static.wikia.nocookie.net/2bd9119d-a149-4f87-8ecb-b050fb114ea9/scale-to-width/755":
+  i === 71 ? "https://media.tenor.com/zJtNIYtFvFMAAAAM/capit%C3%A3o-ginyu-goku-capit%C3%A3o.gif":
+  i === 72 ? "https://64.media.tumblr.com/2fd903ed296303f8bc1d6500ee712e7c/tumblr_o0rrnqgHdG1rr75cno1_400.gif":
+  i === 73 ? "https://d.wattpad.com/story_parts/713686744/images/15912964adecca8d942834398991.gif":
+  i === 74 ? "https://media.tenor.com/MCT2DJ6b3u4AAAAM/dbz-dragon.gif":
+  i === 75 ? "https://64.media.tumblr.com/8f35f2cebfe2ae689b8455ef25fe6f04/tumblr_ptt89z8YZb1xrcg8po1_500.gif":
+  i === 76 ? "https://i.namu.wiki/i/c1fBWDOvs82pL-qEpzwTGrnfttTiCjNWu8ak4QGvCLmgK8QzW8woyFAI_mNg_z6a77AsqNTTcGNLKJtaBV7sZg.gif":
+  i === 77 ? "https://64.media.tumblr.com/a0fbabae8e656881e4f14c57a72ffeb2/691ca68784fb3585-c2/s540x810/7a0ed94eca03ec80f2c7992b7d62d314be8fbbc9.gif":
+  i === 78 ? "https://i.pinimg.com/originals/fa/25/29/fa2529f16b2c696ba2089ff624820b47.gif":
+  i === 79 ? "https://media.tenor.com/9b5iJx8MzPUAAAAM/welcome-to-minnmax-minnmax.gif":
+  i === 80 ? "https://pa1.aminoapps.com/6784/d9dda3d0fc257320b3be064698d8ceb1a6d3bd72_hq.gif":
+  i === 81 ? "https://media.tenor.com/PtBYrwDasW0AAAAM/freeza-third-form.gif":
+  i === 82 ? "https://preview.redd.it/namek-saga-transforming-frieza-dfe-concept-v0-om9ritg8rl4a1.gif?width=490&auto=webp&s=bb37034a075e88cb77d5c7a031c840c228a7c5f6":
+  i === 83 ? "https://www.icegif.com/wp-content/uploads/2022/06/icegif-629.gif":
+  i === 84 ? "https://animesher.com/orig/0/17/178/1787/animesher.com_dragon-ball-crying-gif-178763.gif":
+  i === 85 ? "https://media.tenor.com/JquHrBqvAWoAAAAM/saiyan-destroyer.gif":
+  i === 86 ? "https://media.tenor.com/WoYzaTEdEOsAAAAM/goku-vs-frieza-goku.gif":
+  i === 87 ? "https://media.tenor.com/gYqBWQc_seMAAAAM/goku-frieza.gif":
+  i === 88 ? "https://i.makeagif.com/media/8-16-2016/Rb3yzg.gif":
+  i === 89 ? "https://i.makeagif.com/media/7-20-2015/baWfCh.gif":
+  i === 90 ? "https://media.tenor.com/7PznoA7sPN4AAAAM/goku-frieza.gif":
+  i === 91 ? "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/364278a0-b366-4445-9f91-c84cdb7f0fe1/dg1l0gs-d86306cd-f21e-45f7-9110-d53045c3e30c.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM2NDI3OGEwLWIzNjYtNDQ0NS05ZjkxLWM4NGNkYjdmMGZlMVwvZGcxbDBncy1kODYzMDZjZC1mMjFlLTQ1ZjctOTExMC1kNTMwNDVjM2UzMGMuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.iYKUaWFQx_6-uM-a9LfI8L-kCFZGVD4bLp4t1nBbl7w":
+  i === 92 ? "https://i.pinimg.com/originals/31/2c/5e/312c5ed52f2e0402ac2391f86a852074.gif":
+  i === 93 ? "https://www.dragon-ball-gif.com/wp-content/uploads/2021/05/Freezer-Death-Ball.gif":
+  i === 94 ? "https://media.tenor.com/images/7c794bbe79c7e3792f9b4bbdec86a19a/tenor.gif":
+  i === 95 ? "https://64.media.tumblr.com/df2685990883677f476c308306d2823c/tumblr_inline_nkn39v3GL01r5ight.gif":
+  i === 96 ? "https://media.tenor.com/xPEmSNqGItMAAAAM/goku-frown-goku.gif":
+  i === 97 ? "https://media.tenor.com/CjoYxgCMVWEAAAAM/lr-agl-frieza-full-power-roar-of-resentment.gif":
+  i === 98 ? "https://i.gifer.com/C77I.gif":
+  i === 99 ? "https://i.pinimg.com/originals/52/16/93/521693effad2263e31481add73c0a74b.gif":
+  i === 100 ? "https://media.tenor.com/egoCZHl0qjAAAAAM/dragon-ball-z-ssj-goku.gif":
+  i === 101 ? "https://qph.cf2.quoracdn.net/main-qimg-c68b54c07cbf886a5a26f5d608513e54":
+  i === 102 ? "https://media.tenor.com/pbJ9Nuz-0y0AAAAM/o7-dragon-ball-z.gif":
+  i === 103 ? "https://giffiles.alphacoders.com/648/6486.gif":
+  i === 104 ? "https://i.makeagif.com/media/3-22-2018/yYiYbn.gif":
+  i === 105 ? "https://media.tenor.com/EqLiz9J2lXoAAAAM/vegeta-gohan.gif":
+  i === 106 ? "https://media.tenor.com/cdQ3qnhabDAAAAAM/dragon-ball-z-leave-me-alone.gif":
+  i === 107 ? "https://64.media.tumblr.com/17c0b5127792653f6bd7cc3005b15ee5/tumblr_ou3a0xVir61usyygio1_500.gif":
+  i === 108 ? "https://i.gifer.com/origin/3f/3fbbdbfc14ad82e7da6c5f37cd0d17d7_w200.gif":
+  i === 109 ? "https://64.media.tumblr.com/ddb60861789950480a78d5b86e738069/834e57ffdc1efb2f-5d/s540x810/345837240c8f84c03f593a311472149b7b1c8697.gif":
+  i === 110 ? "https://www.techpowerup.com/forums/attachments/woke-gif.100397/":
+  i === 111 ? "https://i.imgur.com/2iRhBt6.gif":
+  i === 112 ? "https://static.wikia.nocookie.net/7ad5a647-0578-4fcb-98c4-9eb7044df190/scale-to-width/755":
+  i === 113 ? "https://i.makeagif.com/media/8-06-2016/SujH28.gif":
+  i === 114 ? "https://img.wattpad.com/31717ff4d0628f6cd6339c6b0c230a14d8dd094b/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f4773326b5636485f565f456872673d3d2d313031373731323838382e313638343364633135626631383265323532333932343731363636352e676966":
+  i === 115 ? "https://64.media.tumblr.com/bf901aa7d3a9d5b28ddf50701840d82e/tumblr_prs74xFOLo1s15h3qo1_500.gif":
+  i === 116 ? "https://upload-os-bbs.hoyolab.com/upload/2025/03/31/106094084/f4a227dcf587d3d325a87a613997ce9e_7537497894617803518.gif":
+  i === 117 ? "https://img.wattpad.com/66a0437042c6f2bcef5a4d977b18c44493e22bad/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f476676757576466a45314a534b773d3d2d313034363837353134302e313638343932636333303662383334313535373731363838353434392e676966":
+  i === 118 ? "https://media.tenor.com/kPGwtz_0jG4AAAAM/dragon-ball-z-future-trunks.gif":
+  i === 119 ? "https://media.tenor.com/LlsRRUsYQCwAAAAM/dragon-ball-z-chala-head-chala.gif":
+  i === 120 ? "https://i.pinimg.com/originals/14/d9/66/14d9660f8be8fc9252c704d81c31fa92.gif":
+  i === 121 ? "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0a290752-d7eb-45e3-aa31-8e71b544cde0/da6x5qi-572be59b-f81f-4e27-aff5-87235b687da7.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBhMjkwNzUyLWQ3ZWItNDVlMy1hYTMxLThlNzFiNTQ0Y2RlMFwvZGE2eDVxaS01NzJiZTU5Yi1mODFmLTRlMjctYWZmNS04NzIzNWI2ODdkYTcuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.c0KRoka53ju7hnjEyZ2NRXaXE-28D9I9i1z-YJblPVo":
+  i === 122 ? "https://media.tenor.com/vJNDmQimxmQAAAAM/goku-namek-saga.gif":
+  i === 123 ? "https://media.tenor.com/OAmAsx9_OmwAAAAM/vegeta.gif":
+  i === 124 ? "https://i.pinimg.com/originals/4e/f7/9a/4ef79a5d0705fcae5c4db9c95a0455fc.gif":
+  i === 125 ? "https://i.pinimg.com/originals/dd/78/b5/dd78b563d1e425808339194e4f5c5ee5.gif":
+  i === 126 ? "https://i.pinimg.com/originals/f9/e8/1e/f9e81ebe2a850a8733a6ebc4444a1c18.gif":
+  i === 127 ? "https://i.pinimg.com/originals/cd/a1/6f/cda16fcfd647e62308d7a88aaa61e98e.gif":
+  i === 128 ? "https://i.pinimg.com/originals/78/1d/a4/781da46de130640bd9eaa1935b030450.gif":
+  i === 129 ? "https://i.makeagif.com/media/7-23-2015/lEwS74.gif":
+  i === 130 ? "https://64.media.tumblr.com/e72e3901b681894473725c68f610b5d0/tumblr_n7ocpmzApW1tu0hbzo1_400.gif":
+  i === 131 ? "https://64.media.tumblr.com/8b75bc022dc366773a791446d0c27153/tumblr_p2bnhzwTog1wyh2j4o1_540.gif":
+  i === 132 ? "https://64.media.tumblr.com/a7307f5b860945fc66c09385a8a6dc2b/tumblr_ps8vapdtOq1s15h3qo1_500.gifv":
+  i === 133 ? "https://i.makeagif.com/media/10-27-2015/wf2umK.gif":
+  i === 134 ? "https://64.media.tumblr.com/60ed61770c5acc667f99f2a8222a403f/tumblr_pjvxkyuKYb1uuj1vto1_540.gif":
+  i === 135 ? "https://media.tenor.com/S_R2LEwwX9YAAAAM/dragon-ball-z-n18.gif":
+  i === 136 ? "https://64.media.tumblr.com/50a8635857ea65df98bb99db0907b1d2/3b054dfae40ce48e-2b/s540x810/0f2b0924b4d69405ddc44d309012bdaf867b0969.gifv":
+  i === 137 ? "https://i.pinimg.com/originals/ea/b9/1a/eab91a6074d5264be4ab16e746c46438.gif":
+  i === 138 ? "https://animesher.com/orig/1/131/1313/13132/animesher.com_dragon-ball-dragon-ball-z-goku-1313249.gif":
+  i === 139 ? "https://64.media.tumblr.com/7be85ebe406ce62b93f6da35159c5388/tumblr_psfsewSE0e1s15h3qo1_500.gifv":
+  i === 140 ? "https://pa1.aminoapps.com/6865/923644cdf55c3d97eb36a7ecead3cb271efcf2f7r1-383-320_00.gif":
+  i === 141 ? "https://i.makeagif.com/media/11-09-2016/wo6Eu2.gif":
+  i === 142 ? "https://i.makeagif.com/media/1-31-2016/rCWq8x.gif":
+  i === 143 ? "https://media.tenor.com/IECinPAxoo4AAAAM/imperfect-cell-piccolo.gif":
+  i === 144 ? "https://animesher.com/orig/1/134/1342/13422/animesher.com_dragon-ball-z-ssj-trunks-1342207.gif":
+  i === 145 ? "https://i.pinimg.com/originals/b4/b9/2a/b4b92ae201f9d04ae65528e4f7016968.gif":
+  i === 146 ? "https://qph.cf2.quoracdn.net/main-qimg-15510a768f2334867d2b050de29d4f40":
+  i === 147 ? "https://media.tenor.com/nOmMd1uioisAAAAM/dragon-ball-z-piccolo-vs-n17.gif":
+  i === 148 ? "https://i.imgur.com/O9Q9jmZ.gif":
+  i === 149 ? "https://64.media.tumblr.com/fc826d124300901cf5af08a499b4399e/tumblr_pslvd0YFo91s15h3qo1_500.gif":
+  i === 150 ? "https://i.redd.it/o5gve7xe6wqe1.gif":
+  i === 151 ? "https://i.makeagif.com/media/6-13-2021/rGLKOY.gif":
+  i === 152 ? "https://static.wikia.nocookie.net/960c940c-67e4-4850-aecc-433de2a2c333/scale-to-width/370":
+  i === 153 ? "https://64.media.tumblr.com/927497bc39037972d8b5bd5a745b3f9f/tumblr_pgghk8Ui9Q1wyh2j4o2_500.gifv":
+  i === 154 ? "https://64.media.tumblr.com/0cb4c11de44cf0b8377c10ab2808f8ea/tumblr_p9bpagvirl1wyh2j4o2_500.gifv":
+  i === 155 ? "https://media.tenor.com/EjdeLgHfBTcAAAAM/super-vegeta.gif":
+  i === 156 ? "https://i.makeagif.com/media/6-08-2014/1idva6.gif":
+  i === 157 ? "https://media.tenor.com/8lMSpn5hXbAAAAAM/trunks-dragon-ball-z.gif":
+  i === 158 ? "https://media.tenor.com/w69kGuWNqWYAAAAM/cell-absorb.gif":
+  i === 159 ? "https://media.tenor.com/FK1nH7hV2WEAAAAM/dbz-perfect-cell.gif":
+  i === 160 ? "https://media.tenor.com/4G9hOlv3nMEAAAAM/cell-being-attacked.gif":
+  i === 161 ? "https://media.tenor.com/cX4QIe6hZ1kAAAAM/dragon-ball-z-dbz.gif":
+  i === 162 ? "https://media.tenor.com/ez6pAkl-QooAAAAM/dbz-trunks.gif":
+  i === 163 ? "https://i.pinimg.com/originals/da/a8/b9/daa8b999d21690e58e4ae6b3a813ff88.gif":
+  i === 164 ? "https://i.pinimg.com/originals/a0/0a/d0/a00ad0fe0d8ad773c3c0f40138d9308e.gif":
+  i === 165 ? "https://media.tenor.com/Ym_pRU8ftJ4AAAAM/dragon-ball-z-future-trunks.gif":
+  i === 166 ? "https://64.media.tumblr.com/d878d89d54d43839c54639ff77f2e13c/tumblr_px2zdfM9DD1s15h3qo3_500.gifv":
+  i === 167 ? "https://static.wikia.nocookie.net/ultradragonball/images/f/f8/Tumblr_ll3ihwP0rz1qgq4hio1_500.gif/revision/latest/scale-to-width-down/500?cb=20111111152949":
+  i === 168 ? "https://pa1.aminoapps.com/6050/dc1d1a29e55f0c42aa35ae7a31ced2c5ed0e392e_00.gif":
+  i === 169 ? "https://64.media.tumblr.com/e0ce4feb99cf5b9fefeb802f41267234/tumblr_n974wnDpof1tu0hbzo3_400.gif":
+  i === 170 ? "https://i.makeagif.com/media/3-19-2014/yC39f2.gif":
+  i === 171 ? "https://i.makeagif.com/media/12-23-2023/0Z9ARx.gif":
+  i === 172 ? "https://qph.cf2.quoracdn.net/main-qimg-9abc67bfd7ea66a8cf130e972b4f5cae":
+  i === 173 ? "https://i.redd.it/zxi2j2a5sns91.gif":
+  i === 174 ? "https://pa1.aminoapps.com/6782/9268064d41dbc5e1fae6815f918b0ff2a6a50bbc_hq.gif":
+  i === 175 ? "https://pa1.aminoapps.com/6533/c769f0456227aa40b890dc3d68a5a9a027d7701b_00.gif":
+  i === 176 ? "https://i.makeagif.com/media/9-11-2015/vWrI_-.gif":
+  i === 177 ? "https://i.makeagif.com/media/7-06-2015/OsH_YZ.gif":
+  i === 178 ? "https://images.steamusercontent.com/ugc/866241932571757104/118D0AFC25BB70D3D908F846F403F8E7A95CA644/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false":
+  i === 179 ? "https://64.media.tumblr.com/88decb0439b6500918299844a6380387/tumblr_pgyh1kEUz21wyh2j4o7_r1_500.gif":
+  i === 180 ? "https://i.makeagif.com/media/3-03-2016/qZmx5t.gif":
+  i === 181 ? "https://i.makeagif.com/media/3-23-2016/Dc-XZ5.gif":
+  i === 182 ? "https://images.steamusercontent.com/ugc/919205585105713084/1D05E0F77653A05A499BEC4A10E6790F84506955/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false":
+  i === 183 ? "https://i.imgur.com/ZctLREH.gif":
+  i === 184 ? "https://media.tenor.com/6N3oxGnSHeMAAAAM/gohan-ssj2.gif":
+  i === 185 ? "https://giffiles.alphacoders.com/242/2421.gif":
+  i === 186 ? "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0a290752-d7eb-45e3-aa31-8e71b544cde0/daawqhf-2130988e-0ce2-4b17-844f-d24cf8b0ab28.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBhMjkwNzUyLWQ3ZWItNDVlMy1hYTMxLThlNzFiNTQ0Y2RlMFwvZGFhd3FoZi0yMTMwOTg4ZS0wY2UyLTRiMTctODQ0Zi1kMjRjZjhiMGFiMjguZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8sbi1fbQxr15PLggcaB1V9Q80W65Xi53VsdPgDCWh5g":
+  i === 187 ? "https://i.makeagif.com/media/1-03-2017/jM5fdm.gif":
+  i === 188 ? "https://i.makeagif.com/media/1-08-2016/apALfe.gif":
+  i === 189 ? "https://i.makeagif.com/media/3-15-2015/kl4WGT.gif":
+  i === 190 ? "https://media.tenor.com/0uJXhCgxvd0AAAAM/gohan-dbz.gif":
+  i === 191 ? "https://media.tenor.com/yCuMjYZU604AAAAM/dbz-dragon-ball-z.gif":
+  i === 192 ? "https://media.tenor.com/0BXGAoiKnokAAAAM/dragon-ball-z-trunks.gif":
+  i === 193 ? "https://i.pinimg.com/originals/32/b7/db/32b7dbee90dc05937a62d00d9d99e55f.gif":
+  i === 194 ? "https://i.pinimg.com/originals/db/d9/7d/dbd97d15b55b8992bd6d4992e4ba70c4.gif":
+  i === 195 ? "https://i.pinimg.com/originals/69/ff/64/69ff64fefc0955238c296e4eb05072df.gif":
+  i === 196 ? "https://i.makeagif.com/media/8-13-2014/lfZI6y.gif":
+  i === 197 ? "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2a8c726a-8b6f-4cdb-8fb4-3ddeb04979e0/d8d1hzl-3f93a88a-ea2f-4343-9f28-a78447365be6.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJhOGM3MjZhLThiNmYtNGNkYi04ZmI0LTNkZGViMDQ5NzllMFwvZDhkMWh6bC0zZjkzYTg4YS1lYTJmLTQzNDMtOWYyOC1hNzg0NDczNjViZTYuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.A8tTotowFDkWzLoGHlOSV6hyUjMY1hM2uVJOhdVTWso":
+  i === 198 ? "https://64.media.tumblr.com/tumblr_lifddaqILf1qgfevpo1_500.gif":
+  i === 199 ? "https://i.pinimg.com/originals/79/e1/82/79e1821b5d7096c851c77064cff2a3a2.gif":
+  
+  
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+  <div class="back-button-container">
+    <a href="index.html" onclick="localStorage.setItem('showvfolder', true); return true;" class="back-button"> Back</a>
+  </div>
+  <audio id="myAudio" loop playsinline>
+    <source src="sounds/videoplayback.weba" type="audio/webm">
+  </audio>
+  
+  <audio id="myAudio" loop playsinline>
+    <source src="sounds/videoplayback.weba" type="audio/webm">
+  </audio>
+  
+  <button class="play-button" onclick="document.getElementById('myAudio').play()">Play Me</button>
+  
+</body>
+</html>
