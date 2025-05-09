@@ -30,34 +30,35 @@
     </style>
 </head>
 <body>
-  
-    <div class="menu">
-        <div class="menu-item">
-            <a href="#" onclick="goHome()">Home</a>
-        </div>
-        <div class="menu-item">
-            <a href="#">About</a>
-            <div class="dropdown">
-                <div class="dropdown-item">
-                    <a href="#" onclick="showBio()">Bio</a>
-                </div>
-                <div class="dropdown-item"><a href="hobbies.html">Hobbies</a></div>
-                <div class="dropdown-item" onclick="showPortfolio()">
-                    <a href="#">Portfolio</a>
-                </div>
-            </div>        
-        </div>
-        <div class="menu-item">
-            <a href="#">Blog</a>
-            <div class="dropdown">
-              <div class="dropdown-item"><a href="#" onclick="showAlert('It\'s still empty! Check Political instead.')">Personal</a></div>
-              <div class="dropdown-item" onclick="showPolitical()">
-                <a href="#">Political</a>
+   <!-------------------- MENU SECTIONS ---------------------->
+   <div class="menu">
+    <div class="menu-item">
+        <a href="#" onclick="goHome()">Home</a>
+    </div>
+    <div class="menu-item">
+        <a href="#">About</a>
+        <div class="dropdown">
+            <div class="dropdown-item">
+                <a href="#" onclick="showBio()">Bio</a>
             </div>
+            <div class="dropdown-item"><a href="hobbies.html">Hobbies</a></div>
+            <div class="dropdown-item" onclick="showPortfolio()">
+                <a href="#">Portfolio</a>
             </div>
+        </div>        
+    </div>
+    <div class="menu-item">
+        <a href="#">Blog</a>
+        <div class="dropdown">
+          <div class="dropdown-item"><a href="#" onclick="showAlert('It\'s still empty! Check Political instead.')">Personal</a></div>
+          <div class="dropdown-item" onclick="showPolitical()">
+            <a href="#">Political</a>
         </div>
-        <div class="menu-item">
-            <a href="#">Gallery</a>
+        </div>
+    </div>
+    <div class="menu-item">
+        <a href="#" onclick="showDialogBox()">Gallery</a>
+        <div id="gallery" style="display: none;">
             <div class="dropdown">
               <div class="dropdown-item">
                   <a href="#" onclick="showpfolder()">Photos</a>
@@ -65,16 +66,61 @@
               <div class="dropdown-item" onclick="showvfolder()">
                   <a href="#">Videos</a>
               </div>
-          </div>
+            </div>
         </div>
-        <div class="menu-item">
-          <a href="#">Contacts</a>
-          <div class="dropdown">
-            <div class="dropdown-item"><a href="#" onclick="showAlert('09155505131.')">Cell-No.</a></div>
-            <div class="dropdown-item"><a href="https://www.facebook.com/arjie.nunag2006">Soc.Med.</a></div>
-          </div>
-      </div>
     </div>
+    <div class="menu-item">
+      <a href="#">Contacts</a>
+      <div class="dropdown">
+        <div class="dropdown-item"><a href="#" onclick="showAlert('09155505131.')">Cell-No.</a></div>
+        <div class="dropdown-item"><a href="https://www.facebook.com/arjie.nunag2006">Soc.Med.</a></div>
+      </div>
+  </div>
+</div>
+
+<div id="dialog-box" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-image: linear-gradient(to right, #808080, #666666); padding: 20px;  border-radius: 10px; box-shadow: 0 0 1vmin rgba(0, 0, 0, 0.1); z-index: 1000; color: #fff;">
+  <h2>Private Area lol</h2>
+  <form id="password-form-element" style="background-color: rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 5px;">
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" style="margin-bottom: 10px;">
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" style="margin-bottom: 10px;">
+      </div>
+      <button type="submit" style="background-color: #3c3a3f; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Submit</button>
+  </form>
+</div>
+
+<script>
+    function showDialogBox() {
+        document.getElementById("dialog-box").style.display = "block";
+    }
+
+    document.getElementById("password-form-element").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        if (username === "arjie" && password === "gwapo") {
+            document.getElementById("dialog-box").style.display = "none";
+            document.getElementById("gallery").style.display = "block";
+            document.querySelector('.menu-item > a[href="#"]').setAttribute('href', 'javascript:void(0);');
+        } else {
+            alert("Incorrect username or password");
+        }
+    });
+
+    function showpfolder() {
+        alert("Photos folder");
+    }
+
+    function showvfolder() {
+        alert("Videos folder");
+    }
+</script>
+    
+   <!-------------------- MENU SECTIONS ---------------------->
 
    <div class="container">
         
