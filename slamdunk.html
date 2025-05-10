@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLAmDunK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+.video-episodes {
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 6vw;
+  height: 6vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.SD-logo {
+    width: 300px;
+    height: auto;
+}
+
+@media only screen and (max-width: 1024px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .episode img {
+    width: 8vw;
+    height: 8vw;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .pagination button {
+    padding: 1.5vh 1.5vw;
+    font-size: 2.5vw;
+  }
+  .episode img {
+    width: 10vw;
+    height: 10vw;
+  }
+  .SD-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -20px;
+}
+}
+
+@media only screen and (max-width: 480px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .pagination button {
+    padding: 1vw 2vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+  }
+  .SD-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -20px;
+}
+}
+
+.back-button-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}
+
+    
+  </style>
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <img src="icons/SD.png" alt="SlamDunk" class="SD-logo">
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 16;
+    const episodes = Array(101).fill(0).map((_, i) => [
+  `Episode ${i + 1}`,
+i === 0 ? "https://www.facebook.com/100088228795126/videos/857182725498326" : 
+i === 1 ? "https://www.facebook.com/100089963140104/videos/3637974506455971" : 
+i === 2 ? "https://www.facebook.com/watch/?ref=search&v=559001081628003&external_log_id=21911c56-3786-43b9-b14c-59cf1b658b69&q=slamdunk%20tagalog%20episode%203" : 
+i === 3 ? "https://www.facebook.com/watch/?ref=search&v=612981537631543&external_log_id=6842a03c-98f0-4ec3-a2b2-73f642bc1ffa&q=slamdunk%20tagalog%20episode%204" : 
+i === 4 ? "https://www.facebook.com/watch/?ref=search&v=1339612270131473&external_log_id=d01cad67-42b4-4ec6-8ee9-7f0e1e80e102&q=slamdunk%20tagalog%20episode%205" :
+i === 5 ? "https://www.facebook.com/watch?ref=search&v=831873109108871&external_log_id=c0f7ac06-5fae-43b2-9986-1cfb39d8e547&q=slamdunk%20tagalog%20episode%206" : 
+i === 6 ? "https://www.facebook.com/watch?ref=search&v=2330402757313315&external_log_id=eb148f28-6ae7-4b83-9060-e8f547fecd04&q=slamdunk%20tagalog%20episode%207" : 
+i === 7 ? "https://www.facebook.com/watch/?ref=search&v=1066336855044145&external_log_id=565e2cf4-668a-4e76-ba33-6a5f22658e80&q=slamdunk%20tagalog%20episode%208" : 
+i === 8 ? "https://www.facebook.com/100089653881937/videos/2207386649465418" : 
+i === 9 ? "https://www.facebook.com/watch?ref=search&v=443413152091013&external_log_id=b84ab678-ab51-484e-8510-0d61e2d6416a&q=slamdunk%20tagalog%20episode%2010" :
+i === 10 ? "https://www.facebook.com/watch/?ref=search&v=543191358110505&external_log_id=f7f1ab23-3d0b-4800-af2a-ae2359c907e4&q=slamdunk%20tagalog%20episode%2011" : 
+i === 11 ? "https://www.facebook.com/watch/?ref=search&v=883558519893785&external_log_id=dcc1da93-ba17-4c3b-b9f9-2d85fa78e15a&q=slamdunk%20tagalog%20episode%2012" : 
+i === 12 ? "https://www.facebook.com/watch?ref=search&v=3393226310983900&external_log_id=e570d974-6658-44ee-a6ba-ca731d71611f&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2013" : 
+i === 13 ? "https://www.facebook.com/watch?ref=search&v=1404013293893216&external_log_id=284262bd-cf26-4823-9f98-5e8463cca6c9&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2014" : 
+i === 14 ? "https://www.facebook.com/61565705144818/videos/499340439539959" :
+i === 15 ? "https://www.facebook.com/watch/?ref=search&v=884684226921361&external_log_id=6e198196-301b-435c-92a7-0b08bf96cd76&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2016" : 
+i === 16 ? "https://www.facebook.com/61565705144818/videos/2339402216410558" : 
+i === 17 ? "https://www.facebook.com/watch?ref=search&v=1037580281490788&external_log_id=2e8d58ef-0bc6-46ee-a687-6493631cf7b9&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2018" : 
+i === 18 ? "https://www.facebook.com/watch/?ref=search&v=392133777107995&external_log_id=8e1becf9-c22d-4e3b-b044-42d817e707da&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2019" : 
+i === 19 ? "https://www.facebook.com/100090637741163/videos/139505592335055" :
+i === 20 ? "https://www.facebook.com/watch/?ref=search&v=2842560909227617&external_log_id=4c867b69-90d5-49d4-8334-c3e9cd109409&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2021" : 
+i === 21 ? "https://www.facebook.com/watch?ref=search&v=503388449248254&external_log_id=ffd5b3ed-3794-451c-ad54-872e94c82c6f&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2022" : 
+i === 22 ? "https://www.facebook.com/100089653881937/videos/566370778875029" : 
+i === 23 ? "https://www.facebook.com/100089609830625/videos/713011508058924" : 
+i === 24 ? "https://www.facebook.com/100089609830625/videos/1198252628341171" :
+i === 25 ? "https://www.facebook.com/watch/?ref=search&v=8287437498008257&external_log_id=4321b58a-91ff-4986-b454-d5b99bb2da53&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2026" : 
+i === 26 ? "https://www.facebook.com/100089609830625/videos/1006251325031867" : 
+i === 27 ? "https://www.facebook.com/100089609830625/videos/1735778097046570" : 
+i === 28 ? "https://www.facebook.com/100089609830625/videos/1181271543234463" : 
+i === 29 ? "https://www.facebook.com/61574662571701/videos/2351851515199772" :
+i === 30 ? "https://www.facebook.com/watch/?ref=search&v=1797329550627919&external_log_id=5536993e-85fd-46c4-b7ca-a57af65bf4fa&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2031" : 
+i === 31 ? "https://www.facebook.com/watch/?ref=search&v=2622587624672473&external_log_id=8c067009-80d5-4134-8558-cf50285d1764&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2032" : 
+i === 32 ? "https://www.facebook.com/watch?ref=search&v=1148330243604746&external_log_id=3893165f-ce50-42eb-8186-a60de5749b3c&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2033" : 
+i === 33 ? "http://facebook.com/watch?ref=search&v=2336881590004270&external_log_id=9895deda-3ddf-4794-9e2d-9c3d9eb7637e&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2034" : 
+i === 34 ? "https://www.facebook.com/watch/?ref=search&v=1136037923430574&external_log_id=f7da71f7-364d-4de3-9d10-97e1208f0741&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2035" :
+i === 35 ? "https://www.facebook.com/watch?ref=search&v=1805831316871531&external_log_id=5da448ba-d2c1-4a40-8ec6-dd6074f09847&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2036" : 
+i === 36 ? "https://www.facebook.com/watch/?ref=search&v=544393659598636&external_log_id=7b77350b-2f94-4506-92c1-c0f95a33f593&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2037" : 
+i === 37 ? "https://www.facebook.com/watch/?ref=search&v=1001628451474011&external_log_id=d6bde0b2-7926-4b42-8e1b-463ba85b0a61&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2038" : 
+i === 38 ? "http://facebook.com/watch?ref=search&v=1417569212542678&external_log_id=31a3515a-cd44-46b8-b5f0-bb2c50a66304&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2039" : 
+i === 39 ? "http://facebook.com/fun.animation.2024/videos/2294458717621368" :
+i === 40 ? "http://facebook.com/fun.animation.2024/videos/625795643428571" : 
+i === 41 ? "https://www.facebook.com/fun.animation.2024/videos/581512721710644" : 
+i === 42 ? "https://www.facebook.com/fun.animation.2024/videos/1831570444325531" : 
+i === 43 ? "https://www.facebook.com/fun.animation.2024/videos/1703552430229446" : 
+i === 44 ? "https://www.facebook.com/fun.animation.2024/videos/618263967626853" :
+i === 45 ? "https://www.facebook.com/fun.animation.2024/videos/1184817499828423" : 
+i === 46 ? "https://www.facebook.com/fun.animation.2024/videos/521214040572491" : 
+i === 47 ? "https://www.facebook.com/fun.animation.2024/videos/933259681939934" : 
+i === 48 ? "" : 
+i === 49 ? "" :
+i === 50 ? "" : 
+i === 51 ? "" : 
+i === 52 ? "" : 
+i === 53 ? "" : 
+i === 54 ? "" :
+i === 55 ? "" : 
+i === 56 ? "" : 
+i === 57 ? "" : 
+i === 58 ? "" : 
+i === 59 ? "" :
+i === 60 ? "" : 
+i === 61 ? "" : 
+i === 62 ? "" : 
+i === 63 ? "" : 
+i === 64 ? "" :
+i === 65 ? "" : 
+i === 66 ? "" : 
+i === 67 ? "" : 
+i === 68 ? "" : 
+i === 69 ? "" :
+i === 70 ? "" : 
+i === 71 ? "" : 
+i === 72 ? "" : 
+i === 73 ? "" : 
+i === 74 ? "" :
+i === 75 ? "" : 
+i === 76 ? "" : 
+i === 77 ? "" : 
+i === 78 ? "" : 
+i === 79 ? "" :
+i === 80 ? "" : 
+i === 81 ? "" : 
+i === 82 ? "" : 
+i === 83 ? "" : 
+i === 84 ? "" :
+i === 85 ? "" : 
+i === 86 ? "" : 
+i === 87 ? "" : 
+i === 88 ? "" : 
+i === 89 ? "" :
+i === 90 ? "" : 
+i === 91 ? "" : 
+i === 92 ? "" : 
+i === 93 ? "" : 
+i === 94 ? "" :
+i === 95 ? "" : 
+i === 96 ? "" : 
+i === 97 ? "" : 
+i === 98 ? "" : 
+i === 99 ? "" :
+i === 100 ? "" : 
+  `episode-${i + 1}-id`,
+i === 0 ? "https://i.imgur.com/vtV8cso.gif" : 
+i === 1 ? "https://i.pinimg.com/originals/fd/67/f7/fd67f720a4197d0744bf5d0944ebf4c2.gif" : 
+i === 2 ? "https://66.media.tumblr.com/936a0749c247299d22c86e45355a3009/tumblr_inline_pepemrxlr21rfr2nv_540.gif" : 
+i === 3 ? "https://i0.wp.com/blushinggeek.com/wp-content/uploads/2021/03/slamdunk-takenori-akagi-blushinggeek.gif?resize=356%2C257&ssl=1" : 
+i === 4 ? "https://64.media.tumblr.com/37708a2dd5d1e2fc17c3fcda4f59766d/tumblr_oymghggonh1sg8uefo1_540.gif" :
+i === 5 ? "https://media.tenor.com/aCMGLfw8GHgAAAAM/cheerleader-cheering.gif" : 
+i === 6 ? "https://64.media.tumblr.com/d6d41ddcf5c94597ead7c82277509dff/fae37844c85d1d7f-a8/s540x810/ab5dfb48b5de8b5af62c4d32c2ec00a31d9d5b7f.gif" : 
+i === 7 ? "https://64.media.tumblr.com/1411fda73660751970765e3b2508087f/847f6e67a6a59de0-c2/s540x810/b1f52493fac4771c022936780e4b06fef3f9964c.gif" : 
+i === 8 ? "https://i.imgur.com/2vcnHmO.gif" : 
+i === 9 ? "https://64.media.tumblr.com/69a69088ba2e5c2ea6ca8dbff2a967d4/tumblr_ovbksrTZWw1v6xsm2o1_540.gif" :
+i === 10 ? "https://64.media.tumblr.com/f8d53869856e2cfeca50262ffef62f2a/58158537e5d4c866-82/s540x810/fb7e55a512feb719e2b9d5268efc6fa3559f5da6.gifv" : 
+i === 11 ? "https://animesher.com/orig/1/149/1496/14963/animesher.com_gif-90s-anime-slam-dunk-1496308.gif" : 
+i === 12 ? "https://64.media.tumblr.com/tumblr_m4o7zxofgG1r99pzho1_250.gif" : 
+i === 13 ? "https://media.tenor.com/3JqZxm_cGrkAAAAC/slam-dunk-hanamichi-sakuragi.gif" : 
+i === 14 ? "https://64.media.tumblr.com/a033bfa7c2d439d44d6b6454b9e75dd4/tumblr_ooztdbKwwL1tysz53o1_500.gifv" :
+i === 15 ? "https://media.tenor.com/22Ak1t4CwxsAAAAM/basketball-play.gif" : 
+i === 16 ? "https://i.imgur.com/xSaLFeL.gif" : 
+i === 17 ? "https://cloudfront-us-east-1.images.arcpublishing.com/copesa/J4WAERU4UVG7DGU6LINTCVYEHE.gif" : 
+i === 18 ? "https://cloudfront-us-east-1.images.arcpublishing.com/copesa/MSDIYPRU4JC6HN72BTC5ZWKX54.gif" : 
+i === 19 ? "https://64.media.tumblr.com/789e5ff6eda934c1951445d2739cc2d7/tumblr_mmhhmnf5aW1qzdpr4o1_500.gif" :
+i === 20 ? "https://media.tenor.com/meMjAysaXh8AAAAM/miyagi-ryota-crying.gif" : 
+i === 21 ? "https://i.pinimg.com/originals/ef/3a/e6/ef3ae6c7089817660c20ab7547413073.gif" : 
+i === 22 ? "https://64.media.tumblr.com/659c86b7758639b71186971998be1175/tumblr_mnbrzsLI1D1qzdpr4o1_500.gif" : 
+i === 23 ? "https://i.makeagif.com/media/11-12-2019/-1kWwi.gif" : 
+i === 24 ? "https://i.makeagif.com/media/8-19-2015/3zYoo2.gif":
+i === 25 ? "https://i.pinimg.com/originals/5f/23/7e/5f237ed74ab18d0298068cd6afbf0452.gif" : 
+i === 26 ? "https://media.tenor.com/bFQVSPTeOYUAAAAM/slam-dunk-anzai-sensei.gif" : 
+i === 27 ? "https://64.media.tumblr.com/e96472d8ccbb0f8080b344d82bf22f85/tumblr_o9vk2peG0C1v6xsm2o1_540.gif" : 
+i === 28 ? "https://i.pinimg.com/originals/2c/6d/6b/2c6d6b2344982c4213caece57538e668.gif" : 
+i === 29 ? "https://media.tenor.com/RrxlQ7Ag730AAAAM/slam-dunk-anime.gif" :
+i === 30 ? "https://media.tenor.com/1KUqFVzAuOEAAAAM/slam-dunk-slam-dunk-anime.gif" : 
+i === 31 ? "https://media.tenor.com/_EP1KS1gF94AAAAM/hanamichi-sakuragi.gif" : 
+i === 32 ? "https://i.pinimg.com/originals/e7/7e/00/e77e00504f97ed9f211d07629c1c178b.gif" : 
+i === 33 ? "https://64.media.tumblr.com/c740f0a1544a78c86b277626124882bb/tumblr_mn9dr7CGgg1qzdpr4o1_500.gif" : 
+i === 34 ? "https://64.media.tumblr.com/d0cdf0b284c4484bd452a8751064e6ba/tumblr_mmwgurGgI81qzdpr4o1_500.gifv" :
+i === 35 ? "https://64.media.tumblr.com/238d2cbcfea1d8989b54b521e6c94770/tumblr_no9blsA1lX1uv72lbo1_400.gif" : 
+i === 36 ? "https://static.wikia.nocookie.net/slamdunk/images/8/83/Skyhook_.gif/revision/latest/scale-to-width-down/340?cb=20231009104533" : 
+i === 37 ? "https://i.makeagif.com/media/10-03-2016/XZ02fH.gif" : 
+i === 38 ? "https://i.makeagif.com/media/10-03-2016/CsRYx1.gif" : 
+i === 39 ? "https://media.tenor.com/dF8LuWPrXcQAAAAM/mitsui-shoot.gif" :
+i === 40 ? "https://i.pinimg.com/originals/13/a1/08/13a108d209035a145f9170473cb093b8.gif" : 
+i === 41 ? "https://i.pinimg.com/originals/b9/74/5d/b9745db3604e264e96850e91085cb6fe.gif" : 
+i === 42 ? "https://64.media.tumblr.com/a1f0da38ce63ca7cfbc48c9fabde6823/bb3c7b6604ddb5e3-dd/s1280x1920/574f7138af5b6d4b4a848000468a3a62ebc36544.gif" : 
+i === 43 ? "https://media.tenor.com/8hROnvis560AAAAM/mitsui-slam-dunk.gif" : 
+i === 44 ? "https://media.tenor.com/LBmJRtlUCpIAAAAM/mitsui-slam-dunk.gif" :
+i === 45 ? "https://pa1.aminoapps.com/6178/9c910b28324ca7ebcafcdd68dfd7994d3560f94c_hq.gif" : 
+i === 46 ? "https://i.pinimg.com/originals/f0/1e/32/f01e320dd2668a1bbda3f23febffd0c9.gif" : 
+i === 47 ? "https://media.tenor.com/UcYOQy5j9-sAAAAM/sakuragi-tease.gif" : 
+i === 48 ? "" : 
+i === 49 ? "" :
+i === 50 ? "" : 
+i === 51 ? "" : 
+i === 52 ? "" : 
+i === 53 ? "" : 
+i === 54 ? "" :
+i === 55 ? "" : 
+i === 56 ? "" : 
+i === 57 ? "" : 
+i === 58 ? "" : 
+i === 59 ? "" :
+i === 60 ? "" : 
+i === 61 ? "" : 
+i === 62 ? "" : 
+i === 63 ? "" : 
+i === 64 ? "" :
+i === 65 ? "" : 
+i === 66 ? "" : 
+i === 67 ? "" : 
+i === 68 ? "" : 
+i === 69 ? "" :
+i === 70 ? "" : 
+i === 71 ? "" : 
+i === 72 ? "" : 
+i === 73 ? "" : 
+i === 74 ? "" :
+i === 75 ? "" : 
+i === 76 ? "" : 
+i === 77 ? "" : 
+i === 78 ? "" : 
+i === 79 ? "" :
+i === 80 ? "" : 
+i === 81 ? "" : 
+i === 82 ? "" : 
+i === 83 ? "" : 
+i === 84 ? "" :
+i === 85 ? "" : 
+i === 86 ? "" : 
+i === 87 ? "" : 
+i === 88 ? "" : 
+i === 89 ? "" :
+i === 90 ? "" : 
+i === 91 ? "" : 
+i === 92 ? "" : 
+i === 93 ? "" : 
+i === 94 ? "" :
+i === 95 ? "" : 
+i === 96 ? "" : 
+i === 97 ? "" : 
+i === 98 ? "" : 
+i === 99 ? "" :
+i === 100 ? "": 
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+  <div class="back-button-container">
+    <a href="index.html" onclick="localStorage.setItem('showvfolder', true); return true;" class="back-button"> Back</a>
+  </div>
+  <audio id="myAudio" loop playsinline>
+    <source src="sounds/SD.weba" type="audio/webm">
+  </audio>
+  
+  <audio id="myAudio" loop playsinline>
+    <source src="sounds/SD.weba" type="audio/webm">
+  </audio>
+  
+  <button class="play-button" onclick="document.getElementById('myAudio').play()">Play Me</button>
+  
+</body>
+</html>
