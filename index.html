@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arjie Nunag</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BC+Minimal&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="messenger.css">
+    
+
+    <style>
+        .bio-paragraph {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #sparkle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+  .custom-dialog-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+   z-index: 10000; /* Add a high z-index */
+   color: white;
+}
+
+.custom-dialog-box-content {
+  background-color: #552626;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.custom-dialog-box-content button {
+  background-color: #616361;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-dialog-box-content button:hover {
+  background-color: #554f58;
+}
+
+#message {
+  display: none;
+  z-index: 1000;
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+  #message {
+    width: 60vw !important;
+    left: 6vw !important;
+    font-size: 3vw !important;
+    bottom: 3vh !important;
+  }
+  #message .card {
+    padding: 2vw !important;
+    border-radius: 2vw !important;
+    overflow: hidden !important;
+  }
+  #message .card #close-btn {
+    font-size: 6vw !important;
+    top: -1vw !important;
+    right: 1vw !important;
+  }
+  #message .card h2 {
+    font-size: 4vw !important;
+  }
+  #message .card label {
+    font-size: 3.5vw !important;
+  }
+  #message .card input, #message .card textarea {
+    font-size: 3.5vw !important;
+    border-radius: 0.5vw !important;
+  }
+  #message .card button {
+    font-size: 3.5vw !important;
+    padding: 1vw 2vw !important;
+    border-radius: 0.5vw !important;
+  }
+  #message .card #success-message {
+    font-size: 3.5vw !important;
+  }
+  #message .card textarea {
+    margin-top: 0.5vw !important;
+  }
+  #message .card input {
+    height: 5vw !important;
+  }
+
+  /* Message Image */
+  #image-trigger img {
+    width: 15vw !important;
+    height: 15vw !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
+  }
+  #image-trigger span {
+    font-size: 2.5vw !important;
+  }
+  #image-trigger {
+  left: 8vw !important;
+}
+  /* Message Image */
+}
+
+/* Tablet Portrait */
+@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+    #message {
+        width: 50vw !important;
+        left: 25vw !important;
+        font-size: 2.5vw !important;
+    }
+}
+
+/* Tablet Landscape */
+@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+    #message {
+        width: 40vw !important;
+        left: 30vw !important;
+        font-size: 2vw !important;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+   <!-------------------- MENU SECTIONS ---------------------->
+   <div class="menu">
+    <div class="menu-item">
+        <a href="#" onclick="goHome()">Home</a>
+    </div>
+    <div class="menu-item">
+        <a href="#">About</a>
+        <div class="dropdown">
+            <div class="dropdown-item">
+                <a href="#" onclick="showBio()">Bio</a>
+            </div>
+            <div class="dropdown-item"><a href="hobbies.html">Hobbies</a></div>
+            <div class="dropdown-item" onclick="showPortfolio()">
+                <a href="#">Portfolio</a>
+            </div>
+        </div>        
+    </div>
+    <div class="menu-item">
+        <a href="#">Blog</a>
+        <div class="dropdown">
+          <div class="dropdown-item"><a href="#" onclick="showAlert('It\'s still empty! Check Political instead.')">Personal</a></div>
+          <div class="dropdown-item" onclick="showPolitical()">
+            <a href="#">Political</a>
+        </div>
+        </div>
+    </div>
+    <div class="menu-item">
+        <a href="#" onclick="showDialogBox()">Gallery</a>
+        <div id="gallery" style="display: none;">
+            <div class="dropdown">
+              <div class="dropdown-item">
+                  <a href="#" onclick="showpfolder()">Photos</a>
+              </div>
+              <div class="dropdown-item" onclick="showvfolder()">
+                  <a href="#">Videos</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-item">
+      <a href="#">Contacts</a>
+      <div class="dropdown">
+        <div class="dropdown-item"><a href="#" onclick="showAlert('09155505131.')">Cell-No.</a></div>
+        <div class="dropdown-item"><a href="https://www.facebook.com/arjie.nunag2006">Soc.Med.</a></div>
+      </div>
+  </div>
+</div>
+
+<div id="password-dialog-box" style="display: none; position: absolute; top: 50vh; left: 50vw; transform: translate(-50%, -50%); background-image: linear-gradient(to right, #808080, #666666); padding: .5%; border-radius: 1%; box-shadow: 0 0 1vmin rgba(0, 0, 0, 0.1); z-index: 1000; color: #fff; width: 15vw; max-width: 200px; min-width: 150px;">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+   <h2 style="margin: 0; font-size: clamp(.8rem, 1vw, .8rem);">Ask Permission</h2>
+    <span id="close-password-dialog" style="font-size: 1.2em; cursor: pointer; color: #fff;">&times;</span>
+  </div>
+<form id="password-form-element" style="background-color: rgba(0, 0, 0, 0.1); padding: 1%; border-radius: 1%; margin-top: 2%; display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; flex-direction: column; width: 80%;">
+          <label for="username" style="font-size: .7em; text-align: left;">Username:</label>
+          <input type="text" id="username" name="username" style="padding: 1%; font-size: .7em; width: 100%; box-sizing: border-box;">
+      </div>
+      <div style="display: flex; flex-direction: column; width: 80%; margin-top: 2%;">
+          <label for="password" style="font-size: .7em; text-align: left;">Password:</label>
+          <input type="password" id="password" name="password" style="padding: 1%; font-size: .7em; width: 100%; box-sizing: border-box;">
+      </div>
+      <div style="display: flex; justify-content: center; width: 100%; margin-top: 2%;">
+        <button type="submit" style="background-color: #3c3a3f; color: #fff; border: none; padding: 1% 2%; border-radius: 1%; cursor: pointer; font-size: .6em;">Submit</button>
+      </div>
+  </form>
+</div>
+
+<script>
+    function showDialogBox() {
+  document.getElementById("password-dialog-box").style.display = "block";
+}
+
+document.getElementById("close-password-dialog").addEventListener("click", function() {
+  document.getElementById("password-dialog-box").style.display = "none";
+});
+
+document.getElementById("password-form-element").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let username = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
+  let customDialogBox = document.getElementById("custom-dialog-box");
+  let customDialogBoxMessage = document.getElementById("custom-dialog-box-message");
+
+  if (username === "arjie" && password === "gwapo") {
+    customDialogBoxMessage.textContent = "Login successful!";
+    customDialogBox.style.display = "flex";
+    document.getElementById("custom-dialog-box-ok").addEventListener("click", function() {
+      customDialogBox.style.display = "none";
+      document.getElementById("password-dialog-box").style.display = "none";
+      document.getElementById("gallery").style.display = "block";
+      document.querySelector('.menu-item > a[href="#"]').setAttribute('href', 'javascript:void(0);');
+    });
+  } else {
+    customDialogBoxMessage.textContent = "Incorrect username or password";
+    customDialogBox.style.display = "flex";
+    document.getElementById("custom-dialog-box-ok").addEventListener("click", function() {
+      customDialogBox.style.display = "none";
+    });
+  }
+});
+
+function showpfolder() {
+  alert("Photos folder");
+}
+
+function showvfolder() {
+  alert("Videos folder");
+}
+</script>
+<div id="custom-dialog-box" class="custom-dialog-box">
+  <div class="custom-dialog-box-content">
+    <p id="custom-dialog-box-message"></p>
+    <button id="custom-dialog-box-ok">OK</button>
+  </div>
+</div>
+    
+   <!-------------------- MENU SECTIONS ---------------------->
+
+   <div class="container">
+        
+
+        <div class="bio-section">
+            <img src="img/me.jpg" alt="Bio Photo" class="bio-photo">
+            <div class="profession">Graphics Specialist</div>
+            <div class="bio-paragraph">
+                <p>I'm Arjie Toro Nunag, born on May 26, 1988, a BS Information Technology graduate with 8 years of experience in the BPO industry, specializing in Content Solutions. As a Graphics Specialist in the Journal department, I've developed expertise in image modification, tailoring visuals to meet authors' precise specifications. Additionally, I've honed my skills as an operator for self-driving cars at Remotask, an AI company, where I worked online for 2 years. I'm passionate about web design, with hands-on experience in creating static websites, and proficient in Adobe Photoshop. Currently, I'm exploring online opportunities while pursuing my hobby of piglet farming to supplement our daily needs.</p>
+            </div> 
+        </div>
+
+        
+
+        <div class="footer">
+            <p>&copy; 2025 Boy Labo. All rights reserved.</p>
+        </div>
+    </div>
+    <div class="social-media-icons">
+      <a href="https://www.facebook.com/arjie.nunag2006" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#" onclick="showDialog('Instagram')">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#" onclick="showDialog('TikTok')">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="#" onclick="showDialog('Twitter')">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" onclick="showDialog('LinkedIn')">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="#" onclick="showDialog('YouTube')">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+
+    <!-- Custom dialog box Soc. Med. icon -->
+<div id="social-dialog-box" class="dialog-box">
+  <div class="dialog-content">
+    <p id="dialog-message"></p>
+    <button id="dialog-close">Okay</button>
+  </div>
+</div>
+
+  <!-- Custom dialog box for Blog Personal -->
+  <div id="alert-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 9999;">
+    <div id="alert-box" style="background-color: #7a7171; color: #fff; padding: 10px; border-radius: 10px; text-align: center; font-size: 18px; font-weight: bold; max-width: 80%;">
+      <div id="alert-message"></div>
+      <button id="alert-ok" style="background-color: #b1aaad; color: #fff; border: none; padding: 10px 10px; border-radius: 5px; cursor: pointer;" onmouseover="this.style.background='#494646'" onmouseout="this.style.background='#b1aaad'">Okay</button>
+    </div>
+  </div>
+  <!-- Custom dialog box for Blog Personal -->
+      
+     <div class="Portfolio-Section">
+        <h2>INTRODUCTION</h2>
+       
+        <p>As a driven and detail-oriented professional with a strong foundation in content solutions and quality assurance, I'm excited to showcase my portfolio. With 8 years of experience as a Graphics Specialist in the BPO industry and 2 years as an operator for self-driving cars, I've developed a unique blend of creative, technical, and analytical skills. Additionally, I've successfully explored web design and piglet farming, demonstrating my adaptability and passion for learning. This portfolio highlights my achievements, skills, and dedication to delivering high-quality results, and I'm eager to leverage my expertise to drive success in new opportunities.</p>
+      </div>
+      
+        <!-- Resume Image -->
+      <div id="image-container" style="display: none;">
+        <img src="path-to-your-image.jpg" id="image-to-show">
+      </div>
+        <!-- Resume Image -->
+     
+        <div class="my-image">
+          <img src="img/nin.jpg" alt="Your Image" class="my-face">
+          <a href="resume.html">
+            <img src="icons/folder1.jpg" alt="Your Image" class="my-icon">
+          </a>
+        </div>
+      <div class="skills-section-container">
+        <div class="skills-section">
+          <h5>Skills Overview</h5>
+          <ul>
+            <li><strong>Graphics Editing:</strong> Proficient in modifying images to meet authors' specifications, ensuring high-quality visuals.</li>
+            <li><strong>Web Design:</strong> Experienced in creating static websites, with a passion for learning and improving web development skills.</li>
+            <li><strong>Technical Skills:</strong> Proficient in Adobe Photoshop and web design tools, with a willingness to learn new technologies.</li>
+            <li><strong>Adaptability:</strong> Able to adapt to new projects, software, and workflows, ensuring flexibility and efficiency.</li>
+            <li><strong>Personal Traits:</strong> Enthusiastic and determined, with a passion for learning and delivering exceptional results.</li>
+            <li><strong>Creativity:</strong> Skilled in finding innovative solutions to design challenges and meeting client needs.</li>
+            <li><strong>Time Management:</strong> Proven ability to manage time effectively, prioritize tasks, and meet deadlines in a fast-paced environment.</li>
+            <li><strong>Attention to Detail:</strong> Meticulous in reviewing and evaluating visual content to ensure precision and quality.</li>
+          </ul>
+        </div>
+      </div>
+
+      
+     
+      <div class="grid-wrapper1">
+        <h2 style="text-align: center; font-size: 1.5vh; font-weight: 500; color: #ffffff; margin-bottom: 0px;">Explore my Career Highlights</h2>
+        <div class="folder-container1">
+          <div class="photo-item">
+            <a href="edu.html">
+              <img src="icons/edu.png" alt="Education" style="width: 100%; height: auto;">
+            </a>
+          </div>
+          <div class="photo-item">
+            <a href="bdo.html">
+              <img src="icons/BPO.png" alt="BDO Industry" style="width: 100%; height: auto;">
+            </a>
+          </div>  
+          <div class="photo-item">
+            <a href="#">
+              <img src="icons/OJ.png" alt="OJ" style="width: 100%; height: auto;">
+            </a>
+          </div>
+          <div class="photo-item">
+            <a href="#">
+              <img src="icons/PG.png" alt="PG" style="width: 100%; height: auto;">
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      
+      <!-- PHOTOFOLDER SECTION -->
+      <div class="pfolder-wrapper">
+        <div class="grid-container">
+            <!-- Your folder items here -->
+            <figure class="folder-item">
+              <a href="Me & I.html">
+                <img src="icons/folder1.png" alt="Folder">
+              </a>
+              <a>
+                <figcaption>Me</figcaption>
+              </a>
+            </figure>
+            <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/folder2.png" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>Favz</figcaption>
+            </figure>
+            <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/folder3.png" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>Travelz</figcaption>
+            </figure>
+            <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/folder4.png" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>coolz</figcaption>
+            </figure>
+        </div>
+    </div>
+     <!-- PHOTOFOLDER SECTION -->
+
+       <!-- VIDEOFOLDER SECTION -->
+       <div class="vfolder-wrapper">
+        <div class="grid-container">
+            <!-- Your folder items here -->
+            <figure class="folder-item">
+              <a href="myVidz.html">
+                <img src="icons/folder5.png" alt="Folder">
+              </a>
+              <a>
+                <figcaption>MyVidz</figcaption>
+              </a>
+            </figure>
+              <figure class="folder-item">
+              <a href="anime.html">
+                <img src="icons/folder5.png" alt="Folder">
+              </a>
+              <a>
+                <figcaption>Anime</figcaption>
+              </a>
+            </figure>
+              <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/folder5.png" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>Travelz</figcaption>
+            </figure>
+           <figure class="folder-item">
+              <a href="#" onclick="this.querySelector('.alert-message').textContent = 'This folder is empty!'; setTimeout(() => {this.querySelector('.alert-message').textContent = '';}, 1000)">
+                <img src="icons/folder5.png" alt="Folder">
+                <span class="alert-message" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: red; font-weight: bold; white-space: nowrap;"></span>
+              </a>
+              <figcaption>Vlogz</figcaption>
+            </figure>
+        </div>
+    </div>
+       <!-- VIDEOFOLDER SECTION -->
+
+ <!-- POLITICAL SECTION -->
+ <div class="political-wrapper">
+  <div class="video-wrapper">
+    <div class="video-title">Rodrigo Duterte Q&A - Asia CEO Forum</div>   
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/i_Fg8CgiCCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="video-wrapper" style="margin-top: 20px;">
+    <div class="video-title">Duterte angry at Rappler</div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/dC4_mOKG14c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+<!-- POLITICAL SECTION -->
+
+<!-- A.I. SECTION -->
+<div class="jarviz-container" style="text-align: center;">
+  <a href="https://www.meta.ai/" style="text-decoration: none; color: #fff;">
+    <img src="images/j.png" style="display: block; margin: 0 auto;">
+    <h3 style="margin-top: 5px; white-space: nowrap;">Ask Jarviz</h3>
+  </a>
+</div>
+<!-- A.I. SECTION -->    
+    
+
+    <script src="script.js"></script>
+
+      <!-- FUNCTIONS FOR ICONS DIALOG BOX SOC. MED. -->
+    <script>
+
+function showDialog(platform) {
+    document.getElementById('dialog-message').innerText = `i still dont have ${platform} account, For display only :-)`;
+    document.getElementById('social-dialog-box').style.display = 'flex';
+}
+
+document.getElementById('dialog-close').addEventListener('click', function() {
+    document.getElementById('social-dialog-box').style.display = 'none';
+});
+    </script>
+   <!-- FUNCTIONS FOR ICONS DIALOG BOX SOC. MED. -->
+
+<!-- SPARKLE TRAIL EFFECTS -->
+<canvas id="sparkle"></canvas>
+<script>
+    let sparkles = [];
+    const canvas = document.getElementById('sparkle');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    document.addEventListener('mousemove', (e) => {
+        sparkles.push({
+            x: e.clientX,
+            y: e.clientY,
+            vx: Math.random() * 2 - 1,
+            vy: Math.random() * 2 - 1,
+            size: Math.random() * 2 + 1,
+            alpha: 1
+        });
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = sparkles.length - 1; i >= 0; i--) {
+            const sparkle = sparkles[i];
+            sparkle.x += sparkle.vx;
+            sparkle.y += sparkle.vy;
+            sparkle.alpha -= 0.01;
+
+            ctx.fillStyle = `rgba(255, 255, 255, ${sparkle.alpha})`;
+            ctx.fillRect(sparkle.x, sparkle.y, sparkle.size, sparkle.size);
+
+            if (sparkle.alpha <= 0) {
+                sparkles.splice(i, 1);
+            }
+        }
+    }
+    animate();
+</script>
+<!-- SPARKLE TRAIL EFFECTS -->
+
+<!-- DIALOG BOX FOR CONFIRMING INPUT FIELD -->
+<script>
+document.getElementById("password-form-element").addEventListener("submit", function(event) {
+  event.preventDefault();
+  let username = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
+  let customDialogBox = document.getElementById("custom-dialog-box");
+  let customDialogBoxMessage = document.getElementById("custom-dialog-box-message");
+
+  if (username === "arjie" && password === "gwapo") {
+    customDialogBoxMessage.textContent = "Success!!!";
+    customDialogBox.style.display = "flex";
+    document.querySelector('.custom-dialog-box-content').style.background = "#808080"; // Light green background
+    document.getElementById("custom-dialog-box-ok").style.background = "#616361"; // Keep button background gray
+    document.getElementById("custom-dialog-box-ok").onclick = function() {
+      customDialogBox.style.display = "none";
+      document.getElementById("password-dialog-box").style.display = "none";
+      document.getElementById("gallery").style.display = "block";
+      document.querySelector('.menu-item > a[href="#"]').setAttribute('href', 'javascript:void(0);');
+    };
+  } else {
+    customDialogBoxMessage.textContent = "Incorrect!!!";
+    customDialogBox.style.display = "flex";
+    document.querySelector('.custom-dialog-box-content').style.background = "#552626"; // Light red background
+    document.getElementById("custom-dialog-box-ok").style.background = "#616361"; // Keep button background gray
+  }
+});
+</script>
+<!-- DIALOG BOX FOR CONFIRMING INPUT FIELD -->
+
+<!-- MESSAGE SECTION -->
+
+
+
+<section id="message" class="p-3" style="position: absolute; bottom: 5vh; left: 21vw; color:white; width: 12vw; font-size: 0.8vw;">
+    <div class="card shadow-lg" style="width: 100%; border-radius: 0.3vw; background-color: #585858; position: relative; padding: 0.5vw;">
+        <span id="close-btn" style="position: absolute; top: -0.3vw; right: 0.3vw; cursor: pointer; font-family: Arial, sans-serif; font-size: 1.2vw;">×</span>
+        <h2 class="mb-4" style="font-size: 0.8vw;">Send a Message</h2>
+        <form id="comment-form" action="https://formspree.io/f/mdkgkwrg" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-box-label" style="font-size: 0.6vw; display: block;">Name</label>
+                <input type="text" class="form-control" id="name" name="name" style="border-radius: 0.1vw; border: none; background-color: #f2f2f2; width: 100%; height: 1.2vw; font-size: 0.6vw;">
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label" style="display: block; font-size: 0.6vw;">Message</label>
+                <textarea class="form-control" id="comment" name="comment" rows="3" style="border-radius: 0.1vw; border: none; background-color: #f2f2f2; width: 100%; font-size: 0.6vw;"></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" style="cursor: pointer; color: white; border-radius: 0.1vw; border: none; background-color: #929792; margin: auto; display: block; padding: 0.2vw 0.5vw; font-size: 0.6vw;">Send</button>
+            </div>
+            <div id="success-message" class="text-center mt-3" style="display: none; color: rgb(92, 211, 191); font-size: 0.6vw;">Message Sent!</div>
+        </form>
+    </div>
+</section>
+<script>
+    const form = document.getElementById('comment-form');
+    const successMessage = document.getElementById('success-message');
+    const closeBtn = document.getElementById('close-btn');
+    const commentSection = document.getElementById('comment');
+
+   closeBtn.addEventListener('click', () => {
+    document.getElementById('message').style.display = 'none';
+});
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            form.reset();
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 2000);
+        })
+        .catch((error) => console.error(error));
+    });
+</script>
+
+<div id="image-trigger" style="cursor: pointer; position: absolute; left: 21vw; bottom: 5vh; z-index: 1; text-align: center;" onmouseover="this.querySelector('img').style.transform='scale(1.2)'" onmouseout="this.querySelector('img').style.transform='scale(1)'" onclick="document.getElementById('message').style.display = 'block';">
+  <img src="icons/message.png" alt="messageimage" style="width: 8vw; height: 8vw; max-width: 50px; max-height: 50px; transition: transform 0.2s; display: block; margin: 0 auto;">
+  <span style="font-size: .7vw; color: #fff;">Message Me</span>
+</div>
+
+
+</body>
+</html>
