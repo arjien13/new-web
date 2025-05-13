@@ -346,7 +346,10 @@ h3 {
  .dropdown-item > a {
   font-size: 2.8vw;
 }
-
+.Portfolio-Section {
+    position: absolute;
+    top: 13vh !important;
+  }
   .Portfolio-Section h2 {
     position: absolute;
     top: -3vh; /* adjust this value to move it up or down */
@@ -356,7 +359,7 @@ h3 {
   }
 
   .Portfolio-Section p {
-   font-size: 2vw !important;
+   font-size: 2.1vw !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
@@ -416,6 +419,32 @@ h3 {
   font-family: "Font Awesome 6 Brands" !important;
   font-size: 2vw;
 }
+
+ .my-image{
+position: absolute;
+top: -4vh;
+left: 0vw !important;
+}
+
+/* Portfolio Images */
+.my-face {
+  position: absolute;
+  top: 37.5vh; 
+  left: 4vw !important;
+  width: 25vw;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.my-icon {
+  position: absolute;
+  top: 47vh !important; 
+  left: 20vw !important;
+  width: 21vw; 
+  height: auto; 
+  mix-blend-mode: multiply;
+}
+/* Portfolio Images */
  
 }
 
