@@ -115,7 +115,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    top: 18vh !important;
+    top: 16.5vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -142,7 +142,7 @@
   position: absolute;
   width: 45vw;
   height: auto; 
-  top: 33vh; 
+  top: 30.5vh; 
   left: 46vw;
   padding: 1vmin;
   box-sizing: border-box;
@@ -291,7 +291,7 @@ h3 {
   height: auto;
   color: #ffffff;
   margin-left: 20vw;
-  margin-top: 58vh;
+  margin-top: 59vh;
   transform: translateX(-10vw);
 }
 
