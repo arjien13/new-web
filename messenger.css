@@ -343,7 +343,9 @@ h3 {
   .menu-item > a {
   font-size: 3vw;
 }
- 
+ .dropdown-item > a {
+  font-size: 2.8vw;
+}
 }
 
 
