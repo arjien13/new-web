@@ -115,7 +115,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    top: 13vh !important;
+    top: 15vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -142,7 +142,7 @@
   position: absolute;
   width: 45vw;
   height: auto; 
-  top: 30vh; 
+  top: 33vh; 
   left: 46vw;
   padding: 1vmin;
   box-sizing: border-box;
