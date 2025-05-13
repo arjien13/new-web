@@ -364,6 +364,22 @@ h3 {
   font-size: 3vw;
 }
 /* Ask jarviz */
+
+  /* Message Image */
+  #image-trigger img {
+    width: 15vw !important;
+    height: 15vw !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
+  }
+  #image-trigger span {
+    font-size: 2.5vw !important;
+  }
+  #image-trigger {
+  left: -3vw !important;
+}
+  /* Message Image */
+ 
 }
 
 
