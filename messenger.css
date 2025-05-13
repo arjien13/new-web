@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
   * {
   margin: 0;
   padding: 0;
@@ -329,21 +329,3 @@ h3 {
 }
 
 
-@media only screen and (max-width: 480px) and (orientation: portrait) {
-.Portfolio-Section {
-    position: absolute;
-    top: 18vh !important;
-  }
-  .grid-wrapper1 {
-  top: 30vh; 
-  }
-
-  .skills-section-container {
-  width: 100vw;
-  height: auto;
-  color: #ffffff;
-  margin-left: 20vw;
-  margin-top: 55vh;
-  transform: translateX(-10vw);
-}
-}
