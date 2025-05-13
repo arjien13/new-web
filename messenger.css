@@ -332,10 +332,10 @@ h3 {
 @media only screen and (max-width: 300px) and (orientation: portrait) {
 .Portfolio-Section {
     position: absolute;
-    top: 16vh !important;
+    top: 18vh !important;
   }
   .grid-wrapper1 {
-  top: 28vh; 
+  top: 30vh; 
   }
 
   .skills-section-container {
@@ -343,7 +343,7 @@ h3 {
   height: auto;
   color: #ffffff;
   margin-left: 20vw;
-  margin-top: 50vh;
+  margin-top: 55vh;
   transform: translateX(-10vw);
 }
 }
