@@ -127,7 +127,7 @@
   }
 
   .Portfolio-Section p {
-   font-size: 1.8vw !important;
+   font-size: 1.9vw !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
@@ -142,7 +142,7 @@
   position: absolute;
   width: 45vw;
   height: auto; 
-  top: 20vh; 
+  top: 25vh; 
   left: 46vw;
   padding: 1vmin;
   box-sizing: border-box;
@@ -316,7 +316,7 @@ h3 {
   width: fit-content; 
 }
 .skills-section li {
- font-size: 1.8vw !important;
+ font-size: 1.9vw !important;
   margin-bottom: 1%;
   text-align: left;
 }
