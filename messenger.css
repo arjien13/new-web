@@ -115,7 +115,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    margin-top: 5vh !important;
+    margin-top: -1vh !important;
   }
 
   .Portfolio-Section h2 {
