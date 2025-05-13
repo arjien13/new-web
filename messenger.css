@@ -12,7 +12,7 @@
   overflow-y: auto;
 }
   .container {
-      width: 150vw !important;
+      width: 500vw !important;
       height: 96vh !important;
       background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 0 1vh rgba(0,0,0,0.3);
