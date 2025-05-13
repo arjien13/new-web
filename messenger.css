@@ -115,7 +115,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    top: 2vh !important;
+    top: 6vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -123,11 +123,11 @@
     top: -3vh; /* adjust this value to move it up or down */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2.5vw !important;
+    font-size: 2vw !important;
   }
 
   .Portfolio-Section p {
-   font-size: 2.1vw !important;
+   font-size: 1.8vw !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
