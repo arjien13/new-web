@@ -23,7 +23,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-   
     }
     .menu {
       position: absolute;
@@ -323,9 +322,23 @@ h3 {
 .skills-section strong {
   font-weight: 530;
 }
-
 /****************** Skills Section ******************/
+}
 
+@media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
+   .container {
+      width: 100vw !important;
+      height: 96vh !important;
+      background-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 1vh rgba(0,0,0,0.3);
+      position: absolute;
+      margin-top: -1vh !important;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 }
 
 
