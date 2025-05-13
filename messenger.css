@@ -352,11 +352,11 @@ h3 {
     top: -3vh; /* adjust this value to move it up or down */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2vw !important;
+    font-size: 2.5vw !important;
   }
 
   .Portfolio-Section p {
-   font-size: 1.9vw !important;
+   font-size: 2vw !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
