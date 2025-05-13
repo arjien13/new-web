@@ -376,7 +376,7 @@ h3 {
     font-size: 2.5vw !important;
   }
   #image-trigger {
-  left: 1vw !important;
+  left: -2vw !important;
 }
   /* Message Image */
 
@@ -385,7 +385,19 @@ h3 {
   bottom: 2vh;
   right: 6vw;
 }
- 
+    .footer {
+   font-size: 1.5em !important;
+    width: 80vw; 
+    height: auto; 
+    transform: scale(1.1); 
+    padding:  .5vw;
+   transform: translateX(-50%);
+   text-align: center;
+}
+ .social-media-icons i {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-size: 2vw;
+}
  
 }
 
