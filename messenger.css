@@ -339,6 +339,11 @@ h3 {
       justify-content: center;
       align-items: center;
     }
+
+  .menu-item > a {
+  font-size: 5vw;
+}
+ 
 }
 
 
