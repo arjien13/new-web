@@ -376,9 +376,16 @@ h3 {
     font-size: 2.5vw !important;
   }
   #image-trigger {
-  left: -3vw !important;
+  left: 1vw !important;
 }
   /* Message Image */
+
+ .social-media-icons {
+  position: absolute;
+  bottom: 2vh;
+  right: 6vw;
+}
+ 
  
 }
 
