@@ -329,7 +329,7 @@ h3 {
 }
 
 
-@media only screen and (max-width: 300px) and (orientation: portrait) {
+@media only screen and (max-width: 480px) and (orientation: portrait) {
 .Portfolio-Section {
     position: absolute;
     top: 18vh !important;
