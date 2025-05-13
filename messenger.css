@@ -327,7 +327,7 @@ h3 {
 
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
    .container {
-      width: 96vw !important;
+      width: 95.5vw !important;
       height: 96vh !important;
       background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 0 1vh rgba(0,0,0,0.3);
