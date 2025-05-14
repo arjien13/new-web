@@ -325,6 +325,9 @@ h3 {
 /****************** Skills Section ******************/
 }
 
+
+/****************** For Tablet Media ******************/
+
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
    .container {
       width: 95.5vw !important;
@@ -348,7 +351,7 @@ h3 {
 }
 .Portfolio-Section {
     position: absolute;
-    top: 13vh !important;
+    top: 15vh !important;
   }
   .Portfolio-Section h2 {
     position: absolute;
@@ -359,7 +362,7 @@ h3 {
   }
 
   .Portfolio-Section p {
-   font-size: 2.1vw !important;
+   font-size: 2.3vw !important;
     width: 80vw; 
     height: auto; 
     transform: scale(1.1); 
