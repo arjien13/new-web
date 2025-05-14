@@ -351,14 +351,14 @@ h3 {
 }
 .Portfolio-Section {
     position: absolute;
-    top: 25vh !important;
+    top: 20vh !important;
   }
   .Portfolio-Section h2 {
     position: absolute;
-    top: -3vh; /* adjust this value to move it up or down */
+    top: -4vh; /* adjust this value to move it up or down */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2.5vw !important;
+    font-size: 3vw !important;
   }
 
   .Portfolio-Section p {
@@ -441,14 +441,38 @@ left: 0vw !important;
 
 .my-icon {
   position: absolute;
-  top: 47vh !important; 
+  top: 49vh !important; 
   left: 20vw !important;
   width: 21vw; 
   height: auto; 
   mix-blend-mode: multiply;
 }
 /* Portfolio Images */
- 
+
+/**********Explore my Career Highlights***********/
+.grid-wrapper1 {
+  position: absolute;
+  width: 45vw;
+  height: auto; 
+  top: 32vh;
+  left: 46vw;
+}
+/**********Explore my Career Highlights***********/
+
+.skills-section-container {
+  width: 100vw;
+  height: auto;
+  color: #ffffff;
+  margin-left: 20vw;
+  margin-top: 68vh;
+  transform: translateX(-10vw);
+}
+
+.skills-section li {
+ font-size: 1.9vw !important;
+  margin-bottom: 1%;
+  text-align: left;
 }
 
 
+}
