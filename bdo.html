@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strive (formerly SPI Global)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: linear-gradient(to right, #dfdcdc, #b6b2b2);
+        }
+        h3 {
+            font-weight: bold;
+            font-size: 15px;
+             color: slategrey;
+        }
+        h2 {
+            
+            font-weight: bold;
+            font-size: 15px;
+            color: rgb(130, 184, 184);
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+            color: lightslategrey;
+        }
+        .card-header {
+            background-color: #575656;
+            color: white;
+        }
+        .back-button {
+    position: fixed;
+    top: 5px; 
+    left: 5px;
+    background-color: #acadac;
+    color: #fff;
+    z-index: 1;
+}
+.back-button:hover {
+            background-color: #969995;
+            color: rgb(255, 255, 255);
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.2);  
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="back-button-container mb-4">
+            <a href="index.html" onclick="localStorage.setItem('showPortfolio', true); return true;" class="btn back-button"> Back</a>
+        </div>
+
+        <section id="company">
+            <h1 class="mb-4 text-center">SPI Global</h1>
+
+            <!-- Overview Section -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2>Company Overview</h2>
+                    <i class="fa-solid fa-building"></i>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="img/main.jpg" alt="Inspiro Relia Inc." class="img-fluid rounded">
+                            <p class="text-center" style="font-size: 0.8rem; font-weight: bold; margin-top: 0.5rem;">Straive (Formerly Spi-Global)</p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>About the Company</h3>
+                                <p style="color: rgb(255, 255, 255);">Strive (formerly SPI Global), a leading publishing company, offers exciting career opportunities in Dumaguete. Join their team and be part of a dynamic organization that specializes in content development, copy editing, and digital publishing. Explore your potential in a role that leverages your skills in publishing and content creation.</p>
+                            </div>
+                            <div>
+                                <h3>Our Experience</h3>
+                                <p style="color: rgb(255, 255, 255);">With years of expertise in publishing, our team is dedicated to delivering high-quality content solutions that meet the evolving needs of our clients. From manuscript development to digital publishing, we're passionate about crafting compelling stories and sharing knowledge with global audiences.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2>Our Services</h2>
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="img/services.jpg" alt="Services" class="img-fluid rounded">
+                            <p class="text-center" style="font-size: 0.8rem; font-weight: bold; margin-top: 0.5rem;">Content Development, Editorial Services, Digital Publishing, and Typesetting and Design.</p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>Our Service Offerings</h3>
+                                <p style="color: rgb(255, 255, 255);">We provide a suite of publishing services, including content development, copy editing, proofreading, and digital publishing solutions, tailored to meet the diverse needs of our clients.</p>
+                            </div>
+                            <div>
+                                <h3>Our Expertise</h3>
+                                <p style="color: rgb(255, 255, 255);">Our team of publishing professionals excels in content development, editorial services, and digital publishing. We're committed to delivering high-quality publications and meeting the evolving needs of authors, brands, and readers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2>Benefits of Working with Us</h2>
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="img/offer.jpg" alt="Benefits" class="img-fluid rounded">
+                            <p class="text-center" style="font-size: 0.8rem; font-weight: bold; margin-top: 0.5rem;">Rewarding compensation, growth opportunities, and expert guidance to help you succeed.</p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3>What We Offer</h3>
+                                <p style="color: rgb(255, 255, 255);">Be part of our dynamic team and enjoy attractive compensation, opportunities for advancement, and expert guidance to help you thrive in your career.</p>
+                            </div>
+                            <div>
+                                <h3>Our Culture</h3>
+                                <p style="color: rgb(255, 255, 255);">Built on a foundation of customer-centricity, teamwork, and continuous improvement, our culture empowers employees to thrive and deliver exceptional results.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
