@@ -99,6 +99,11 @@ document.getElementById('folder-link').addEventListener('click', function() {
   window.open(imageUrl, '_blank');
 });
 
+// Hamburger effect Function
+function toggleMenu() {
+        document.querySelector('.menu').classList.toggle('active');
+    }
+
 
 
 
