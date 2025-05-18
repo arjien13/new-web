@@ -614,3 +614,48 @@ h3 {
 /****************** Skills Section ******************/
 
 
+/****************** Hamburger button ******************/
+
+    
+@media only screen and (max-width: 768px) {
+    
+    .menu.active {
+        display: block;
+        position: absolute;
+        top: 7vh !important;
+        left: 12vh;
+        width: auto;
+        background-color: #333;
+        padding: 5px;
+        background: linear-gradient(to left, #333333, #a19e9e);
+    }
+    .menu-item {
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 1vh;
+    left: 11vh;
+    transform: translateX(-50%) scale(1);
+    padding: 1px;
+    transition: transform 0.2s ease-in-out;
+}
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        cursor: pointer;
+        z-index: 1000 !important;
+    }
+    .hamburger div {
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        margin: 6px 0;
+    }
+}
+
+
