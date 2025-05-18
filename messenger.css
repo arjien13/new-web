@@ -30,7 +30,7 @@
       left: 50vw;
       transform: translateX(-50%);
       background: linear-gradient(to bottom, #333333, #CCCCCC);
-      display: flex;
+      display: none;
       justify-content: center;
       text-align: center;
       gap: 6vw;
