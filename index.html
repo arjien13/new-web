@@ -576,21 +576,23 @@ document.getElementById("password-form-element").addEventListener("submit", func
 
 <!-- INSPECTOR SECTION -->
 <div class="centered-inspector" style="position: relative; width: 100vw; height: 100vh; pointer-events: none;">
- <img style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode: multiply; width: 50px; height: 50px; object-fit: none; cursor: pointer; pointer-events: auto;" src="https://img.freepik.com/premium-vector/spy-icon-detective-agent-vector-illustration_570092-899.jpg" alt="inspector image" onclick="toggleInspector()">
+  <img id="inspector-image" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode: multiply; width: 50px; height: 50px; object-fit: contain; cursor: pointer; pointer-events: auto;" src="https://img.freepik.com/premium-vector/spy-icon-detective-agent-vector-illustration_570092-899.jpg" alt="inspector image">
 </div>
+
 <div id="inspector-message" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 18px; font-weight: bold; text-align: center; background-color: rgba(0, 0, 0, 0.5); color: #fff; padding: 20px; border-radius: 10px; width: 300px; height: 250px; overflow-y: auto;">
-  <span id="inspector-message-text" style="font-size: 4vw; font-weight: normal;">"Hello Welcome, and thanks for visiting my site! I'm a passionate learner and enthusiast of web development, currently developing my skills in HTML, CSS, and JavaScript. I'm building this website from scratch, and it's a reflection of my growth and learning. This site was built with the help of Meta AI. I'm excited to share my experiences and showcase my projects with you. Please feel free to explore and provide feedback – your input is invaluable to me!"</span>
-  <button style="position: absolute; top: 10px; right: 10px; background-color: transparent; border: none; color: #fff; font-size: 18px; cursor: pointer;" onclick="closeInspectorMessage()">x</button>
+  <span id="inspector-message-text" style="font-size: 16px; font-weight: normal;">"Hello Welcome, and thanks for visiting my site! I'm a passionate learner and enthusiast of web development, currently developing my skills in HTML, CSS, and JavaScript. I'm building this website from scratch, and it's a reflection of my growth and learning. This site was built with the help of Meta AI. I'm excited to share my experiences and showcase my projects with you. Please feel free to explore and provide feedback – your input is invaluable to me!"</span>
+  <button id="close-button" style="position: absolute; top: 10px; right: 10px; background-color: transparent; border: none; color: #fff; font-size: 18px; cursor: pointer;">x</button>
 </div>
 
 <script>
-  function toggleInspector() {
-    document.getElementById("inspector-message").style.display = "block";
-  }
+  document.getElementById("inspector-image").addEventListener("click", function() {
+    var inspectorMessage = document.getElementById("inspector-message");
+    inspectorMessage.style.display = inspectorMessage.style.display === "block" ? "none" : "block";
+  });
 
-  function closeInspectorMessage() {
+  document.getElementById("close-button").addEventListener("click", function() {
     document.getElementById("inspector-message").style.display = "none";
-  }
+  });
 </script>
 <!----- INSPECTOR SECTIONS----->
 
