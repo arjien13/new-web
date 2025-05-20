@@ -27,7 +27,7 @@ function showBio() {
 
 // PORFOLIO SECTION
 function showPortfolio() {
-  setDisplay('.intro, #message, centered-inspector, .hamburger, .jarviz-container, .footer, .social-media-icons, .bio-photo, .profession, .bio-paragraph, .bio-section, .pfolder-wrapper, .vfolder-wrapper, #resume-section', 'none');
+  setDisplay('.intro, #message, .centered-inspector, .hamburger, .jarviz-container, .footer, .social-media-icons, .bio-photo, .profession, .bio-paragraph, .bio-section, .pfolder-wrapper, .vfolder-wrapper, #resume-section', 'none');
   setDisplay('.political-wrapper', 'none');
   setDisplay('.Portfolio-Section, .my-image, .folder-container, .grid-wrapper1, .skills-section-container', 'block');
   
