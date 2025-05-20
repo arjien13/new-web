@@ -41,7 +41,7 @@ function showPortfolio() {
 
 // Photofolder SECTION
 function showpfolder() {
-  setDisplay('.intro, #message, centered-inspector, .jarviz-container, .hamburger, .footer, .social-media-icons, .bio-photo, .profession, .bio-paragraph, .political-wrapper, .bio-section, .Portfolio-Section, .my-image, .skills-section-container, .vfolder-wrapper, .grid-wrapper1', 'none');
+  setDisplay('.intro, #message, .centered-inspector, .jarviz-container, .hamburger, .footer, .social-media-icons, .bio-photo, .profession, .bio-paragraph, .political-wrapper, .bio-section, .Portfolio-Section, .my-image, .skills-section-container, .vfolder-wrapper, .grid-wrapper1', 'none');
   setDisplay('.pfolder-wrapper', 'block'); 
 
   if (window.matchMedia("(orientation: portrait)").matches) {
@@ -54,7 +54,7 @@ function showpfolder() {
 
 // Videofolder SECTION
 function showvfolder() {
-  setDisplay('.intro, .jarviz-container, centered-inspector, .hamburger, .footer, .social-media-icons, .bio-photo, .profession, .bio-paragraph, .political-wrapper, .bio-section, .Portfolio-Section, .my-image, .pfolder-wrapper, .skills-section-container, .grid-wrapper1', 'none');
+  setDisplay('.intro, .jarviz-container, .centered-inspector, .hamburger, .footer, .social-media-icons, .bio-photo, .profession, .bio-paragraph, .political-wrapper, .bio-section, .Portfolio-Section, .my-image, .pfolder-wrapper, .skills-section-container, .grid-wrapper1', 'none');
   setDisplay('.vfolder-wrapper', 'block'); 
 
   if (window.matchMedia("(orientation: portrait)").matches) {
