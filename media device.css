@@ -480,8 +480,9 @@ left: 0vw !important;
 .social-media-icons a {
   color: #3d0555;
   transition: color 0.3s ease;
-   margin: 0;
+  margin: 0;
   padding: 0;
+  display: block; /* add this */
 }
 
 .social-media-icons a:hover {
