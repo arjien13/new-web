@@ -20,8 +20,8 @@
   
     .menu {
       position: absolute;
-      top: .7vh !important; 
-      left: 48.6vw;
+      top: -1vh !important; 
+      left: 46vw;
       transform: translateX(-50%);
       background: linear-gradient(to bottom, #333333, #CCCCCC);
       display: none;
@@ -515,7 +515,7 @@ left: 0vw !important;
   background-color: transparent;
   border: none;
   color: #fff;
-  font-size: 3.5vw;
+  font-size: 8vw;
   cursor: pointer;
 }
 /* INSPECTOR SECTION */ 
