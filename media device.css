@@ -232,7 +232,7 @@ left: 0vw !important;
 .jarviz-container {
   position: absolute;
   top: 8vh !important;
-  left: 82vw;
+  left: 83.5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -329,8 +329,8 @@ left: 0vw !important;
 
   .hamburger {
   position: absolute;
-  top: 1.5vh;
-  left: -1.5vh;
+  top: 1vh;
+  left: 1vw;
    z-index: 1000;
 }
 
@@ -349,10 +349,9 @@ left: 0vw !important;
     /****************** HOME ICON ******************/
   .home-icon-container {
   display: flex !important;
-
   position: absolute;
-  top: 1.5vh;
-  left: 3.5vw; /* or a specific value like 10px */
+  top: 1vh;
+  left: 1vw; /* or a specific value like 10px */
   width: auto; /* adjust width to fit content */
 }
   
