@@ -301,12 +301,12 @@ left: 0vw !important;
  .menu.active {
   display: block;
   position: absolute;
-  top: 1.5vh !important;
+  top: 1vh !important;
   left: 13.5vw;
   width: auto;
   padding: 5vw;
   background: linear-gradient(to left, #333333, #a19e9e);
-  z-index: 1000;
+  z-index: 3;
 }
 
 .menu-item > a {
@@ -502,7 +502,7 @@ left: 0vw !important;
   font-weight: 400;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 10vw;
+  padding: 5vw;
   box-sizing: border-box;
   overflow: hidden;
   border-radius: 10px; /* adjust value to your liking */
