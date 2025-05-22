@@ -101,7 +101,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    top: 16.5vh !important;
+    top: 15vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -113,8 +113,8 @@
   }
 
   .Portfolio-Section p {
-   font-size: 1.9vw !important;
-    width: 80vw; 
+   font-size: 2.5vw !important;
+    width: 85vw; 
     height: auto; 
     transform: scale(1.1); 
     box-shadow: 0 0 0.5vh rgba(0, 0, 0, 0.1); 
@@ -212,7 +212,7 @@ left: 0vw !important;
 }
 
 .video-title {
-  font-size: 2vw;
+  font-size: 2.5vw;
   font-weight: 400;
   margin-bottom: 2px;
   text-align: center;
@@ -279,7 +279,7 @@ left: 0vw !important;
   width: fit-content; 
 }
 .skills-section li {
- font-size: 1.9vw !important;
+ font-size: 2.5vw !important;
   margin-bottom: 1%;
   text-align: left;
 }
@@ -500,12 +500,12 @@ left: 0vw !important;
 
 #close-button {
   position: absolute;
-  top: -2px;
+  top: -3px;
   right: 5px;
   background-color: transparent;
   border: none;
   color: #fff;
-  font-size: 30px;
+  font-size: 3.5vw;
   cursor: pointer;
 }
 /* INSPECTOR SECTION */ 
