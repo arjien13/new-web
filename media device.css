@@ -20,8 +20,8 @@
   
     .menu {
       position: absolute;
-      top: -1vh !important; 
-      left: 46vw;
+      top: -2.5vh !important; 
+      left: 44.5vw;
       transform: translateX(-50%);
       background: linear-gradient(to bottom, #333333, #CCCCCC);
       display: none;
@@ -463,7 +463,7 @@ left: 0vw !important;
   mix-blend-mode: multiply;
   width: 13vw;
   height: auto;
-  z-index: 1000;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -510,8 +510,8 @@ left: 0vw !important;
 
 #close-button {
   position: absolute;
-  top: -3px;
-  right: 5px;
+  top: -2vh;
+  right: 1vw;
   background-color: transparent;
   border: none;
   color: #fff;
