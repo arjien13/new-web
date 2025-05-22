@@ -301,7 +301,7 @@ left: 0vw !important;
  .menu.active {
   display: block;
   position: absolute;
-  top: -1vh !important;
+  top: 1.5vh !important;
   left: 13.5vw;
   width: auto;
   padding: 5vw;
@@ -502,7 +502,7 @@ left: 0vw !important;
   font-weight: 400;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 20px;
+  padding: 10vw;
   box-sizing: border-box;
   overflow: hidden;
   border-radius: 10px; /* adjust value to your liking */
