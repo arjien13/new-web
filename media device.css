@@ -20,8 +20,8 @@
   
     .menu {
       position: absolute;
-      top: -2.5vh !important; 
-      left: 44.5vw;
+      top: -4vh !important; 
+      left: 43vw;
       transform: translateX(-50%);
       background: linear-gradient(to bottom, #333333, #CCCCCC);
       display: none;
@@ -301,8 +301,8 @@ left: 0vw !important;
  .menu.active {
   display: block;
   position: absolute;
-  top: 1vh !important;
-  left: 14vw;
+  top: -1.5vh !important;
+  left: 13.5vw;
   width: auto;
   padding: 5vw;
   background: linear-gradient(to left, #333333, #a19e9e);
@@ -337,7 +337,7 @@ left: 0vw !important;
   position: absolute;
   top: -1vh;
   left: -2vw;
-   z-index: 1000;
+   z-index: 1;
 }
 
 .hamburger img {
@@ -510,12 +510,12 @@ left: 0vw !important;
 
 #close-button {
   position: absolute;
-  top: -2vh;
-  right: 1vw;
+  top: -1.5vh;
+  right: -1.5vw;
   background-color: transparent;
   border: none;
   color: #fff;
-  font-size: 8vw;
+  font-size: 7vw;
   cursor: pointer;
 }
 /* INSPECTOR SECTION */ 
