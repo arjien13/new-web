@@ -20,8 +20,8 @@
   
     .menu {
       position: absolute;
-      top: .8vh !important; 
-      left: 48.8vw;
+      top: .7vh !important; 
+      left: 48.6vw;
       transform: translateX(-50%);
       background: linear-gradient(to bottom, #333333, #CCCCCC);
       display: none;
@@ -42,6 +42,7 @@
 
 .dropdown-item > a {
   font-size: 2.8vw;
+  margin-bottom: 2vw;
 }
 
 
@@ -115,7 +116,7 @@
 
   .Portfolio-Section h2 {
     position: absolute;
-    top: -2vh; /* adjust this value to move it up or down */
+    top: -5vh; /* adjust this value to move it up or down */
     left: 50%;
     transform: translateX(-50%);
     font-size: 3vw !important;
