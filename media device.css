@@ -320,6 +320,7 @@ left: 0vw !important;
 
 .dropdown-item > a {
   font-size: 2.8vw;
+  margin bottom: 2.5vh;
 }
 
   .hamburger {
@@ -484,10 +485,10 @@ left: 0vw !important;
 }
 
 #inspector-message-text {
-  width: 50vw; 
+  width: 80vw; 
   height: auto; 
   word-wrap: break-word; 
-  font-size: 2.5vw;
+  font-size: 3vw;
   font-weight: 400;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
