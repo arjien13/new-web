@@ -6,7 +6,16 @@
   padding: 0;
   font-family: 'Montserrat', sans-serif !important;
 }
- 
+ .container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 120vh;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 1vmin rgba(0, 0, 0, 0.1) !important;
+}
  
   
     .menu {
@@ -101,7 +110,7 @@
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
-    top: 15vh !important;
+    top: 17vh !important;
   }
 
   .Portfolio-Section h2 {
@@ -109,7 +118,7 @@
     top: -3vh; /* adjust this value to move it up or down */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2vw !important;
+    font-size: 3vw !important;
   }
 
   .Portfolio-Section p {
@@ -128,7 +137,7 @@
   position: absolute;
   width: 45vw;
   height: auto; 
-  top: 28vh; 
+  top: 30vh; 
   left: 46vw;
   padding: 1vmin;
   box-sizing: border-box;
