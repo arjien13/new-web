@@ -39,7 +39,6 @@
 .footer p {
   font-size: 2vw !important;
   position: absolute;
-  bottom: -3vh;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -325,8 +324,8 @@ left: 0vw !important;
 
   .hamburger {
   position: absolute;
-  top: -2vh;
-  left: -1vw;
+  top: -2.5vh;
+  left: -2vw;
    z-index: 1000;
 }
 
