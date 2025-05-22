@@ -301,7 +301,7 @@ left: 0vw !important;
  .menu.active {
   display: block;
   position: absolute;
-  top: 1vh !important;
+  top: .8vh !important;
   left: 13.5vw;
   width: auto;
   padding: 5vw;
@@ -510,7 +510,7 @@ left: 0vw !important;
 
 #close-button {
   position: absolute;
-  top: -1.5vh;
+  top: -1.3vh;
   right: 1vw;
   background-color: transparent;
   border: none;
