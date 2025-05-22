@@ -11,16 +11,8 @@
   text-size-adjust: none;
 }
  
- .container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 97vw;
-  height: 98vh;
-  background-color: rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 0 1vmin rgba(0, 0, 0, 0.1) !important;
-}
+ 
+  
     .menu {
       position: absolute;
       top: 1vh !important; 
