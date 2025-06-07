@@ -435,7 +435,7 @@ left: 0vw !important;
   cursor: pointer;
   position: absolute;
   bottom: 1.5vh;
-  left: 3vw;
+  left: 1.5vw;
   z-index: 1;
   text-align: center;
 }
