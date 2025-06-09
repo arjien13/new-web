@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: linear-gradient(to right, #dfdcdc, #b6b2b2);
+        }
+        h3 {
+            font-weight: bold;
+            font-size: 15px;
+            color: slategrey;
+        }
+        h2 {
+            font-weight: bold;
+            font-size: 15px;
+            color: rgb(130, 184, 184);
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+            color: lightslategrey;
+        }
+        .card-header {
+            background-color: #575656;
+            color: white;
+        }
+        .back-button {
+            position: fixed;
+            top: 5px; 
+            left: 5px;
+            background-color: #acadac;
+            color: #fff;
+            z-index: 1;
+        }
+        .back-button:hover {
+            background-color: #969995;
+            color: rgb(255, 255, 255);
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.2);  
+        }
+        @media only screen and (max-width: 768px) and (min-height: 767px) {
+            #scale-container {
+                transform: scale(1.1) translateY(5%) translateX(0.2%);
+                transform-origin: center;
+                overflow-y: auto; 
+            }
+            .back-button {
+                position: fixed;
+                left: 30px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="scale-container">
+        <div class="container mt-5">
+            <div class="back-button-container mb-4">
+                <a href="index.html" class="btn back-button"> Back</a>
+            </div>
+            <section id="hobbies">
+                <h1 class="mb-4 text-center">My Hobbies</h1>
+                <!-- Traveling Section -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2>Traveling</h2>
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://sandee.com/_next/image?url=https%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipPA7MYHjF1pomMybBIr86zhmYHrPMbbPfZTEr-8%3Ds1600-k-no&w=3840&q=75" alt="Traveling" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-8">
+                                <p style="color: rgb(255, 255, 255);">Traveling is my passion, and I'm always eager to explore new destinations. For now, I'm excited to discover the hidden gems in my own province, where breathtaking landscapes, rich culture, and warm hospitality await. From scenic coastal roads to majestic mountains, I'm looking forward to immersing myself in the local way of life, trying new foods, and capturing unforgettable memories. Whether it's a spontaneous road trip or a carefully planned itinerary, I know that each journey will bring its own unique adventures and experiences that will leave me feeling inspired and refreshed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Building Hobby Section -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2>Building Hobby</h2>
+                        <i class="fa-solid fa-hammer"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="images/TS.jpg" alt="Building" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-8">
+                                <p style="color: rgb(255, 255, 255);">As I've grown older, my hobbies have taken an unexpected turn. Despite spending my career studying computers and related fields, I've discovered a new passion for building things. With no formal training as a carpenter, I've had to learn through trial and error. I'd search online tutorials, make mistakes, and redo things until I got it right. The process has been exhilarating, and the sense of accomplishment I feel when I complete a project is unmatched. I've become surprisingly self-sufficient, tackling projects like building a fishpond, outdoor kitchen, parking space, and even piggery cages. Without needing to hire a carpenter, I've taken on the challenge and learned as I go. It's been a rewarding journey, and I'm proud of what I've created with my own two hands.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pig Farming Section -->
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h2>Pig Farming</h2>
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="images/pig.jpg" alt="Pig Farming" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-8">
+                                <p style="color: rgb(255, 255, 255);">Pig farming is more than just a hobby for me - it's a labor of love that brings both joy and challenge. Despite the many obstacles and discouragements that come with it, I find myself drawn to the simple yet rewarding process of raising these intelligent and social animals. For now, it's a passion project that allows me to connect with nature and learn new skills. But I envision a future where it becomes a sustainable source of income for me and my family. With every hurdle, I take a deep breath, close my eyes, and press on, fueled by the hope of partial success and the thrill of nurturing life. Even if it starts as just a hobby, I'm excited to see where this journey takes me.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
