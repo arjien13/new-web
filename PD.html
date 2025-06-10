@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif !important;
+      background-image: linear-gradient(to right, #808080, #666666);
+    }
+    .container {
+      width: 50%;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .labelu {
+      color: #a2bbff; /* blue */
+      font-weight: normal;
+    }
+
+    .labelp {
+      color: #fc3924; /* red */
+      font-weight: normal;
+    }
+
+    .value {
+      color: #24fcfc; /* cyan */
+      font-weight: normal;
+      filter: blur(3.5px);
+      transition: filter 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .value:hover {
+      filter: blur(0px);
+    }
+
+    .platform {
+      font-weight: bold;
+      color: #ffffff;
+    }
+    li {
+      margin-bottom: 20px
+    }
+
+    .back-button-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 1rem;
+    }
+
+    .back-button {
+      background-color: #acadac;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #676966;
+    }
+
+    .data-container {
+      text-align: left;
+      margin: 0;
+    }
+    /* Mobile (max-width: 768px) */
+    @media only screen and (max-width: 768px) {
+      .container {
+        width: 90% !important;
+        margin: 50px auto 20px !important; /* add margin-top to make space for the back button */
+        padding: 10px !important;
+      }
+      .data-container {
+        font-size: 14px !important;
+      }
+      .platform {
+        font-size: 16px !important;
+      }
+      .back-button-container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        padding: 1rem !important;
+      }
+      .back-button {
+        padding: 0.5rem 1rem !important; /* maintain original padding */
+        font-size: 14px !important; /* adjust font size if needed */
+      }
+    }
+
+    /* Tablet (min-width: 769px) and (max-width: 1024px) */
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+      .container {
+        width: 80% !important;
+        margin: 50px auto 20px !important; /* add margin-top to make space for the back button */
+        padding: 15px !important;
+      }
+      .data-container {
+        font-size: 15px !important;
+      }
+      .platform {
+        font-size: 17px !important;
+      }
+      .back-button-container {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        padding: 1rem !important;
+      }
+      .back-button {
+        padding: 0.5rem 1rem !important; /* maintain original padding */
+        font-size: 14px !important; /* adjust font size if needed */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="color: white; text-align: center;">Personal Details</h2>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      <li>
+        <div class="data-container">
+          <span class="platform">Facebook/main:</span><br>
+          <span class="labelu">Username:</span> <span class="value">arjie.nunag2006@gmail.com</span><br>
+          <span class="labelp">Password:</span> <span class="value">January2006**</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Facebook/second:</span><br>
+          <span class="labelu">Username:</span> <span class="value">arjienunag_13@yahoo.com</span><br>
+          <span class="labelp">Password:</span> <span class="value">arjien13@824</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">MaMa FB:</span><br>
+          <span class="labelu">Username:</span> <span class="value">juliet.toro73</span><br>
+          <span class="labelp">Password:</span> <span class="value">juliet23</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Yahoomail/Paypal/Discord:</span><br>
+          <span class="labelu">Username:</span> <span class="value">arjienunag_13@yahoo.com</span><br>
+          <span class="labelp">Password:</span> <span class="value">January132006</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Gmail:</span><br>
+          <span class="labelu">Username:</span> <span class="value">arjien261988</span><br>
+          <span class="labelp">Password:</span> <span class="value">arjien13@824</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Dota Account:</span><br>
+          <span class="labelu">Username:</span> <span class="value">Mryoso1313</span><br>
+          <span class="labelp">Password:</span> <span class="value">arjien13</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Dota 2nd Account:</span><br>
+          <span class="labelu">Username:</span> <span class="value">arjien13</span><br>
+          <span class="labelp">Password:</span> <span class="value">atn13@824</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">TIN:</span><br>
+          <span class="labelu">TIN no.:</span> <span class="value">293-517-139</span><br>
+          <span class="labelu">RDO CODE:</span> <span class="value">079</span><br>
+          <span class="labelu">TaxPayer Classification:</span> <span class="value">EO98</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Dumm:</span><br>
+          <span class="labelu">Username:</span> <span class="value">09281414973</span><br>
+          <span class="labelp">Password:</span> <span class="value">dumm1212</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Paypal 2nd Account:</span><br>
+          <span class="labelu">Username:</span> <span class="value">atn261988@gmail.com</span><br>
+          <span class="labelp">Password:</span> <span class="value">arjien13@824</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">Formspree:</span><br>
+          <span class="labelu">Username:</span> <span class="value">arjien261988@gmail.com</span><br>
+          <span class="labelp">Password:</span> <span class="value">arjieN13@824</span>
+        </div>
+      </li>
+      <li>
+        <div class="data-container">
+          <span class="platform">github:</span><br>
+          <span class="labelu">Username:</span> <span class="value">arjienunag_13@yahoo.com/ or MyZyT13</span><br>
+          <span class="labelp">Password:</span> <span class="value">arjien13@824</span>
+        </div>
+      </li>
+       <li>
+        <div class="data-container">
+          <span class="platform">Ask Permission: base64 encoding </span><br>
+          <span class="labelu">Username:</span> <span class="value">arjien13</span><br>
+          <span class="labelp">Password:</span> <span class="value">pogi</span>
+        </div>
+      </li>
+      
+       </ul>
+       </div>
+             <div class="back-button-container">
+        <a href="index.html" class="back-button"> Back</a>
+      </div>
+
+</body>
+</html>
