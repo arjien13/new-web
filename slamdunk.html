@@ -463,7 +463,22 @@ i === 100 ? "https://pa1.aminoapps.com/6788/858a988854a0ed47d4d71877558c99a58b92
     <source src="sounds/SD.weba" type="audio/webm">
   </audio>
   
-  <button class="play-button" onclick="document.getElementById('myAudio').play()">Play Me</button>
+  <button class="play-button" id="playButton" onclick="toggleAudio()">Play Me</button>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById('myAudio');
+    const button = document.getElementById('playButton');
+
+    if (audio.paused) {
+      audio.play();
+      button.textContent = 'Stop';
+    } else {
+      audio.pause();
+      button.textContent = 'Play Me';
+    }
+  }
+</script>
   
 </body>
 </html>
