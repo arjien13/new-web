@@ -416,7 +416,22 @@ i === 67 ? "https://i.makeagif.com/media/2-20-2016/yzWJBU.gif" :
     <source src="sounds/dbgt.weba" type="audio/webm">
   </audio>
   
-  <button class="play-button" onclick="document.getElementById('myAudio').play()">Play Me</button>
+  <button class="play-button" id="playButton" onclick="toggleAudio()">Play Me</button>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById('myAudio');
+    const button = document.getElementById('playButton');
+
+    if (audio.paused) {
+      audio.play();
+      button.textContent = 'Stop';
+    } else {
+      audio.pause();
+      button.textContent = 'Play Me';
+    }
+  }
+</script>
   
 </body>
 </html>
