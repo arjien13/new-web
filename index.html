@@ -167,11 +167,21 @@ top: .5vh;
  <!-------------------- MENU SECTIONS ---------------------->
 
 
- <!-- INSPECTOR IMAGE -->
+<!-- INSPECTOR IMAGE -->
  <div class="inspector">
- <img id="inspector-image" src="https://img.freepik.com/premium-vector/spy-icon-detective-agent-vector-illustration_570092-899.jpg" alt="inspector image">
-<h5>click me</h5>
+  <img id="inspector-image" src="https://img.freepik.com/premium-vector/spy-icon-detective-agent-vector-illustration_570092-899.jpg" alt="inspector image">
+  <h5>click me</h5>
+  <audio id="audio" src="sounds/u set my soul in fire.weba"></audio>
 </div>
+
+<script>
+  const image = document.getElementById('inspector-image');
+  const audio = document.getElementById('audio');
+
+  image.addEventListener('click', () => {
+    audio.play();
+  });
+</script>
  <!-- INSPECTOR IMAGE -->
  
  
