@@ -106,7 +106,6 @@
         }
 
       
-
   /********************* PORTFOLIO *********************/
   .Portfolio-Section {
     position: absolute;
@@ -240,7 +239,7 @@ left: 0vw !important;
 
 .pfolder-wrapper h1 {
   font-size: 4.5vw !important;
-  margin-top: 2vh !important;
+  margin-top: -2vh !important;
 }
 
 /***************** VIDEO FOLDER SECTION **********/    
