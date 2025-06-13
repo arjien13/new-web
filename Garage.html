@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <style>
+
+body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: linear-gradient(to right, #808080, #666666);
+        }
+
+    #car {
+      width: 200px;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s ease-in-out;
+      cursor: pointer;
+    }
+
+    #motorbike {
+  width: 105px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+
+.help-button-container {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 1;
+}
+
+.help-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.help-button:hover {
+  background-color: #969995;
+}
+
+.help-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.help-modal-content {
+  background: rgba(0, 0, 0, 0.3); /* dark transparent background */
+  margin: 15% auto;
+  padding: 20px;
+  
+  width: fit-content;
+  position: relative;
+  color: white;
+}
+
+.help-modal-close {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  font-size: 28px;
+  font-weight: 350;
+  cursor: pointer;
+}
+
+.help-modal-close:hover,
+.help-modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+    .back-button {
+            position: fixed;
+            top: 5px; 
+            left: 5px;
+            background-color: #acadac;
+            color: #fff;
+            z-index: 1000; 
+            padding: 5px 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .back-button:hover {
+            background-color: #969995;
+            color: rgb(255, 255, 255);
+        }
+@media (max-width: 768px) {
+  #car {
+    width: 200px;
+    left: 68% !important;
+  }
+ #motorbike {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 49%;
+  left: 27%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+  .help-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  width: max-content; /* or a specific width, e.g., 500px */
+  padding: 15px;
+}
+
+.help-modal-content {
+  margin: auto;
+  font-size: 10px;
+}
+  
+  
+  .help-modal-close {
+  position: absolute;
+  top: -15px;
+  right: 5px;
+  font-size: 36px !important;
+  font-weight: 350;
+  cursor: pointer;
+}
+}
+
+
+@media (max-width: 480px) {
+  #car {
+    width: 150px;
+  }
+   .help-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  width: max-content; /* or a specific width, e.g., 500px */
+  padding: 15px;
+}
+
+.help-modal-content {
+  margin: auto;
+  font-size: 10px;
+}
+  
+  .help-modal-close {
+    font-size: 36px !important;
+  }
+}
+        
+
+  </style>
+</head>
+<body>
+  <div class="back-button-container mb-4">
+    <a href="index.html" class="back-button"> Back</a>
+  </div>
+
+
+  <div class="help-button-container">
+  <button id="help-button" class="help-button">
+    <i class="fa-solid fa-circle-question"></i>
+  </button>
+  <div id="help-modal" class="help-modal">
+    <div class="help-modal-content">
+      <span id="help-modal-close" class="help-modal-close">&times;</span>
+      <h4>How to drive</h4>
+      <h5>For PC:</h5>
+      <ul>
+        <li>Click the Car</li>
+        <li>Drag the car using your mouse.</li>
+        <li>Use the mouse wheel to zoom in and out.</li>
+        <li>Right-click to flip the car.</li>
+      </ul>
+      <h5>For Mobile:</h5>
+      <ul>
+        <li>Press the Car</li>
+        <li>Drag the car using your finger.</li>
+        <li>Pinch to zoom in and out.</li>
+        <li>Double-tap to flip the car.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <img id="car" src="https://file.aiquickdraw.com/imgcompressed/img/compressed_39ba26adb73a8722bc6b82992e39aa87.webp" alt="Car">
+  <img  id="motorbike" src="https://rosepng.com/wp-content/uploads/elementor/thumbs/s11728_motor_bike_isolated_on_white_background_-stylize_200_299a4efc-24fc-4984-b172-946f30b3d062_1-photoroom-png-photoroom_11zon-qlfzmjilbfw5d12hhloh8jq30uimfgkuw3lhuqm1ls.png" alt="Motorbike">
+
+  <!-- Script Car Function -->
+  <script>
+   document.addEventListener('contextmenu', (e) => e.preventDefault());
+const car = document.getElementById('car');
+let rotation = 0;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let x = 0;
+let y = 0;
+let scale = 1;
+let flipped = false;
+let lastTouchEnd = 0;
+let distance = 0;
+let initialDistance = 0;
+let initialScale = scale;
+
+car.addEventListener('wheel', (e) => {
+  rotation += e.deltaY * 0.1;
+  scale += e.deltaY * 0.01;
+  if (scale < 0.5) scale = 0.5;
+  car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+});
+
+car.addEventListener('mousedown', (e) => {
+  if (e.button === 0) {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    x = car.offsetLeft;
+    y = car.offsetTop;
+  } else if (e.button === 2) {
+    flipped = !flipped;
+    car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+    car.style.transition = 'transform 2s ease-in-out';
+    setTimeout(() => {
+      car.style.transition = 'transform 0.5s ease-in-out';
+    }, 2000);
+  }
+});
+
+document.addEventListener('mousemove', handleMove);
+document.addEventListener('mouseup', () => isDragging = false);
+
+car.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1) {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    x = car.offsetLeft;
+    y = car.offsetTop;
+  } else if (e.touches.length === 2) {
+    initialDistance = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    initialScale = scale;
+  }
+});
+
+car.addEventListener('touchend', (e) => {
+  isDragging = false;
+  let now = new Date().getTime();
+  if (now - lastTouchEnd <= 300) {
+    flipped = !flipped;
+    car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+    car.style.transition = 'transform 2s ease-in-out';
+    setTimeout(() => {
+      car.style.transition = 'transform 0.5s ease-in-out';
+    }, 2000);
+  }
+  lastTouchEnd = now;
+});
+
+document.addEventListener('touchmove', (e) => {
+  if (isDragging && e.touches.length === 1) {
+    let clientX = e.touches[0].clientX;
+    let clientY = e.touches[0].clientY;
+    car.style.left = `${clientX - startX + x}px`;
+    car.style.top = `${clientY - startY + y}px`;
+    car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+  } else if (e.touches.length === 2) {
+    distance = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    scale = initialScale * (distance / initialDistance);
+    if (scale < 0.5) scale = 0.5;
+    car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+  }
+});
+
+function handleMove(e) {
+  if (isDragging) {
+    let clientX = e.clientX || e.touches[0].clientX;
+    let clientY = e.clientY || e.touches[0].clientY;
+    car.style.left = `${clientX - startX + x}px`;
+    car.style.top = `${clientY - startY + y}px`;
+    car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+  }
+}
+
+car.addEventListener('mouseover', () => {
+  car.style.transform = `translate(-50%, -50%) scale(1.1) ${flipped ? 'scaleX(-1)' : ''} rotate(${rotation}deg)`;
+});
+
+car.addEventListener('mouseout', () => {
+  car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+});
+  </script>
+
+
+
+<!-- Script Motorbike Function -->
+ <script> const motorbike = document.getElementById('motorbike');
+let rotationMotorbike = 0;
+let isDraggingMotorbike = false;
+let startXMotorbike = 0;
+let startYMotorbike = 0;
+let xMotorbike = 0;
+let yMotorbike = 0;
+let scaleMotorbike = 1;
+let flippedMotorbike = false;
+let lastTouchEndMotorbike = 0;
+let distanceMotorbike = 0;
+let initialDistanceMotorbike = 0;
+let initialScaleMotorbike = scaleMotorbike;
+
+motorbike.addEventListener('wheel', (e) => {
+  rotationMotorbike += e.deltaY * 0.1;
+  scaleMotorbike += e.deltaY * 0.01;
+  if (scaleMotorbike < 0.5) scaleMotorbike = 0.5;
+  motorbike.style.transform = `translate(-50%, -50%) rotate(${rotationMotorbike}deg) scale(${scaleMotorbike}) ${flippedMotorbike ? 'scaleX(-1)' : ''}`;
+});
+
+motorbike.addEventListener('mousedown', (e) => {
+  if (e.button === 0) {
+    isDraggingMotorbike = true;
+    startXMotorbike = e.clientX;
+    startYMotorbike = e.clientY;
+    xMotorbike = motorbike.offsetLeft;
+    yMotorbike = motorbike.offsetTop;
+  } else if (e.button === 2) {
+    flippedMotorbike = !flippedMotorbike;
+    motorbike.style.transform = `translate(-50%, -50%) rotate(${rotationMotorbike}deg) scale(${scaleMotorbike}) ${flippedMotorbike ? 'scaleX(-1)' : ''}`;
+    motorbike.style.transition = 'transform 2s ease-in-out';
+    setTimeout(() => {
+      motorbike.style.transition = 'transform 0.5s ease-in-out';
+    }, 2000);
+  }
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDraggingMotorbike) {
+    let clientX = e.clientX;
+    let clientY = e.clientY;
+    motorbike.style.left = `${clientX - startXMotorbike + xMotorbike}px`;
+    motorbike.style.top = `${clientY - startYMotorbike + yMotorbike}px`;
+    motorbike.style.transform = `translate(-50%, -50%) rotate(${rotationMotorbike}deg) scale(${scaleMotorbike}) ${flippedMotorbike ? 'scaleX(-1)' : ''}`;
+  }
+});
+
+document.addEventListener('mouseup', () => isDraggingMotorbike = false);
+
+motorbike.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1) {
+    isDraggingMotorbike = true;
+    startXMotorbike = e.touches[0].clientX;
+    startYMotorbike = e.touches[0].clientY;
+    xMotorbike = motorbike.offsetLeft;
+    yMotorbike = motorbike.offsetTop;
+  } else if (e.touches.length === 2) {
+    initialDistanceMotorbike = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    initialScaleMotorbike = scaleMotorbike;
+  }
+});
+
+motorbike.addEventListener('touchend', (e) => {
+  isDraggingMotorbike = false;
+  let now = new Date().getTime();
+  if (now - lastTouchEndMotorbike <= 300) {
+    flippedMotorbike = !flippedMotorbike;
+    motorbike.style.transform = `translate(-50%, -50%) rotate(${rotationMotorbike}deg) scale(${scaleMotorbike}) ${flippedMotorbike ? 'scaleX(-1)' : ''}`;
+    motorbike.style.transition = 'transform 2s ease-in-out';
+    setTimeout(() => {
+      motorbike.style.transition = 'transform 0.5s ease-in-out';
+    }, 2000);
+  }
+  lastTouchEndMotorbike = now;
+});
+
+document.addEventListener('touchmove', (e) => {
+  if (isDraggingMotorbike && e.touches.length === 1) {
+    let clientX = e.touches[0].clientX;
+    let clientY = e.touches[0].clientY;
+    motorbike.style.left = `${clientX - startXMotorbike + xMotorbike}px`;
+    motorbike.style.top = `${clientY - startYMotorbike + yMotorbike}px`;
+    motorbike.style.transform = `translate(-50%, -50%) rotate(${rotationMotorbike}deg) scale(${scaleMotorbike}) ${flippedMotorbike ? 'scaleX(-1)' : ''}`;
+  } else if (e.touches.length === 2) {
+    distanceMotorbike = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    scaleMotorbike = initialScaleMotorbike * (distanceMotorbike / initialDistanceMotorbike);
+    if (scaleMotorbike < 0.5) scaleMotorbike = 0.5;
+    motorbike.style.transform = `translate(-50%, -50%) rotate(${rotationMotorbike}deg) scale(${scaleMotorbike}) ${flippedMotorbike ? 'scaleX(-1)' : ''}`;
+  }
+});
+
+
+motorbike.addEventListener('mouseover', () => {
+  motorbike.style.transform = `translate(-50%, -50%) scale(1.1) ${flippedMotorbike ? 'scaleX(-1)' : ''} rotate(${rotationMotorbike}deg)`;
+});
+
+motorbike.addEventListener('mouseout', () => {
+  motorbike.style.transform = `translate(-50%, -50%) rotate(${rotationMotorbike}deg) scale(${scaleMotorbike}) ${flippedMotorbike ? 'scaleX(-1)' : ''}`;
+});
+
+</script>
+
+<!-- Script Motorbike Sound -->
+<audio id="motorbike-sound" src="sounds/motorbike.weba" preload="auto"></audio>
+
+<script>
+
+  const motorbikeSound = document.getElementById('motorbike-sound');
+
+motorbike.addEventListener('click', () => {
+  motorbikeSound.currentTime = 0;
+  motorbikeSound.play();
+});
+
+motorbike.addEventListener('touchstart', () => {
+  motorbikeSound.currentTime = 0;
+  motorbikeSound.play();
+});
+
+</script>
+
+<!-- Script for Help -->
+<script>
+document.getElementById('help-button').addEventListener('click', () => {
+  document.getElementById('help-modal').style.display = 'block';
+});
+
+document.getElementById('help-modal-close').addEventListener('click', () => {
+  document.getElementById('help-modal').style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === document.getElementById('help-modal')) {
+    document.getElementById('help-modal').style.display = 'none';
+  }
+});
+</script>
+
+
+<!-- Script Car Sound -->
+<audio id="start-sound" src="sounds/ferrari.weba" preload="auto"></audio>
+<script>
+const startSound = document.getElementById('start-sound');
+
+const playStartSound = () => {
+  startSound.currentTime = 0;
+  startSound.play();
+};
+
+car.addEventListener('click', playStartSound);
+car.addEventListener('touchstart', playStartSound);
+
+</script>
+
+</body>
+</html>
