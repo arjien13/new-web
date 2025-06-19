@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>garage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  
+  <style>
+
+ * {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('images/garage.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  z-index: 3;
+        }
+
+    #car {
+      width: 50vw;
+      height: auto;
+      position: absolute;
+      top: 77%;
+      left: 65%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s ease-in-out;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    #bike {
+      width: 27vw;
+      height: auto;
+      position: absolute;
+      top: 75%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s ease-in-out;
+      cursor: pointer;
+    }
+
+
+    #car:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+#bike:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+
+    
+        .back-button {
+            top: 5px; 
+            left: 5px;
+            background-color: #acadac;
+            color: #fff;
+            z-index: 1;
+        }
+        .back-button:hover {
+            background-color: #969995;
+            color: rgb(255, 255, 255);
+        }
+
+#start-stop-sound-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#start-stop-sound-button:hover {
+  background-color: #969995;
+}
+
+.mobile-buttons {
+  position: relative;
+}
+
+.back-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+#start-stop-sound-button, .zoom-buttons {
+  position: absolute;
+  margin-top: 2%;
+  left: .5%;
+}
+
+#start-stop-sound-button {
+  top: 1rem;
+}
+
+.zoom-buttons {
+  top: calc(1rem + 2.5rem); /* assuming the button height is around 2.5rem */
+  right: 1rem;
+}
+
+.zoom-out-button, .zoom-in-button {
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 20px !important;
+  background-color: gray !important;
+  color: white !important;
+  border: none !important;
+  display: inline-block !important;
+  padding: 0 !important;
+}
+
+
+.help-button-container {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 1;
+}
+
+.help-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.help-button:hover {
+  background-color: #969995;
+}
+
+.help-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.help-modal-content {
+  background: rgba(0, 0, 0, 0.6); /* dark transparent background */
+  margin: 15% auto;
+  padding: 20px;
+  width: fit-content;
+  position: relative;
+  color: white;
+}
+
+.help-modal-close {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  font-size: 28px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.help-modal-close:hover,
+.help-modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#chopper-button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: #acadac;
+  border-color: #acadac;
+}
+
+#chopper-button:hover {
+  background-color: #969995;
+  border-color: #969995;
+}
+
+@media (max-width: 768px) {
+ .help-button-container {
+  position: fixed;
+  top: 5px;
+  right: 25px;
+  font-size: 10px;
+
+}
+
+  #background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('images/garage.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -100 !important;
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  pointer-events: none !important; /* Add this line */
+  user-select: none !important; /* Add this line */
+}
+
+  html, body {
+    height: 100vh !important;
+    max-width: 4000px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+
+body {
+  overflow-y: hidden;
+}
+ 
+  #car {
+    width: 90vw;
+    height: auto;
+    position: absolute;
+    top: 70%;
+    left: 61.5%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  #bike {
+      width: 45vw;
+      height: auto;
+      position: absolute;
+      top: 62%;
+      left: 18%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s ease-in-out;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    
+
+
+
+  .mobile-buttons {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10px;
+  }
+  .back-button {
+    top: 5px;
+    left: 5px;
+    font-size: 10px; 
+  }
+  #start-stop-sound-button {
+    position: static;
+    margin-top: 30px;
+  }
+  .zoom-buttons {
+    position: static;
+    margin-top: 2px;
+  }
+
+  .zoom-out-button, .zoom-in-button {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 15px !important;
+    background-color: gray !important;
+    color: white !important;
+    border: none !important;
+    display: inline-block !important;
+    padding: 0 !important;
+  }
+
+  #chopper-button {
+  position: fixed;
+  bottom: 45px;
+  right: 25px;
+  background-color: #acadac;
+  border-color: #acadac;
+  font-size: 10px;
+  
+}
+
+}
+
+    
+</style>
+
+</head>
+<body>
+
+    <div class="help-button-container">
+  <button id="help-button" class="help-button">
+    <i class="fa-solid fa-circle-question"></i>
+  </button>
+  <div id="help-modal" class="help-modal">
+    <div class="help-modal-content">
+      <span id="help-modal-close" class="help-modal-close">&times;</span>
+      <h2 style=" text-align: center;">My Ridez</h2>
+      <h3>For PC:</h3>
+      <ul>
+        <li>Click the Car/Bike</li>
+        <li>Drag the Car/Bike using your mouse.</li>
+        <li>Use the mouse wheel to zoom in and out.</li>
+        <li>Right-click to flip the car.</li>
+      </ul>
+      <h3>For Mobile:</h3>
+      <ul>
+        <li>Press the Car/Bike</li>
+        <li>Drag the Car/Bike using your finger.</li>
+        <li>Pinch to zoom in and out.</li>
+        <li>Double-tap to flip the car.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener('touchstart', (e) => {
+  if (window.innerWidth <= 768) {
+    isDragging = false;
+  } else {
+    // existing code
+  }
+});
+
+document.addEventListener('mousedown', (e) => {
+  if (window.innerWidth <= 768) {
+    isDragging = false;
+  } else {
+    // existing code
+  }
+});
+</script>
+
+
+<!-- Script for Help -->
+<script>
+document.getElementById('help-button').addEventListener('click', () => {
+  document.getElementById('help-modal').style.display = 'block';
+});
+
+document.getElementById('help-modal-close').addEventListener('click', () => {
+  document.getElementById('help-modal').style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === document.getElementById('help-modal')) {
+    document.getElementById('help-modal').style.display = 'none';
+  }
+});
+</script>
+
+
+ <div class="mobile-buttons">
+  <a href="index.html" class="btn back-button">Back</a>
+  <button id="start-stop-sound-button">Start Engine</button>
+ <div class="zoom-buttons">
+  <button id="zoom-in-button" class="zoom-in-button">+</button>
+  <button id="zoom-out-button" class="zoom-out-button">-</button>
+</div>
+</div>
+
+<script>
+const startStopSoundButton = document.getElementById('start-stop-sound-button');
+let isEngineRunning = false;
+
+startStopSoundButton.addEventListener('click', () => {
+  if (!isEngineRunning) {
+    startSound.currentTime = 0;
+    startSound.play();
+    startStopSoundButton.textContent = 'Stop Engine';
+    isEngineRunning = true;
+  } else {
+    startSound.pause();
+    startSound.currentTime = 0;
+    secondSound.pause();
+    secondSound.currentTime = 0;
+    isPlayingSecondSound = false;
+    startStopSoundButton.textContent = 'Start Engine';
+    isEngineRunning = false;
+  }
+});
+</script>
+
+<a href="Heli.html">
+  <button id="chopper-button" class="btn btn-primary">Go to my Chopper</button>
+</a>
+
+
+
+
+  <img id="car" src="https://file.aiquickdraw.com/imgcompressed/img/compressed_39ba26adb73a8722bc6b82992e39aa87.webp" alt="Car">
+  <img id="bike" src="https://rosepng.com/wp-content/uploads/elementor/thumbs/s11728_motor_bike_isolated_on_white_background_-stylize_200_299a4efc-24fc-4984-b172-946f30b3d062_1-photoroom-png-photoroom_11zon-qlfzmjilbfw5d12hhloh8jq30uimfgkuw3lhuqm1ls.png" alt="bike">
+    
+  <!-- Script Car Function -->
+  <script>
+   document.addEventListener('contextmenu', (e) => e.preventDefault());
+const cars = document.querySelectorAll('#car, #bike');
+let rotation = 0;
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let x = 0;
+let y = 0;
+let scale = {};
+let flipped = {};
+let lastTouchEnd = {};
+let distance = {};
+let initialDistance = {};
+let initialScale = {};
+let currentCar = null;
+
+cars.forEach((car, index) => {
+  car.addEventListener('mousedown', (e) => {
+    currentCar = car;
+    if (e.button === 0) {
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      x = car.offsetLeft;
+      y = car.offsetTop;
+      scale[car.id] = scale[car.id] || 1;
+      flipped[car.id] = flipped[car.id] || false;
+    } else if (e.button === 2) {
+      flipped[car.id] = !flipped[car.id];
+      car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[car.id]}) ${flipped[car.id] ? 'scaleX(-1)' : ''}`;
+      car.style.transition = 'transform 2s ease-in-out';
+      setTimeout(() => {
+        car.style.transition = 'transform 0.5s ease-in-out';
+      }, 2000);
+    }
+  });
+
+  car.addEventListener('touchstart', (e) => {
+    currentCar = car;
+    if (e.touches.length === 1) {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      x = car.offsetLeft;
+      y = car.offsetTop;
+      scale[car.id] = scale[car.id] || 1;
+      flipped[car.id] = flipped[car.id] || false;
+    } else if (e.touches.length === 2) {
+      initialDistance[car.id] = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+      initialScale[car.id] = scale[car.id];
+    }
+  });
+
+  car.addEventListener('touchend', (e) => {
+    isDragging = false;
+    let now = new Date().getTime();
+    if (now - (lastTouchEnd[car.id] || 0) <= 300) {
+      flipped[car.id] = !flipped[car.id];
+      car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[car.id]}) ${flipped[car.id] ? 'scaleX(-1)' : ''}`;
+      car.style.transition = 'transform 2s ease-in-out';
+      setTimeout(() => {
+        car.style.transition = 'transform 0.5s ease-in-out';
+      }, 2000);
+    }
+    lastTouchEnd[car.id] = now;
+  });
+
+  car.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      scale[car.id] = (scale[car.id] || 1) * 1.1; // Zoom in
+    } else {
+      scale[car.id] = (scale[car.id] || 1) / 1.1; // Zoom out
+    }
+    if (scale[car.id] < 0.01) scale[car.id] = 0.01; // Minimum scale
+    if (scale[car.id] > 2) scale[car.id] = 2; // Maximum scale
+    car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[car.id]}) ${flipped[car.id] ? 'scaleX(-1)' : ''}`;
+  });
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging && currentCar) {
+    let clientX = e.clientX;
+    let clientY = e.clientY;
+    currentCar.style.left = `${clientX - startX + x}px`;
+    currentCar.style.top = `${clientY - startY + y}px`;
+    currentCar.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[currentCar.id]}) ${flipped[currentCar.id] ? 'scaleX(-1)' : ''}`;
+  }
+});
+
+document.addEventListener('touchmove', (e) => {
+  if (isDragging && e.touches.length === 1 && currentCar) {
+    let clientX = e.touches[0].clientX;
+    let clientY = e.touches[0].clientY;
+    currentCar.style.left = `${clientX - startX + x}px`;
+    currentCar.style.top = `${clientY - startY + y}px`;
+    currentCar.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[currentCar.id]}) ${flipped[currentCar.id] ? 'scaleX(-1)' : ''}`;
+  } else if (e.touches.length === 2 && currentCar) {
+    distance[currentCar.id] = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    scale[currentCar.id] = initialScale[currentCar.id] * (distance[currentCar.id] / initialDistance[currentCar.id]);
+    if (scale[currentCar.id] < 0.01) scale[currentCar.id] = 0.01; // Minimum scale
+    if (scale[currentCar.id] > 2) scale[currentCar.id] = 2; // Maximum scale
+    currentCar.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[currentCar.id]}) ${flipped[currentCar.id] ? 'scaleX(-1)' : ''}`;
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  currentCar = null;
+});
+
+car.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  if (e.deltaY < 0) {
+    scale *= 1.1; // Zoom in
+  } else {
+    scale /= 1.1; // Zoom out
+  }
+  if (scale < 0.01) scale = 0.01; // Minimum scale
+  if (scale > 2) scale = 2; // Maximum scale
+  car.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale}) ${flipped ? 'scaleX(-1)' : ''}`;
+});
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- Sounds for car -->
+<audio id="car-start-sound" src="sounds/whitenoise.weba" preload="auto"></audio>
+<audio id="car-second-sound" src="car-second-sound.mp3" preload="auto"></audio>
+
+<!-- Sounds for bike -->
+<audio id="bike-start-sound" src="sounds/motorbike.weba" preload="auto"></audio>
+<audio id="bike-second-sound" src="bike-second-sound.mp3" preload="auto"></audio>
+
+
+<script>
+  let currentVehicle = null;
+
+// Update currentVehicle when an element is clicked or touched
+cars.forEach((car) => {
+  car.addEventListener('mousedown', () => {
+    currentVehicle = car;
+    if (car.id === 'car') {
+      startSound = document.getElementById('car-start-sound');
+      secondSound = document.getElementById('car-second-sound');
+    } else if (car.id === 'bike') {
+      startSound = document.getElementById('bike-start-sound');
+      secondSound = document.getElementById('bike-second-sound');
+    }
+  });
+  car.addEventListener('touchstart', () => {
+    currentVehicle = car;
+    if (car.id === 'car') {
+      startSound = document.getElementById('car-start-sound');
+      secondSound = document.getElementById('car-second-sound');
+    } else if (car.id === 'bike') {
+      startSound = document.getElementById('bike-start-sound');
+      secondSound = document.getElementById('bike-second-sound');
+    }
+  });
+});
+
+</script>
+
+<script>
+  // For Car
+const zoomInButton = document.getElementById('zoom-in-button');
+const zoomOutButton = document.getElementById('zoom-out-button');
+let currentElement = null;
+
+// Button Use
+zoomInButton.addEventListener('click', () => {
+  if (currentElement) {
+    scale[currentElement.id] = (scale[currentElement.id] || 1) * 1.1; // Zoom in
+    if (scale[currentElement.id] > 2) scale[currentElement.id] = 2; // Maximum scale
+    currentElement.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[currentElement.id]}) ${flipped[currentElement.id] ? 'scaleX(-1)' : ''}`;
+  }
+});
+
+zoomOutButton.addEventListener('click', () => {
+  if (currentElement) {
+    scale[currentElement.id] = (scale[currentElement.id] || 1) / 1.1; // Zoom out
+    if (scale[currentElement.id] < 0.01) scale[currentElement.id] = 0.01; // Minimum scale
+    currentElement.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[currentElement.id]}) ${flipped[currentElement.id] ? 'scaleX(-1)' : ''}`;
+  }
+});
+
+// Keyboard Use
+document.addEventListener('keydown', (e) => {
+  if (currentElement) {
+    if (e.key === '=' && !e.shiftKey) {
+      scale[currentElement.id] = (scale[currentElement.id] || 1) * 1.1; // Zoom in
+      if (scale[currentElement.id] > 2) scale[currentElement.id] = 2; // Maximum scale
+      currentElement.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[currentElement.id]}) ${flipped[currentElement.id] ? 'scaleX(-1)' : ''}`;
+    } else if (e.key === '-') {
+      scale[currentElement.id] = (scale[currentElement.id] || 1) / 1.1; // Zoom out
+      if (scale[currentElement.id] < 0.01) scale[currentElement.id] = 0.01; // Minimum scale
+      currentElement.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale[currentElement.id]}) ${flipped[currentElement.id] ? 'scaleX(-1)' : ''}`;
+    }
+  }
+});
+
+// Update currentElement when an element is clicked or touched
+cars.forEach((car) => {
+  car.addEventListener('mousedown', () => {
+    currentElement = car;
+  });
+  car.addEventListener('touchstart', () => {
+    currentElement = car;
+  });
+});
+
+
+
+
+</script>
+
+</body>
+</html>
