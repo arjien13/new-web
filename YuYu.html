@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YuYu Hakusho</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+body {
+  background-image: url('https://64.media.tumblr.com/e0862bf9db65d7a378287f0c1149bcf5/tumblr_nsdkcwbzsB1ubd25zo2_1280.jpg'), linear-gradient(to right, #808080, #666666);
+  background-size: auto 180vh, 100% 100%;
+  background-position: center, 0 0;
+  background-repeat: no-repeat;
+  color: white;
+  font-family: 'Montserrat', sans-serif !important;
+  overflow-y: hidden;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.title-image {
+  width: 20vw;
+  margin-bottom: 3vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5vw;
+  padding: 2vw;
+  max-width: 80vw;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.grid-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-item img {
+  width: 6vw;
+  height: 6vw;
+  object-fit: cover;
+  border-radius: .5vw;
+  margin-bottom: 1vh;
+}
+
+.grid-item p {
+  margin: 0;
+  font-size: .7vw;
+  margin-bottom: .5vh;
+}
+        .back-button-container {
+  position: fixed;
+  top: 12px;
+  left: 4px;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5vw;
+  padding: 2vw;
+  max-width: 100vw;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.title-image {
+  width: 50vw;
+  margin-bottom: 1vh;
+}
+
+.grid-item img {
+  width: 15vw;
+  height: 15vw;
+  object-fit: cover;
+  border-radius: .5vw;
+  margin-bottom: .1vh;
+}
+
+.grid-item p {
+  margin: 0;
+  font-size: 1.5vw;
+  margin-bottom: .5vh;
+}
+}
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <img src="icons/YuYu.png" alt="YuYu Hakusho" class="title-image">
+    <div class="grid-container">
+      <div class="grid-item">
+  <a href="https://www.youtube.com/watch?v=9_vfaWUnafo&t=1467s">
+    <img src="https://images.steamusercontent.com/ugc/38614507790430498/1FFE1921F27D3E957064C1F3F72B5AF506648D0A/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Image 1">
+  </a>
+  <p>Episode 01-14</p>
+</div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com/watch?v=_XptP2di8lY">
+                <img src="https://media.tenor.com/IPNQhkwvOQkAAAAM/kuwabara-spirit-shards.gif" alt="Image 1">
+            </a>
+            <p>Episode 15-28</p>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com/watch?v=qZR3padwJ8U">
+                <img src="https://media.tenor.com/kA_kBs8o3LQAAAAM/yuyu-kurama.gif" alt="Image 1">
+            </a>
+            <p>Episode 29-42</p>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com/watch?v=o2sN-R0uGOg">
+                <img src="https://media.tenor.com/FCiocZunPREAAAAM/hiei-ghost-fighter.gif" alt="Image 1">
+            </a>
+            <p>Episode 43-56</p>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com/watch?v=6vGUK9UoXLk">
+               <img src="https://i.pinimg.com/originals/cf/66/d4/cf66d4a322241c7ba885af3773349396.gif" alt="Image 1">
+            </a>
+            <p> Episode 57-70</p>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com/watch?v=lgwwDYtnIXs">
+                <img src="https://64.media.tumblr.com/bfeab992a72b651324dce737f816609f/tumblr_oovze7beui1r72cx2o1_400.gif" alt="Image 1">
+            </a>
+            <p>Episode 71-84</p>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com/watch?v=ru3V3989X70">
+                <img src="https://64.media.tumblr.com/9096cdcd9a764292ca7c09189100356b/c38c8c7be876e7c1-67/s540x810/03e3ddd2a19b5ab687d077de19d2b86ae5ab6309.gifv" alt="Image 1">
+            </a>
+            <p>Episode 85-98</p>
+        </div>
+        <div class="grid-item">
+            <a href="https://www.youtube.com/watch?v=MJRgJJ2zDe4">
+                <img src="https://64.media.tumblr.com/7909e7a3440a64f87b8f1d1794514056/903f5f859bff4c3f-44/s500x750/49fcdb782cb9e4b7a84cdad7b2f7b5956bae05fc.gif" alt="Image 1">
+            </a>
+            <p>Episode 99-112</p>
+        </div>
+    </div>  
+</div>
+
+     <div class="back-button-container">
+    <a href="anime.html"  class="back-button"> Back</a>
+  </div>
+
+   <audio id="myAudio" loop playsinline>
+    <source src="sounds/YuYu.weba" type="audio/webm">
+  </audio>
+  
+  <button class="play-button" id="playButton" onclick="toggleAudio()">Play Me</button>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById('myAudio');
+    const button = document.getElementById('playButton');
+
+    if (audio.paused) {
+      audio.play();
+      button.textContent = 'Stop';
+    } else {
+      audio.pause();
+      button.textContent = 'Play Me';
+    }
+  }
+</script>
+
+
+</body>
+</html>
