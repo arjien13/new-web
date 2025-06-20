@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WarCraft</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+ body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.video-episodes {
+ 
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+  
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 4.5vw;
+  height: 4.5vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 1vh;
+}
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.Doc-logo {
+    width: 15vw;
+    height: auto;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+     margin-bottom: -4vh
+  }
+  .pagination button {
+    padding: .5vh 1.5vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+    
+    
+  }
+  .Doc-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -20px;
+}
+.episode h3 {
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.video-episodes {
+  position: absolute;
+  top: 5vh; /* Adjust this value to your liking */
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+}
+
+
+.back-button-container {
+  position: fixed;
+  top: 12px;
+  left: 4px;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}
+    
+  </style>
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <img  src="https://www.hiveworkshop.com/data/ratory-images/291/291641-6a71ceb43456084e45ddff52866feef9.gif" alt="Doc" class="Doc-logo">
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 8;
+    const episodes = Array(24).fill(0).map((_, i) => [
+  `WarCraft ${i + 1}`,
+i === 0 ? "https://www.youtube.com/watch?v=tPs7o5R1zp8" :
+i === 1 ? "https://www.youtube.com/watch?v=IiygxvsKO2M" :
+i === 2 ? "https://www.youtube.com/watch?v=XLJp9r1iFaQ" :
+i === 3 ? "https://www.youtube.com/watch?v=G5yz11B4VWM" :
+i === 4 ? "https://www.youtube.com/watch?v=wZRvNMuoQrY" :
+i === 5 ? "https://www.youtube.com/watch?v=Mvkqfsj14Zs" :
+i === 6 ? "https://www.youtube.com/watch?v=iPXUCgvEEcU" :
+i === 7 ? "https://www.youtube.com/watch?v=QGaf6RyvflQ&pp=0gcJCdQJAYcqIYzv" :
+i === 8 ? "https://www.youtube.com/watch?v=TGVN9RHtd18" :
+i === 9 ? "https://www.youtube.com/watch?v=JcWCxP22iCY" :
+i === 10 ? "https://www.youtube.com/watch?v=EOPnubZ8axQ" :
+i === 11 ? "https://www.youtube.com/watch?v=_r6SwCtuAcI" : 
+i === 12 ? "https://www.youtube.com/watch?v=qVk1fUaDNh4" :
+i === 13 ? "https://www.youtube.com/watch?v=bXl0Su0uSxk":
+i === 14 ? "https://www.youtube.com/watch?v=RyUcm1uyGPI":
+i === 15 ? "https://www.youtube.com/watch?v=z247rERRKVc&pp=0gcJCdQJAYcqIYzv":
+i === 16 ? "https://www.youtube.com/watch?v=V53WCazd9Aw":
+i === 17 ? "https://www.youtube.com/watch?v=ULMZNlEbFrI":
+i === 18 ? "https://www.youtube.com/watch?v=NH56sDbqHng":
+i === 19 ? "https://www.youtube.com/watch?v=0YG-4XwCyFo":
+i === 20 ? "https://www.youtube.com/watch?v=KkKkLPQaJ5g":
+i === 21 ? "https://www.youtube.com/watch?v=-yQW3a8xY8c":
+i === 22 ? "https://www.youtube.com/watch?v=dNNSnoV35RU":
+i === 23 ? "https://www.youtube.com/watch?v=7hl59M8FzN8":
+  `episode-${i + 1}-id`,
+i === 0 ? "https://i.ytimg.com/vi/tPs7o5R1zp8/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLACHr9BY27xzAetdnOnc-a__jKg7Q" :
+i === 1 ? "https://i.ytimg.com/vi/IiygxvsKO2M/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLArKMVXWxtM8K4fWO6BRnKhHkzrSw" :
+i === 2 ? "https://i.ytimg.com/vi/XLJp9r1iFaQ/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLABKuGupa9CXqGLFxi07h8XAApCEQ" :
+i === 3 ? "https://i.ytimg.com/vi/G5yz11B4VWM/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDGw_yQQuBmqYfXQ3zMLrf5fZL6cg" :
+i === 4 ? "https://i.ytimg.com/vi/wZRvNMuoQrY/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBLOupo1_a5FzmTGFdWA68OlMh2wg" :
+i === 5 ? "https://i.ytimg.com/vi/Mvkqfsj14Zs/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBJsSjIzyQwsk33PgT0ZbXjivMlkg" :
+i === 6 ? "https://i.ytimg.com/vi/iPXUCgvEEcU/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAP39uUS3hWZaYlmqVH-UraGN2ozQ" :
+i === 7 ? "https://i.ytimg.com/vi/QGaf6RyvflQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBeJcSAbt4I5ZJdEWChV0HSyzasOg" :
+i === 8 ? "https://i.ytimg.com/vi/TGVN9RHtd18/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBya6NSJpl2of6cHHVBR0rf-LN_qA" :
+i === 9 ? "https://i.ytimg.com/vi/JcWCxP22iCY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLATX1ByOQ74-VOVvKjwlgN3EVYBWg" :
+i === 10 ? "https://i.ytimg.com/vi/EOPnubZ8axQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBBKF_5AxddC1qNFWjAs-8RWWzo3g" :
+i === 11 ? "https://i.ytimg.com/vi/_r6SwCtuAcI/hqdefault.jpg?sqp=-oaymwEnCPYBEIoBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDhjYQ4sjxeTZGwfD_x6gtQvXxLUQ" :
+i === 12 ? "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFRUXGBoYFxgYFxcWFxkXFxgXGBcYFxcYHSggGBolHx0XITEhJSkrLi4uGB8zODMtNygtLisBCgoKDg0OGhAQGi0lHx0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALcBEwMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAADBAUGAAECBwj/xAA7EAABAwIEAwYGAQMEAQUBAAABAAIRAyEEEjFBBVFhBiJxgZGhEzKxwdHw4UJi8QcUI3JSFiSCksIV/8QAGQEAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAIhEAAwEAAwEBAAIDAQAAAAAAAAECEQMhMRJBImEEMlET/9oADAMBAAIRAxEAPwC6cJqaCdream8bWhtvrfQ6HxVY4SwhzO6YuZsCLH+nl+7KfdWDgW6a9bhYUrPFKhcSSddPK5t4SkeI4hoAA0y8ul77alSfFKQy9dR0M6fUKucTExExp9QAlAyCxVYF0DQW89UniKrpuSfNZiwQZS1TFDcXWHUaN0apupKljSyIeJgGQZ1EweuxB3UAzGiIIXDsWsD4ZYcVxIu+aCk34uBM/wCPuoSpizzS1asYW0ZcbJYYkONjpsil8lojfl4KvYWvDvGynqdn2uBuimCpw6adRsQVyRN0SjSkTy/laDuhlEQVc8ghwMOBBG+hkWKUMl5LtySf6bm9gFM0MGahk6k789yna3Z59srXEnkCZhbUYrBpk8/M/lCe20wprEUQyQ5wBGxN9dLaeaQdkcYDgDrBt4wmWMD1ES4dFy07KSq4Rw/p106+HMJOthnC5sj8s2oBVYgOYjucQOaE53kVgi7ghwjEIZasYGQuJXRC5yrBNhy6LkOFoLGOzVXGZZkK5ylYxvOt5ls0oHVDlAISVuFqmuljAyFpFCxYx73isU4VIzF1rEmRBnefO/VP4TEkAuzSDlkg3El0EiOY9I8lMVSmXZY7vkCJO3gkaeILWloghxbMT/TMcuanoqJ7FPvM/Nt4fv2URxDD93RLnEkRJtsU9mLm30ix+o+nqsYqPE8Iddr/AGVcrMur1xGhb1t6b6R+FW8Vh4QZfjIdzECoIRseTIA11SVWm4gygVOnuS9d5XVN9oQMa5ED8Mw7u+PFXZuHIblyi4zDc9NFQ8K6HNMxdeh4Oo34ZLjDgBHW9x01nyhMiHIKUamV8lttC0EAxumsPgS+HAGCL9EfgOBZVqhlQkh8tBv3XO+R0eMSrjwPAihRq1awblpEtLXEgueB8vhJB62Uq5Un8mXG2tIbBYKnhmCtiS0N1FMkte9v9o+8/SFC9pe0z8S0hjBRpNsA0uFh/wCV4cfRR/aHi9XFV8zzYmwFxrYcvJK8V4RXyhwEWtlsY28fAhJ9Lr6ZZT8+EDi8Rrcnn5oeHBcRfVL4im4HvCDuucLVIc3xC6ZJUej9k6Ic0sfDgLtBjXeCdLcvNddo+zJY0OYczToeh8LTsoPhPEzSGkudMD6eX5Vu7K8UL2upPaHQHE5o1ygW8dT0AXVNrw5Klp6Uqtw4NpfF/uywdzE+mkqv1WEmTfX3XpnazBU/gYZ1PR3xbdQWyDzVJr4E5ZI1J9t0tIaWQWVbeE1XwxGoQH0yPqkHFKjbobmwnDTQnt2QwOi+ValEAutlqwTAVjqgXb2CJQTTulCZ8QGyHUbCJ8CYjdcm2qxjimbooF0OEdoRACW1jliBj33EVnGnE2m/pv5KFrVIbbbX7pjC1WupkPcL2DYMzlsZBsJjmsPDHS7K1+kmW5Y8sxUdMpYtVGZoa1wO5tzGl+X2UlgK3dbO1vJR+Jw5YYFve0lS3DMG8tI0aYket0dRsB4l05mkco+sjyjmoDFYfWdgp+vRh/sfysxuE7snc26zqegSukX40edYmiS7yUU4kAk77K5VsAWh73CBNvDZQWKwDnHNoNBzKH0V+WQ1Fm6TxLpJUviqORsblQ8XJTpga/DVId5viPqrbhiXQFV8IJe3xV/7O4RtQsaAGkTmJvIiXGDbQaIt4iF+ly7E8FkfGeIYNHGLuaflAPPSdot0jO3OJe4l1N2UAhtRs/NHy1I5gnKekI3avtC6kBRpkMawZRl+aDqBexPel2sTtJVU4zxGWseZiXNMbh5DjHk5vouG9q1R1cEr5rQmEojNTdABLoIgz1Im0eC9Lw/DmOaLTa8+mp+qoHAAS5hcNgYAmIMXnSf0q4cQ7cYalFMtzRrcGPtyNlH/ACIdvEGXhBdq+yLXNL2i/W29/H30XmGJ4b8N8TK9ddx2jWOVlQZXaTsTt+8lRO0GF+HVcHQAPLTbqVX/ABruf40wcky1ongMIS4E+HK5MAD2UtXDqNSWAgkAEjk0mT18PDkoXAVc1QToLxoABpc8h9VbOPOBo0XkMgnKcpJs6dfCNfyvSg4L9GOHcQw9WnTpVHEXfBmS0kjUbj+ULtHwxuHdkeZy3a4cnjSD15deSoeJqGjWIBsCHA9NVeMbjhjAxlOHObTEj+oOzOdlHMAECBfVdMVvRGpx6VdmUzuRsRI0Oo28VG4thtPgOnopnEYbu6RGnVQ1V5aTIna/18UKWDSKlsIVdm6KVw7kpjib2olEzHuuXCCsiDIQCdYlkHoiNeA0SF18EkSiYZpNuqGdB0EGmCRfl+UHF0t4voVMjDEa2G1vMoXEsPDJ3sggkDUai0tFmIpxdZR0TANOC0iQsQMe+dl+FNdlc/5Z05hXLFYRkue0QcpBGl4IBEbj7Ko9nOK/8IEwIykj+ki1uXPz6qq9pe1ddhNJpLQD1M+BK83LqsR2/KXZcqfDviP7vdgE9Cd77KcwvCRkEXsdL7+K8Mfx6uTJquPmfZT3Bv8AUHE0QBmDmjYidTKt8WTal+HpNTghmT/PkhO4aXO7ws30HiUHgv8AqHQriHwx/XQ6aH7FSB4/QIJ+Kwed/TX2XO7tPtFJnorvHuDOeROn/iLb2LuaiMdhWUWS6MwFgNp5dU7xrtdSmGEuv1j91VVq/GxTiWNJHWY/A8AqJP8AR08KrxaoXvJ9FGV2RZXitwJtJpdUN+ZVRxgzOOUWV4eiWs9Ddn8HnqDxj1svReH4U4emawFmXJIgXsB4zNuiofAnQ622nirb2v4oBgqVICDOY3+Zxkkn/qI/+y3I35/0h1pTuP8AEXPc4uN/zc+O3oE9wIGtSfn+TDwdb95pDBf5rgWVbxDy+DOt07wmuWh7QSAQM3lcH2WuNnBorKLx2DxearVJGYRlAAmwBFt+ZUp2l7PVMS11R+XutllgXHk11xA9Y5KI/wBNsSaL3OaNR052j3V3rvdUq9xodnPy7A87+/guHkfxy6i09yeZ9nezVeo/5XNaDrFieQCY7S0KlXEVm1HSWHNa1yBYSvS8RXfTBcyl8SiwR3XZDUdIzOb/AGgZgOZjQCV51xniwdjqzg2Q7KBcgwRMzrYXv0VuK3fJrQtr+HRV+HURUqZS4tH1M2mdArTxSi/4Abq1jxEXF/v/AAonFcMeJqNjMIzxyOj29DvyKs9af9qwNAyjKb3kz/Dl3z6cdMoHFJcb6iR5bfUFSXYvEBtZjTbMdeXJI8cYGVIGxnyJMH7HwCV4fUyu1iNPaVRPGBrUeudsME19GjVYB8R57xFp7gMx5GV5/wAfwjGOytOYgDN0dylehYag6rhHVWnMQ8wwa98tYY62mOvUKg1cC8Zi4XvM6jyVn3JCemV1wQ3AQTvFk7iKVzKUc2XEBRLHOEZIJO6ytSy+CK1oFluqJWMcYZ2U8wdU+zDwQ9twksKf6TspLCk03jUsd7fyFSZ0SmN1u8A0DW89ElxDDOjmP2JUzVDXMBBgh1jzB/n6rG4VxMO2v6XWcdgV9FLx1IgwUGmFI8VH/K89beEoNGhulcj/AEAWLdR11iUY9K4PxMsBGx1CjuNvbV112P2PRDa0gCQRIkTaRzHMapLFyuRSt076fQKrhIGv7rqLFA/23I/ZEo4ki0mOW37qmQ0OjLryP2Kc539fgj8I7JihiH6EmEw2iRqIWVom06CZtfew877jktmgXI0S3BP9lmBxBqEa6H0sdPwrfjO19BjPh4ShtYu8OQXnTHRsPQfdHFcuOqV8Kb7GfO/xBse2riHZqrrHTYaxZLnhwaS21jqLjbfzR8O82nYiB7pqm2T4/bRUUpeEnyVXovhOHgac/wAqP7UhzZpvaWusY8QD729F6F2Z4PSqU3VHvyGmc0kgCwzXBEZdeqq3bLh1FwNcYtr3uLiQCwkXI2dPXzSPfoZeHm7amU3T2Gf3T1uUniMKR1Cd4e2coNh6/wCUzCj0bsNQIbJt3ZGnMElW6jimtOXnd+xDf/H/AORPoOqrHB6o+FMxIygaGGkZp5k2008kfiprOxGemG02mM/xCCHEawG/XqvN5F9cjOvjX8Sy43jLKjMotY3AsALACP3VeQ42mW1XPknvHXxUnxWnVZP/ALknkADHooD4r3Oy55BPLc7lW4OP5epg5ZSWFu4XiwWgxJExyIPzNd0I9LKVqvYKAZTnJFrG1pIPMtJjyHNUkOrU2S0Z7zP9sWGXldWnh1YuwcnMHDM8vIi73U2yPAgG2wXoSefc4U3j+Fd83KY//QPnfqDKhqdSNr7K041xaS4jSxbtrFthG3mqviqUOdFxqP4TMKL5/p7xJzarZcQ3Owm8D5TPsJ8grt2l7PNqu+JTLA8iHNHdJdrIkxof8ryns5WIc1o1MeM2j2t6r0ntzxMUmYUNd33MBLd4ADZn1HVUVYtI0v5YeecZwT2EtcCCDEGx91DUaRkr0kcXp1qf/M0Pj5QdfXX3VQxmFAJDBqepjog8fYybXTIhzVwmK1Et8OaAP0fv7ZAItVkEEKwcNqtqU43Go3jZw6hQ76dkDD4g0nyCml/LBU6i24UXyu8D1B0cE3ndEbfhR2FxDakFpgj2O48FJTI5FdU4zkrUVXi1L/ljmQtVmZWKWq4Mvq6aX+iT4qyO7z/OiS4zWVmtxEE5o5+tvysRfglYofJfS103CLoVViM2ktHkuNydavoicQxL0q7mmxKs+B4I+s6ALKdf2ELROk7k2Ai99vH2U65JnpsdQ32RHZ7iAqFtKoyQbTuPYova/g4wz4zTIlo+U3NpB6T7KYw/EsPgmktLXPgd6BPQMGzfqqT2q467EOzHX7deqSKp314PcL579OG1ZIn290/TY6mWu5gEbgg29bFIcPoFwEcifQFx9gVK4pxysH9o16Egea6tOJo2KoIFrzJNvRSmDwEwecC0/XbXVRDKoBEg+0SvTexnDWNb8SowZr5GkNOsQ4mBYQbdUnJyfKNMndbsu7/bkthjyRLjqYknumw2FtV5v23paDOSAIu1oEixGVtl6T2s4u8QwZiTqGiwsbwfDVeS9rMVLpg72iI+y6eJP4Tf6K/9iqf1QNOSdwjgw305bnoDt5JTC6zujvcSZN/36KV+lV4WHg+JqVHhogAiOjWAz3R+zfxTVfjAa4tzSNAorglfK2o8m9gOmuv7oCouqe/a99PFc9cSbKzbSJjijC+kahsAdPFRHDeHl0kE6HTnt91PcYc1tJrCbkSemsH3lK9miJAO5g/X8qnFPQnJTE+HYqpmy5zExqr86p8IBju800gHa3a8ZpHgZPl4rz3h4/5Re06+dj9FbOPY7K2g7b4YYb6Bt/UF0+R5q8kb7ZFcSqmYnpJ+VwgWvoY08wqtijBgTY/vmprH4qx2I5aObY29zyv5GAr1sxRwyLb2MZSq1A34jWPHeAf3c5uS1roibaIPavi7q2Kc50Q2GMbMhrG6QRr4qHNLJSBB11abg/vkkWVi4yUb6WCytrS04OtIB3M+uycpMLvHwOygcHiMvkphmMDjmJ8vIT+EJpGuWG4rhTkAtqT9goJ+FIOivnD8Myq0Tv7RYDoPyFY//STCwNIa5t3E6Fsbg8lTCX1h5DVw7omLX+0/UKPqs1XulfsuwYMsyiXgnNvpSG+nyBeOcQwJadEXP6gzekfgsW6m6QrtwfGMrDk4aj92VEr0yETA4t1Nwc0wQtNNGuPpHplDCRmsOh81WOLUpqTGllZ+z3FWV2xPeAGYfcLniHCiDMSP3VdCrfTkWyyoPwN9CtKzDCnksS9G/wDZi5ZyCZwvDS4iRqmsFhszgIVibQawEyDufKYAXkcnJnSPc4+P9Z1wuqzDszECdvz+8+qqHaztg+q4sYe76z/H7sEp2j4w5zyBoO7+T9fUqq1HJI4lv0/SlX+I1XcSSTclFw+DL77T7xP4W8JSzG+im+F0DUqsYwD5rcvP0ViNvOg/BaZztDdrTr8wye8+6kuK8Oc0mNG1Hsk9Db6lSnZrg7vitlsWa6P+ryd/+iuPE+CNzFz9C/MQIiS0feVz8nN80Ip0juyfZanVosc6SJY4yIGYTnAJJn+kEwPlU9jqjWF4Gt9Pp42lApdoKVJgpts0A6EWJG/nm9lWOLcV1IJM7rnu3dFJnBw8Vw5rGcTSDDLIL6R0IBImdddJvbVeZ9sqbfivyPDmhxvAAN9QWmE8/irG52mhSc3L/VrMmXTGpJ8rKpVKzXPsMvn4fvmvW20v6IJTo3g8F/xlx5xH1PggF8iIA+/ipzEANptbfTlv+yoSqy9vdRT1lDui+KA2kk+MEifL7pPAML6oG5IjlJBTfEXgMYBfuj7H7JfgVqmbZoJ89BHnHqm/Afo1xmtneYNrgeAmPYBE4W/KM82Bzemb7KMxtTvfvVdYmtDQzxJ8o/PsU8LELfYXh/P9gKR45jJDGHYH62+/sovDkZQOZBceg0H1KTxuNzvLtjbyH7PmnEzs7xdS37+hJUrlEdJCJhME5xs0nwufQXRTMw/EKvdDeiSomF1jZzEclwwIclazQuhplQo1OvCExvLU6LKjIUdHwm+GcWdTiDHJemdl+1xynM60RtuW+v8APReLh5CawuPc06qk0TuEz6DrcZa7BtLTBu3qII9oIXmWK4fnfDWk9NfDzKV4bxqWETeJ/fRS3DePMJDZjruD9I5K82kQ+WiqcS4VYiFXa1AtK90qUKOKAFUd6JD22d4GLHzVL492TdTJmCIkHYgGPLwVflV56ZXnpU+z3Evg1QZ5cwLr1ngfEWYhsGMwsR4brxzHYAtJsnuAcYfSeDJBFt7j9+qXzpmqd7R7S7hY2stIeB7SA02ktmRqsQ0XCC4bUDZPkETiGLBYQN1X24yG2O6FWxttf2F5TjXp7KfRAcTdLz4qOAT3ELklR7HXV8It4P0t4/SvUex3Zh7MRRqFsAtDuWgIPu5q864JQzZh4fVfRnCmAsoPi5pjaPma0/ZS5K7Ur9Jf2LcM4U1tQmNiB4EuP3Kju1D+463y5b7aN/KlMZxhlI6gw1xPjeB7Kgdqu0Xec0TDpFz1aR5QuCu1i9Hn0heK4gRZROHeS4AkwSBz1taZSdTFfEdAUpSwT2mmT3GkhxfrAB2HrqqS/nplc0r2P7UYhrn0xlyudJDmgmwgSRF4URgzmqZoEi/6Fzx94NZxaLSYgz4eaUwteCvRX+pB+k7WxM2SVSoAt02k3XRw023NkiCJcRruLg0ucQBABJI9E1w/usLuv2J+sIPFmgvJGWBazQ2Y3trsinGtFAUi0gzOZpHSZaR05qz/AJeCLr0SzQb6BCBzEuJgnQc/PZYGFxMXA1Onj5rWLAnumWnSRBjqEQAq2IJsPNBC6DVv4fNYwWiATcqZbTdQIOcBxEgETbzH0UbgMIXG0GLrjHVe9AsBsmzrRf3AWMrl7sx1OviuWoRXbCpscepJlzZCWoVBCPTrTspv0YEWXQcsJsuCUqPTCsbwFfKfdGZiYKRoiUUhHRcLn2X445rxmMtBBM7CblenU6zK9Nr5EPzwRAygMaWkTaZAN14Hh8YWBwEd6J590yrb2c7T1Wtp0xdneF9L6kHoCFeLI3H6TXGuzxcIJ00MagxcDwuqXxPhWTQefM8l6/QqNqtEmYuD/KiuKcMY5jhEEdJJOnp1XQ39Lsknh5aOJVW2BdA6LFPYrglRziQBtrPILEuMfUR3+5WOrqMp1kR9RcDR6KYzVv8AbwUc6ndHZWmyHVcsgUtPQf8ATrBsqVG2nJ3nS6BqBb+f8ep43jTWBuUiDEaSB8ui8W7HdpzhmkTBcbm1tf7fBSXaHtB8djDTBAEhxhoJ7wA0HIC3kuDmi3yf0FJYMcU7QTUJk/MJ35zPPdVTi2Oc6JBFo32sPaEPGVTzPPXRRjqxJ5xzTRxmZJ8NdEHdTHFOIOqMbSzBuRjsxM3GYkNga3I/Qq9Rf7LjE1XjNUm0QBueXimXHtJjKsRDY0ODocL/AJWqDJNkPEYgvdmKYwbryux+EETmCw9r+SYNVrCC7afFawdUmLfsIOPbGt5H3FlFejELXdLo6wOXP8JbEnveAUjhaTS92d2SBaQSCesafyozFCCbgydRpC65xSSr06dVhsevig1HytG624JAnELsEkrKpstU3FEA+AGAc+Y1SmSTJ3XJcSbp3DUpCWqDKEDTWskKVq4cQlXU0qrQtG8LSlHyQuMC6HQd1JuopW8YUiOqLh1Obpt9JLkQjoGjTHQiubZAcFJYOgHgSYG/M+HsiARZSc7uDSZ9omdVLcMoBhaBckwev8LTyGy1gjmfzzW6FcMMyZF5gGSNJuIHX2VJEZ6DwnHR3SLGAPGAp3JN+i8ywfEyahvImLbgWBA5K+8L4hLROq6U9OdrPTqthyXE29liZOI8FpPrFxHhbaq7+MksyzOuHD0Exn4qMK0+KRLlgetgdJFj00yuYgGRf01UU2rPiisqkJXOjEnQdJO5jRDeAHCRF7oVCqP3ZNVpJkXHv/lSc4zYY0CSPJZxTEg02Q0tix5fK0GDveUpiKkIWMMtBk6BGZ70G9Ea7VMYZ9z4pWEzhhCsyaJrD14jZGq1c2p0IUWKnVFp14n0HipqexjeIbkbf5nXjkJt66+Siat9Am8ZXzG5/f8AEIDGzdU8MwTGrTwYTFRAqFFCsEwyRKaYQEFlM8luCmFNhpOg8egT9J+UDwQMOPwnhh5gAjmLj06KLejpHZq5h1jX8pZ4WntI7pEfvuhXFkEgtmtCp2g8OZKgzTKYwVaJH0WqejSxyukayZrOETmHhulXvC0gZ02NUfC4jKZ+sH2KTpvgrKrrpxWSFWqChs677D7/AMIFJ1pW3PvGhn9tCZIQbbUymfQKwcN4oRF/wqlUrCNUPDY05raDb7lWl4JU6j0L/wDtx1WlUW8QMarFTSXyytArcocrqVynYdZluVwslYJ2CisqoActysbRtjtwnMPi4EbKIDkVlbmg0MmSVYhyVq0ToLj3XDai7bVIQwPpo4Yg6WW8iabjCuCAdo8NPQ/lDs3yvwE2mhPeY8002nzPsUtVZ9UUK0Ac6Uai7RCqA7eaNQAi5KLAjms5Azjdd1jdY2lKKAwWdM0Wrk0LxCYqNAAvffog2ZIKyjaV1QdJ+6V+MRb98lKYCjInbaUJnWaqxBmREESOv2OyynTgiIidDf8AytVpbII2Svx3bXCupSI7pJllIi4jwP2P29Es7h7SZa4Cx8Ek+vK7pcQtBAMc1nKZlTQtWJaYcP3Y2S7n2HuncTWa4fshJOYNlL4wp9ac5l2TPohNKxrxN58vZFI2jFN4EyhVqxPT6oBeuS5EB0XrdJ11xKwFFAGhWWJZYm0XAC6BWlikWNrFixYxkrcrFixjcrUrFixjYciNqrFiwdCtqLoVFtYgMdNxCI2sP2VixbApnUzuimmI5LaxAddi7qTRrJ9Al6lRzflsOmvmd1ixFE6N0a5cSTrqURzhosWLNE9DYdg/CPQxOW2yxYqromw9XEAi+mx3CRrvAtF+Y/C0sVGKhV9Qrn4qxYkGNZ1yai0sQMZmQ1ixYJqVtzlixKEZo0qZa0l5km4jS5E6X/p9TyXbMNSOryNNp1+bba/jCxYiAA/KDAzEbGw/SsWLFjH/2Q==" :
+i === 13 ? "https://i.ytimg.com/vi/bXl0Su0uSxk/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAjr7NyQ9gx64cCyCuvJS-ume7s4A":
+i === 14 ? "https://i.ytimg.com/vi/RyUcm1uyGPI/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAAbC7hAfyxwjPA5ZV30nzqzJklvQ":
+i === 15 ? "https://i.ytimg.com/vi/z247rERRKVc/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCbOr95GlQeA8Uy36QpOub9U027_Q":
+i === 16 ? "https://i.ytimg.com/vi/V53WCazd9Aw/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBzjJxdBb2bQY2PW_naWFj9kEdD5Q":
+i === 17 ? "https://i.ytimg.com/vi/ULMZNlEbFrI/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDm4j2TUUXw_zMR2qCW-bZz3cmwRg":
+i === 18 ? "https://i.ytimg.com/vi/NH56sDbqHng/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBSKXh2mNXNgJmIotJU2XtNF_GWhg":
+i === 19 ? "https://i.ytimg.com/vi/0YG-4XwCyFo/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAJMgS2TFAg5G6qggW1QgUaEqBXwQ":
+i === 20 ? "https://i.ytimg.com/vi/KkKkLPQaJ5g/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBffIreHQLzuTw6OvcBS1fWGucDJw":
+i === 21 ? "https://i.ytimg.com/vi/-yQW3a8xY8c/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAsFjJQ_fbQAdL6OlNWRuCECBPpkQ":
+i === 22 ? "https://i.ytimg.com/vi/dNNSnoV35RU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDXW1ZaFRuzvWn0Q0BSQ5hhe9v0vg":
+i === 23 ? "https://i.ytimg.com/vi/7hl59M8FzN8/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCqZrFzBItReiwIbXXHsGTsssC7dQ":
+
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+<div class="back-button-container">
+        <a href="index.html" onclick="localStorage.setItem('showvfolder', true); return true;" class="back-button"> Back</a>
+      </div>
+
+   <audio id="myAudio" loop playsinline>
+    <source src="sounds//scizzie.weba" type="audio/webm">
+  </audio>
+  
+
+  
+ <button class="play-button" id="playButton" onclick="toggleAudio()">Play Me</button>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById('myAudio');
+    const button = document.getElementById('playButton');
+
+    if (audio.paused) {
+      audio.play();
+      button.textContent = 'Stop';
+    } else {
+      audio.pause();
+      button.textContent = 'Play Me';
+    }
+  }
+</script>
+
+</body>
+</html>
