@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400;
+  box-sizing: border-box !important;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;background-image: linear-gradient(to right, #808080, #666666);
+}
+
+
+.grid-wrapper {
+  width: 60vmin;
+  height: 60vmin;
+  overflow: auto;
+  padding: 1vmin;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 1vh rgba(255, 255, 255, 0.1);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1vmin;
+  
+}
+
+.photo-item {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 0.5vmin;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Add this to your CSS */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+}
+.close {
+  position: absolute;
+  top: 2vh;
+  right: 5vw;
+  color: #f1f1f1;
+  font-size: 4rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.photo-item img {
+  transition: transform 0.2s;
+}
+
+.photo-item img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+.back-button-container {
+  position: fixed;
+  top: 12px;
+  left: 4px;
+}
+
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #676966;
+}
+
+@media only screen and (max-width: 1024px) {
+
+.grid-wrapper {
+  width: 75vmin;
+  height: 75vmin;
+}
+
+}
