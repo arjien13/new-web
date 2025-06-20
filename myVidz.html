@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Vidz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif !important;
+            background-image: linear-gradient(to right, #808080, #666666);
+        }
+        
+        .video-container {
+            padding: 20px;
+        }
+        
+        .video-wrapper {
+    margin-bottom: 20px;
+    height: 450px; /* Increased height */
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 110%; /* Keep the same height percentage */
+    object-fit: cover;
+    border-radius: 10px;
+}
+        
+        .video-wrapper p {
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .video-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .video-fullscreen video {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .back-button-container {
+          position: fixed;
+          top: 11px !important;
+          left: 3px !important;
+       }
+        
+        .back-button {
+            background-color: #acadac;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background-color: #676966;
+        }
+        
+        h1 {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        
+@media only screen and (max-width: 1024px) {
+    .video-wrapper {
+        margin-bottom: 150px; /* Increase margin bottom for mobile devices */
+    }
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="back-button-container position-absolute top-0 start-0">
+        <a href="index.html" onclick="localStorage.setItem('showvfolder', true); return true;" class="back-button"> Back</a>
+    </div>
+    <h1 class="pt-5 mt-5">My Vidz</h1>
+    <div class="container video-container">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-4">
+                <div class="video-wrapper">
+                    <video controls>
+                        <source src="vidz/billiard.mp4" type="video/mp4">
+                    </video>
+                    <p style="color: rgb(255, 255, 255);">Billiard</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="video-wrapper">
+                    <video controls>
+                        <source src="vidz/bday.mp4" type="video/mp4">
+                    </video>
+                    <p style="color: rgb(255, 255, 255);">Birthday</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const videos = document.querySelectorAll('video');
+
+        videos.forEach((video) => {
+            video.addEventListener('fullscreenchange', () => {
+                if (document.fullscreenElement) {
+                    video.parentNode.classList.add('video-fullscreen');
+                } else {
+                    video.parentNode.classList.remove('video-fullscreen');
+                }
+            });
+
+            video.addEventListener('webkitfullscreenchange', () => {
+                if (document.webkitFullscreenElement) {
+                    video.parentNode.classList.add('video-fullscreen');
+                } else {
+                    video.parentNode.classList.remove('video-fullscreen');
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
