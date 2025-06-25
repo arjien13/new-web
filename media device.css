@@ -873,8 +873,8 @@ left: 0vw !important;
 /********************* POLITICAL *********************/ 
 
 @media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+  and (min-width: 768px) 
+  and (max-width: 1280px) 
   and (orientation: portrait) {
 
 #youtube-short-container iframe {
