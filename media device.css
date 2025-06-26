@@ -256,8 +256,8 @@ left: 0vw !important;
 }
 
 #earth-image {
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
   width: 12vw !important;
 }
 
