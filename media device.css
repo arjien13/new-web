@@ -256,8 +256,8 @@ left: 0vw !important;
 }
 
 #earth-image {
-  right: 16vw !important;
-  top: 6vw !important;
+  right: 50% !important;
+  top: 35% !important;
   width: 12vw !important;
 }
 
