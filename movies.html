@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+ body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.video-episodes {
+ 
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+  
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 4.5vw;
+  height: 4.5vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 1vh;
+}
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.Doc-logo {
+    width: 15vw;
+    height: auto;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+     margin-bottom: -4vh
+  }
+  .pagination button {
+    padding: .5vh 1.5vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+    
+  }
+  .Doc-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -20px;
+}
+.episode h3 {
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.video-episodes {
+  position: absolute;
+  top: 5vh; /* Adjust this value to your liking */
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+}
+
+
+.back-button-container {
+  position: fixed;
+  top: 12px;
+  left: 4px;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}
+    
+  </style>
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <img src="https://fbi.cults3d.com/uploaders/20952150/illustration-file/421c5c91-423c-49af-bbd6-7f3839622ab0/pngwing.com-2022-02-20T081900.534.png" alt="Doc" class="Doc-logo">
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 8;
+    const episodes = Array(20).fill(0).map((_, i) => [
+ i === 0 ? "Kuya kong siga":
+ i === 1 ? "Sprikitik":
+ i === 2 ? "I Do? I Die!":
+ i === 3 ? "Babalu, Redford White":
+ i === 4 ? "3 tatay":
+ i === 5 ? "Home along d riles":
+ i === 6 ? "S2pid Luv":
+ i === 7 ? "T2":
+ i === 8 ? "Avengers":
+ i === 9 ? "Age of Ultron":
+ i === 10 ? "Infinity war":
+ i === 11 ? "End Game":
+ i === 12 ? "The Hobbit":
+ i === 13 ? "Desolation of Smug":
+ i === 14 ? "Battle 5 Armies":
+ i === 15 ? "WarCraft":
+ i === 16 ? "GTA":
+ i === 17 ? "Kenji's Journey Dragon":
+ i === 18 ? "Kenji's Journey Serpent":
+ i === 19 ? "Grayback's Journey ":
+ 
+           `Episode ${i + 1}`,
+i === 0 ? "https://www.youtube.com/watch?v=4ud5xKakvSI" : 
+i === 1 ? "https://www.youtube.com/watch?v=8moCZN5-c5k" : 
+i === 2 ? "https://www.youtube.com/watch?v=yVkqIpf7t4E" : 
+i === 3 ? "https://www.youtube.com/watch?v=m7aSAx6dOKU" : 
+i === 4 ? "https://www.youtube.com/watch?v=Zycd_JCi-lQ" : 
+i === 5 ? "https://www.youtube.com/watch?v=IzBtDtLBJHQ" : 
+i === 6 ? "https://www.youtube.com/watch?v=bqNlczvHEDo" : 
+i === 7 ? "https://www.youtube.com/watch?v=gL4bxNtL1Bk&t=600s" :
+i === 8 ? "https://www.youtube.com/watch?v=hVi82tG-U28&list=PL8SRfmO1DuILjXsWAVbNFeqx5sx-U52MA&index=1" :  
+i === 9 ? "https://www.youtube.com/watch?v=5lj5ge8URxw&list=PLblYdar0whLEwiQi80jMDz_3cBOueGKD7&index=1" :
+i === 10 ? "https://www.youtube.com/watch?v=mKZbYre2kxk&list=PLEUUI-Qf2xkSqnB95bjpTdWDUX9_e9Rq2":
+i === 11 ? "https://www.youtube.com/watch?v=hvNTHvS3g5Q&list=PLblYdar0whLGYrI3OulFv8hhCCC2n3DTo":
+i === 12 ? "https://www.youtube.com/watch?v=k0vso_CTbjs&list=PLLnnqI82x7teAt9X9RxwGnE3Eo00x0bZr":
+i === 13 ? "https://www.youtube.com/watch?v=-hj1umOQCUQ&list=PLLnnqI82x7td8lYJNdZXfHEA3q9O8Aczb":
+i === 14 ? "https://www.youtube.com/watch?v=dW_s1YZI6qM&list=PLLnnqI82x7tfSWufGB8Vrv3gSSM2IB3wz":
+i === 15 ? "https://www.youtube.com/watch?v=gkBEd41mOIo&t=10s":
+i === 16 ? "https://www.youtube.com/watch?v=n5iKkGtlng8":
+i === 17 ? "https://www.youtube.com/watch?v=WGFxWq3ACN8":
+i === 18 ? "https://www.youtube.com/watch?v=2wMrPp4Z_nc":
+i === 19 ? "https://www.youtube.com/watch?v=2h3fJlHg4_E":
+
+
+  `episode-${i + 1}-id`,
+
+i === 0 ? "https://i.ytimg.com/vi/4ud5xKakvSI/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDERo_t_otgTHfaHdyWzGYhxwtCAg" : 
+i === 1 ? "https://i.ytimg.com/vi/8moCZN5-c5k/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA2bNtdsgmaHGoYPhsyr11TZXn09w" : 
+i === 2 ? "https://i.ytimg.com/vi/yVkqIpf7t4E/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBzNgxJOi-xp57aEDW871YYLlF5GQ" : 
+i === 3 ? "https://i.ytimg.com/vi/m7aSAx6dOKU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDNLzBdJOS1BHlbQCObOhIvlihhYg" : 
+i === 4 ? "https://i.ytimg.com/vi/Zycd_JCi-lQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCHEnn8vCrtBvLW42wpYYM2iq-85A" : 
+i === 5 ? "https://i.ytimg.com/vi/IzBtDtLBJHQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBtSL48ihNI_q4Dr4w9qVgmMnR2NA" : 
+i === 6 ? "https://m.media-amazon.com/images/M/MV5BNDA2NzYxY2EtNDNhZi00MDQ1LWFmODQtZTJhMzhmODIwYmViXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" : 
+i === 7 ? "https://m.media-amazon.com/images/M/MV5BY2FmZTAwNjgtNTY5OC00YjNhLThlNjctMTg5YTEzYTAwNzNkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" : 
+i === 8 ? "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg" :  
+i === 9 ? "https://m.media-amazon.com/images/M/MV5BODBhYTg1NGQtNGVmNS00ZTdiLThjYTYtZDFkNzRiNTZmNDZjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" :
+i === 10 ? "https://cdn.marvel.com/content/1x/avengersinfinitywar_lob_mas_hlf_01_2.jpg":
+i === 11 ? "https://sm.ign.com/ign_ap/review/a/avengers-e/avengers-endgame-review_ggy1.jpg":
+i === 12 ? "https://images.moviesanywhere.com/66264c6758257d10f25c68e468bd628c/aef954f0-5ea8-46c9-ba3a-5564be1db232.jpg":
+i === 13 ? "https://domnardireviews.wordpress.com/wp-content/uploads/2014/12/hobbit-desolation-of-smaug-poster.jpg":
+i === 14 ? "https://musicart.xboxlive.com/7/948d5100-0000-0000-0000-000000000002/504/image.jpg":
+i === 15 ? "https://bnetcmsus-a.akamaihd.net/cms/template_resource/jg/JG8333CVTU9K1467406078943.jpg":
+i === 16 ? "https://i.ytimg.com/vi/n5iKkGtlng8/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCyE_a4crboISz-uzSuK95DPErI8Q":
+i === 17 ? "https://static.wikia.nocookie.net/battlerealms/images/5/5d/Kenji_%28Neutral-SP%29_Logo.jpg/revision/latest?cb=20220425055917&path-prefix=vi":
+i === 18 ? "https://static.wikia.nocookie.net/battlerealms/images/1/10/Kenji_%28Serpent-SP%29_Logo.jpg/revision/latest?cb=20220425185155&path-prefix=vi":
+i === 19 ? "https://static.wikia.nocookie.net/battlerealms/images/7/76/Grayback_Logo.jpg/revision/latest?cb=20220504195907&path-prefix=vi":
+ 
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+<div class="back-button-container">
+        <a href="index.html" onclick="localStorage.setItem('showvfolder', true); return true;" class="back-button"> Back</a>
+      </div>
+
+   <audio id="myAudio" loop playsinline>
+    <source src="sounds//scizzie.weba" type="audio/webm">
+  </audio>
+  
+
+  
+ <button class="play-button" id="playButton" onclick="toggleAudio()">Play Me</button>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById('myAudio');
+    const button = document.getElementById('playButton');
+
+    if (audio.paused) {
+      audio.play();
+      button.textContent = 'Stop';
+    } else {
+      audio.pause();
+      button.textContent = 'Play Me';
+    }
+  }
+</script>
+
+</body>
+</html>
