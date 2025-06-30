@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBGT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+ body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.video-episodes {
+ 
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+  
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 4.5vw;
+  height: 4.5vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 1vh;
+}
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.GT-logo {
+    width: -5vw !important;
+    height: auto;
+}
+
+.title-text {
+  position: relative;
+  font-size: 2vw !important;
+  text-align: center;
+  top: 1.5vw !important;
+  color: white;
+  cursor: default;
+  user-select: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+     margin-bottom: -4vh
+  }
+  .pagination button {
+    padding: .5vh 1.5vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+    
+  }
+  .GT-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 5px;
+}
+.episode h3 {
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.video-episodes {
+  position: absolute;
+  top: 5vh; /* Adjust this value to your liking */
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+.title-text {
+  position: relative;
+  font-size: 4vw !important;
+  text-align: center;
+  top: 5.5vw !important;
+  color: white;
+  cursor: default;
+  user-select: none;
+}
+
+}
+
+
+.back-button-container {
+  position: fixed;
+  top: 12px;
+  left: 4px;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}
+    
+  </style>
+</head>
+<body>
+  <section class="video-episodes">
+ <h2 style="text-align: center;">
+   <a href="https://9animetv.to/watch/dragon-ball-gt-5743?ep=42458">
+  <img src="icons/dbgt.png" alt="DBGT" class="GT-logo">
+  </a>
+  <div style="margin-top: -40px;">
+    <span class="title-text" style="color: yellow;">DB</span><span class="title-text" style="color: rgb(255, 255, 255);">GT</span>
+  </div>
+</h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 12;
+    const episodes = Array(68).fill(0).map((_, i) => [
+  `Episode ${i + 1}`,
+i === 0 ? "https://www.facebook.com/61575949137022/videos/9913092608772716https://www.facebook.com/watch/?ref=search&v=374325222152099&external_log_id=d61cf68a-8a46-4e2a-92c2-74d5144c1149&q=dbgt%20tagalog%20ep%201" : 
+i === 1 ? "https://www.facebook.com/watch/?ref=search&v=1067090634401790&external_log_id=08ab1e52-cc16-46ce-af19-8473fe5249b5&q=dbgt%20tagalog%20ep%202" : 
+i === 2 ? "https://www.facebook.com/watch/?ref=search&v=1144024466255106&external_log_id=82cede8d-3e61-4744-91a5-5ce8f94155de&q=dragonballGT%20tagalog%20ep%203" : 
+i === 3 ? "https://www.facebook.com/watch?ref=search&v=705770744248139&external_log_id=c5100312-f7a8-476d-826a-6ca1b2eb5f25&q=dragonballGT%20tagalog%20ep%204" : 
+i === 4 ? "https://www.facebook.com/watch?ref=search&v=1002795375137560&external_log_id=d0e5543b-003c-4f67-8b96-1a9e802b8c04&q=dragonballGT%20tagalog%20ep%205" :
+i === 5 ? "https://www.facebook.com/watch/?ref=search&v=1714520805397742&external_log_id=f80e3229-908e-452e-99f6-f1201095ba51&q=dbgt%20ep%206" : 
+i === 6 ? "https://www.facebook.com/watch/?ref=search&v=411949010133645&external_log_id=447e942d-9a47-4c54-b6f1-230ab73ea554&q=dbgt%20ep%207" : 
+i === 7 ? "https://www.facebook.com/watch/?ref=search&v=255844782631575&external_log_id=2c389f7f-7266-4985-a617-d305bb17cdb8&q=dbgt%20ep%208" : 
+i === 8 ? "https://www.facebook.com/watch/?ref=search&v=564252451618346&external_log_id=d971e502-ac52-4331-a605-76a8fd88b0de&q=dbgt%20ep%209" : 
+i === 9 ? "https://www.facebook.com/watch/?ref=search&v=317388736757420&external_log_id=4b8c209c-7f08-4b1e-82fe-1abb55542870&q=dbgt%20ep%2010%20tagalog" :
+i === 10 ? "https://www.facebook.com/watch?ref=search&v=153382050218636&external_log_id=996d6f9a-a1a1-4c90-8c31-b674cd1aae0a&q=dbgt%20ep%2011" : 
+i === 11 ? "https://www.facebook.com/watch/?ref=search&v=872159160366914&external_log_id=6bd17871-a208-4244-81aa-9dfd808f44e6&q=dbgt%20ep%2012" : 
+i === 12 ? "https://www.facebook.com/watch/?ref=search&v=551834154103262&external_log_id=09e8d026-5a7b-478c-b216-84c707418514&q=dragonballgt%20tagalog%20ep%2013" : 
+i === 13 ? "https://www.facebook.com/watch/?ref=search&v=2646908475698863&external_log_id=8bbe3d61-9f8a-4340-b691-8e67070cd0e4&q=dragonballgt%20tagalog%20ep%2014" : 
+i === 14 ? "https://www.facebook.com/watch/?ref=search&v=1760536811447704&external_log_id=8bbe3d61-9f8a-4340-b691-8e67070cd0e4&q=dragonballgt%20tagalog%20ep%2014" :
+i === 15 ? "https://www.facebook.com/watch/?ref=search&v=836731987393305&external_log_id=dd965d9c-f49c-4c3a-8272-9c602b47a264&q=dragonballgt%20tagalog%20ep%2016" : 
+i === 16 ? "https://www.facebook.com/watch/?ref=search&v=695041038640128&external_log_id=e781a8be-ac3f-4dcf-8656-a3909594504a&q=dragonballgt%20tagalog%20ep%2017" : 
+i === 17 ? "https://www.facebook.com/watch/?ref=search&v=581251410479484&external_log_id=0235c5d5-ee0d-4f15-9c22-c60029e967c3&q=dragonballgt%20tagalog%20ep%2018" : 
+i === 18 ? "https://www.facebook.com/watch/?ref=search&v=6511371115557158&external_log_id=0044b3ca-335c-42a2-9f53-5209eb6cb56c&q=dragonballgt%20tagalog%20ep%2019" : 
+i === 19 ? "https://www.facebook.com/watch/?ref=search&v=1948458162304340&external_log_id=df298acd-24cc-4298-9499-9b4d1cc52c23&q=dragonballgt%20tagalog%20ep%2020" :
+i === 20 ? "https://www.facebook.com/watch/?ref=search&v=3017634028542440&external_log_id=9e70a9ea-23d8-49b3-b555-d0ff07253a45&q=dragonballgt%20tagalog%20ep%2021" : 
+i === 21 ? "https://www.facebook.com/watch/?ref=search&v=792868746300076&external_log_id=7e5db187-b252-4b01-b005-60b46c03623f&q=dragonballgt%20tagalog%20ep%2022" : 
+i === 22 ? "https://www.facebook.com/watch/?ref=search&v=849301949462475&external_log_id=b5f2743b-2a34-4c2d-b836-510afd495414&q=dragonballgt%20tagalog%20ep%2023" : 
+i === 23 ? "https://www.facebook.com/watch/?ref=search&v=714372823547825&external_log_id=f1bdb1a1-a5c8-4c2e-a181-44dd28796e57&q=dragonballgt%20tagalog%20ep%2024" : 
+i === 24 ? "https://www.facebook.com/watch/?ref=search&v=1244405996111646&external_log_id=e48b127e-889f-466f-b3a9-b2c53e000537&q=dragonballgt%20tagalog%20ep%2025" :
+i === 25 ? "https://www.facebook.com/watch/?ref=search&v=850982129543231&external_log_id=833a6cd2-cccc-4dcc-9d13-adb1c8068c18&q=dragonballgt%20tagalog%20ep%2026" : 
+i === 26 ? "https://www.facebook.com/watch/?ref=search&v=935571377816592&external_log_id=bd7048d7-52a8-4c82-8561-a48a0e9234c8&q=dragonballgt%20tagalog%20ep%2027" : 
+i === 27 ? "https://www.facebook.com/watch/?ref=search&v=1116519013110188&external_log_id=09ebbacd-c883-4ca9-8860-3ddf581e0b61&q=dbgt%20tagalog%20ep%2028" : 
+i === 28 ? "https://www.facebook.com/watch/?ref=search&v=550837293373033&external_log_id=1824e023-3652-4639-af71-8a2effb14d3e&q=dbgt%20tagalog%20ep%2029" : 
+i === 29 ? "https://www.facebook.com/watch/?ref=search&v=771626107389935&external_log_id=3b7eb227-8bf0-407f-835d-3f03fa3a5b8e&q=dragonballgt%20tagalog%20ep%2030" :
+i === 30 ? "https://www.facebook.com/watch/?ref=search&v=883646436300537&external_log_id=a52f4aec-1b47-4864-b5cd-732bc862fa84&q=dragonballgt%20tagalog%20ep%2031" : 
+i === 31 ? "https://www.facebook.com/watch/?ref=search&v=1618649165232522&external_log_id=0bc763fa-fdd9-4ce0-92bf-1cda4f421b91&q=dragonballgt%20tagalog%20ep%2032" : 
+i === 32 ? "https://www.facebook.com/watch?ref=search&v=1576195676159270&external_log_id=60e41726-eb13-4edd-b29d-1e8abae0c288&q=dragonballgt%20tagalog%20ep%2033" : 
+i === 33 ? "https://www.facebook.com/watch/?ref=search&v=573130537513880&external_log_id=c857104a-19d6-4911-8c53-1473d3be11e6&q=dragonballgt%20tagalog%20ep%2034" : 
+i === 34 ? "https://www.facebook.com/watch/?ref=search&v=527899679399852&external_log_id=da13769f-ad67-486d-a11b-411e65c37878&q=dragonballgt%20tagalog%20ep%2035" :
+i === 35 ? "https://www.facebook.com/watch/?ref=search&v=963323442616523&external_log_id=1413d8df-7102-42f9-ae1e-d3f05afb4edf&q=dbgt%20tagalog%20ep%2036" : 
+i === 36 ? "https://www.facebook.com/watch/?ref=search&v=1187134738829848&external_log_id=cf2c439e-07b2-4a9a-9287-cd2e64a6074e&q=dragonballgt%20tagalog%20ep%2037" : 
+i === 37 ? "https://www.facebook.com/watch?ref=search&v=1368571901165044&external_log_id=aacdcfde-e2ab-45d4-98ac-cd1bc7736d09&q=dbgt%20tagalog%20ep%2038" : 
+i === 38 ? "https://www.facebook.com/watch?ref=search&v=1149217345954764&external_log_id=ad6c95d9-d951-4f44-84e7-59fe2e9fca6f&q=dbgt%20tagalog%20ep%2039" : 
+i === 39 ? "https://www.facebook.com/watch/?ref=search&v=874343217211154&external_log_id=a9ada91c-8f9d-4f6f-a8f2-af10ec8415e9&q=dbgt%20tagalog%20ep%2040" :
+i === 40 ? "https://www.facebook.com/EchoSoundll/videos/1793253808207308" : 
+i === 41 ? "https://www.facebook.com/watch/?ref=search&v=499600005614362&external_log_id=d7ccfba2-2f37-41fd-bd0f-6e7b69b2361c&q=dragonballgt%20tagalog%20ep%2042" : 
+i === 42 ? "https://www.facebook.com/watch/?ref=search&v=844202750145394&external_log_id=4af849a8-e0df-4d7d-9cd1-034eca0f9961&q=dragonballgt%20tagalog%20ep%2043" : 
+i === 43 ? "https://www.facebook.com/watch/?ref=search&v=683457790176227&external_log_id=196edfcf-9ae3-4a54-bae5-3eedadbcde77&q=dbgt%20tagalog%20ep%2044" : 
+i === 44 ? "https://www.facebook.com/watch/?ref=search&v=1553863105037715&external_log_id=c6a49f60-44ff-4f05-95a5-cde666fff138&q=dbgt%20tagalog%20ep%2045" :
+i === 45 ? "https://www.facebook.com/watch/?ref=search&v=1235088727042855&external_log_id=4d3c6ced-9225-47d5-aeee-889a3634fd96&q=dbgt%20tagalog%20ep%2046" : 
+i === 46 ? "https://www.facebook.com/watch?ref=search&v=606661412274862&external_log_id=78b27784-6367-4fe4-b695-dd86f9169e17&q=dbgt%20tagalog%20ep%2047" : 
+i === 47 ? "https://www.facebook.com/watch/?ref=search&v=487731496811026&external_log_id=8f2bb10d-c188-40f3-af40-86779a2e33f1&q=dbgt%20tagalog%20ep%2048" : 
+i === 48 ? "https://www.facebook.com/watch/?ref=search&v=3424964897775989&external_log_id=011d2713-b555-4445-8c21-31d4856ecdf7&q=dragonballgt%20tagalog%20ep%2049" : 
+i === 49 ? "https://www.facebook.com/watch/?ref=search&v=871382637343269&external_log_id=42323e15-6cc7-4cea-9fb0-a93744861227&q=dragonballgt%20tagalog%20ep%2050" :
+i === 50 ? "https://www.facebook.com/watch/?ref=search&v=688447889415232&external_log_id=a3106876-13f0-4322-98ef-e19682b65c1c&q=dragonballgt%20tagalog%20ep%2051" : 
+i === 51 ? "https://www.facebook.com/watch/?ref=search&v=1122032278487957&external_log_id=db149ada-1e6a-4257-b992-d6b26eb909e7&q=dragonballgt%20tagalog%20ep%2052" : 
+i === 52 ? "https://www.facebook.com/watch/?ref=search&v=950931813906001&external_log_id=95488083-79b4-4530-8586-b37d948a681b&q=dbgt%20tagalog%20ep%2053" : 
+i === 53 ? "https://www.facebook.com/watch/?ref=search&v=1169072934659104&external_log_id=2da832e4-4c78-493f-907d-62e6898ab2f6&q=dbgt%20tagalog%20ep%2054" : 
+i === 54 ? "https://www.facebook.com/watch/?ref=search&v=926484268761674&external_log_id=235c47dd-fbba-40cf-bbc0-468d1b1eaf49&q=dbgt%20tagalog%20ep%2055" :
+i === 55 ? "https://www.facebook.com/watch?ref=search&v=474589971391665&external_log_id=70112076-0d49-4218-a31d-3781672b6504&q=dbgt%20tagalog%20ep%2056" : 
+i === 56 ? "https://www.facebook.com/watch/?ref=search&v=1142815273098455&external_log_id=ee6d6e88-7db3-4c43-9e0e-021911664a41&q=dbgt%20tagalog%20ep%2057" : 
+i === 57 ? "https://www.facebook.com/watch/?ref=search&v=937538773902414&external_log_id=92c8fe87-bb27-45e2-89a3-1e29524315f9&q=dbgt%20tagalog%20ep%2058" : 
+i === 58 ? "https://www.facebook.com/watch/?ref=search&v=593511830314244&external_log_id=f72c1c44-096b-4b56-b9bf-b2af4e361c5b&q=dbgt%20tagalog%20ep%2059" : 
+i === 59 ? "https://www.facebook.com/watch/?ref=search&v=556007629734962&external_log_id=a9e27fa9-a89d-4979-b973-36173dd1db84&q=dbgt%20tagalog%20ep%2060" :
+i === 60 ? "https://www.facebook.com/watch/?ref=search&v=5875453359189429&external_log_id=05a74b7c-4c44-490a-94ef-cf7555aee1a9&q=dbgt%20tagalog%20ep%2061" : 
+i === 61 ? "https://www.facebook.com/watch/?ref=search&v=2375556815946978&external_log_id=34985d63-32bd-4aab-bd32-628f85d531ee&q=dragonba%3B%3Bgt%20tagalog%20ep%2062" : 
+i === 62 ? "https://www.facebook.com/watch/?ref=search&v=886586809032075&external_log_id=2325fc9a-93a6-45dc-a77f-039d08733509&q=dragonba%3B%3Bgt%20tagalog%20ep%2063" : 
+i === 63 ? "https://www.facebook.com/watch/?ref=search&v=1357745978378517&external_log_id=f35c0b81-7087-448e-aa91-b9c88ed072dc&q=dragonba%3B%3Bgt%20tagalog%20ep%2064" : 
+i === 64 ? "https://www.facebook.com/watch/?v=1804311676959279" :
+i === 65 ? "" : 
+i === 66 ? "" : 
+i === 67 ? "" : 
+i === 68 ? "" : 
+  ""
+  `episode-${i + 1}-id`,
+i === 0 ? "https://i.redd.it/7565rpqoh3n21.gif" : 
+i === 1 ? "https://theanimessenger.wordpress.com/wp-content/uploads/2018/03/00.gif " : 
+i === 2 ? "https://i.pinimg.com/originals/90/70/94/9070942935d7813601e7c3e992727983.gif" : 
+i === 3 ? "https://pa1.aminoapps.com/6892/90e028feb7158b3465f49514e311ae921be14befr1-360-200_hq.gif" : 
+i === 4 ? "https://64.media.tumblr.com/ac1d22d86645f82b057c4c211df0964b/cb9c7b83bc2a530a-a7/s500x750/c496f007f90b332d2cd0e5c7a937279aad7c81ab.gifv" :
+i === 5 ? "https://64.media.tumblr.com/3a7b7dd5356a4bacfce40e8102cfa799/tumblr_myn9yf9IdN1qzmfgzo1_500.gif" : 
+i === 6 ? "https://30.media.tumblr.com/f628236d006c5cd3e28c4d12ea7cbfd6/tumblr_mjlzjrmeD81r72ht7o1_500.gif" : 
+i === 7 ? "https://64.media.tumblr.com/348d6d4bedfb4e4d0824a1359ee201c7/tumblr_pj4yo3ur8t1wyh2j4o1_r1_500.gif" : 
+i === 8 ? "https://64.media.tumblr.com/28737aa32b47324539169c772ad161df/tumblr_pcebsmTiTU1wyh2j4o1_500.gif" : 
+i === 9 ? "https://i.makeagif.com/media/2-11-2018/oTq4qt.gif" :
+i === 10 ? "https://media.tenor.com/mGm-Sw7FeaQAAAAM/dbgt-dragon-ball-gt.gif" : 
+i === 11 ? "https://theanimessenger.wordpress.com/wp-content/uploads/2018/03/81.gif?w=1140" : 
+i === 12 ? "https://media.tenor.com/GgMWm39ilKMAAAAM/dragon-ball-dragon-ball-gt.gif" : 
+i === 13 ? "https://64.media.tumblr.com/0a78395d1251ee2729e52bdd28598e6c/fde58305681be04c-e9/s500x750/2ce6e5a04b9e0a268a3e2b2e66c4574e791cd33c.gif" : 
+i === 14 ? "https://64.media.tumblr.com/9769cca047e8a58b183eb322e59f8380/tumblr_pjwpui6dJc1usyygio1_540.gif":
+i === 15 ? "https://animeargentina.net/wp-content/uploads/2022/04/dragon-ball-gt-laugh.gif" : 
+i === 16 ? "https://i.makeagif.com/media/5-10-2015/pzefn8.gif" : 
+i === 17 ? "https://pa1.aminoapps.com/6809/0bab74f9f4f38c756229baa7751d8f149bbf5c13_hq.gif" : 
+i === 18 ? "https://i.makeagif.com/media/3-15-2022/TPt3mN.gif" : 
+i === 19 ? "https://i.makeagif.com/media/3-15-2022/Rgbhaa.gif" :
+i === 20 ? "https://i.makeagif.com/media/3-22-2017/KnR-l5.gif" : 
+i === 21 ? "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1128278a-18b4-4f54-ac73-c7712496e077/dgxcu6m-01e738a6-a80f-4843-9888-466d970360fe.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzExMjgyNzhhLTE4YjQtNGY1NC1hYzczLWM3NzEyNDk2ZTA3N1wvZGd4Y3U2bS0wMWU3MzhhNi1hODBmLTQ4NDMtOTg4OC00NjZkOTcwMzYwZmUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Kp6fk65x75vLQ45csHHZx9Vy89ayTpLOR1dX8LvA3UQ" : 
+i === 22 ? "https://66.media.tumblr.com/bd38f2b81e8ef303b3d4f7e3359f85b9/tumblr_mjik3yVJ701s56vouo1_500.gif" : 
+i === 23 ? "https://i.makeagif.com/media/3-15-2022/XfJ5LV.gif" : 
+i === 24 ? "https://i.makeagif.com/media/9-12-2015/ErzbvB.gif" :
+i === 25 ? "https://i.makeagif.com/media/1-08-2021/E-6itY.gif" : 
+i === 26 ? "https://media.tenor.com/Cj9tI84olqgAAAAM/dragon-ball-gt-fight.gif" : 
+i === 27 ? "https://media.tenor.com/gZ_J1r5PAxwAAAAM/dragon-ball-gt-goku.gif" : 
+i === 28 ? "https://i.makeagif.com/media/12-30-2017/9r7llk.gif" : 
+i === 29 ? "https://pa1.aminoapps.com/7069/8c80998f841979ac6d92509a2d27732a74c33e99r1-429-250_hq.gif" :
+i === 30 ? "https://preview.redd.it/agpnmj090vt91.gif?width=429&auto=webp&s=9b5da2477d8b972b8d14237ec89a38a2493320c3" : 
+i === 31 ? "https://media.tenor.com/nHSnx4eCONwAAAAM/super-uub-majub-energizado.gif" : 
+i === 32 ? "https://i.makeagif.com/media/11-25-2013/yDwShd.gif" : 
+i === 33 ? "https://64.media.tumblr.com/78f694e608e7ddcdc003d73720686905/9e23c0b2b70b664a-30/s500x750/43b95c47fdca1460979d50167de07224ad7daf2d.gifv" : 
+i === 34 ? "https://media.tenor.com/tLB_tQBaYt8AAAAM/goku-dragon-ball-gt.gif" :
+i === 35 ? "https://pa1.aminoapps.com/6221/0b224d223af8080b5c6d3bbe4a70974016be6779_hq.gif" : 
+i === 36 ? "https://i.makeagif.com/media/7-23-2019/NIjah3.gif" : 
+i === 37 ? "https://64.media.tumblr.com/9cd57dc4a6edb41a4f3e3980ee6e4743/tumblr_mxtqz2sYoc1qzmfgzo1_500.gif" : 
+i === 38 ? "https://images.steamusercontent.com/ugc/925926048601526097/050896F23E87E5203143C18C93BACA9F684216A1/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false " :
+i === 39 ? "https://images.steamusercontent.com/ugc/527258415833197793/88096FC99D01CFFADA4DC0238F634B54830549BD/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" :
+i === 40 ? "https://i.redd.it/gvlzou1xlkrb1.gif" : 
+i === 41 ? "https://media.tenor.com/FvbOmdiRE2AAAAAM/android17-dbz.gif" : 
+i === 42 ? "https://media.tenor.com/pi6p_4EaVyoAAAAM/dragon-ball-gt-android17.gif" : 
+i === 43 ? "https://i.makeagif.com/media/8-01-2016/j03ZpX.gif" : 
+i === 44 ? "https://media.tenor.com/ThgguXObH98AAAAM/dragon-ball-gt-super17.gif" :
+i === 45 ? "https://i.makeagif.com/media/7-11-2016/LuUl4W.gif" : 
+i === 46 ? "https://comicvine.gamespot.com/a/uploads/scale_small/11142/111426670/7485618-640c54b7-3ce7-4681-aa57-8d14ce9cb6be.gif" : 
+i === 47 ? "https://pa1.aminoapps.com/6892/405a0bbb2fe7638166b7903660b900a8845c8a2dr1-360-202_hq.gif" : 
+i === 48 ? "https://static.wikia.nocookie.net/d4ef0cb7-9747-40ea-be63-03c2c74b5e28/scale-to-width/755" : 
+i === 49 ? "https://media.tenor.com/032jHXzL9FgAAAAM/lr-int-legion-of-shadow-dragons-int-legion-of-shadow-dragons.gif" :
+i === 50 ? "https://media.tenor.com/knQH6pQkwq8AAAAM/lr-int-legion-of-shadow-dragons-int-legion-of-shadow-dragons.gif" : 
+i === 51 ? "https://i.makeagif.com/media/3-19-2018/MV0FB5.gif" : 
+i === 52 ? "https://orig07.deviantart.net/20f2/f/2012/248/2/3/pan_and_goku_kamehameha_by_evil_black_sparx_77-d5dog12.gif" : 
+i === 53 ? "https://i.pinimg.com/originals/63/b1/46/63b146383dedab365b61bb8e2fff2364.gif" : 
+i === 54 ? "https://static.wikia.nocookie.net/14422ee1-fc02-4cdb-9886-f56334055070/scale-to-width/370" :
+i === 55 ? "https://static.wikia.nocookie.net/bda40cc5-6d36-45ae-ac4f-c013292ee49d/scale-to-width/370" : 
+i === 56 ? "https://37.media.tumblr.com/867d28a0f5d50adcb33e85eeff78da75/tumblr_n2yhfzkZCk1r72ht7o1_500.gif" : 
+i === 57 ? "https://i.makeagif.com/media/3-18-2018/Dst2xd.gif" : 
+i === 58 ? "https://i.makeagif.com/media/3-25-2018/pRN1zN.gif" : 
+i === 59 ? "https://i.makeagif.com/media/10-23-2018/MAd3gd.gif" :
+i === 60 ? "https://static.wikia.nocookie.net/9b9993de-aa11-454b-9dbe-9a2a28bf421a/scale-to-width/370" : 
+i === 61 ? "https://media.tenor.com/L1phH2yPoOMAAAAM/goku-e-vegeta-gt-ssj4.gif" : 
+i === 62 ? "https://media.tenor.com/KnBx_9t4J1IAAAAM/ssj4gogeta.gif" : 
+i === 63 ? "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6301bb24-b7e1-4e0c-93a2-24ce357c4c33_500x375.jpeg" : 
+i === 64 ? "https://gifdb.com/images/high/all-out-for-strength-spirit-bomb-kzis5l6wr6zm1prx.gif" :
+i === 65 ? "https://i.pinimg.com/originals/55/53/ab/5553ab657086178c6940d04dee914236.gif" : 
+i === 66 ? "https://media.tenor.com/7Z_1s6EdoIsAAAAM/goku-junior-ssj.gif" : 
+i === 67 ? "https://i.makeagif.com/media/2-20-2016/yzWJBU.gif" :   
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+ <div class="back-button-container">
+    <a href="anime.html"  class="back-button"> Back</a>
+  </div>
+
+  <audio id="myAudio" loop playsinline>
+    <source src="sounds/dbgt.weba" type="audio/webm">
+  </audio>
+  
+  <button class="play-button" id="playButton" onclick="toggleAudio()">Play Me</button>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById('myAudio');
+    const button = document.getElementById('playButton');
+
+    if (audio.paused) {
+      audio.play();
+      button.textContent = 'Stop';
+    } else {
+      audio.pause();
+      button.textContent = 'Play Me';
+    }
+  }
+</script>
+  
+</body>
+</html>
