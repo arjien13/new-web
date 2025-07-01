@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLAmDunK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+ body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.video-episodes {
+ 
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+  
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 4.5vw;
+  height: 4.5vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 1vh;
+}
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.SD-logo {
+    width: 15vw;
+    height: auto;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+     margin-bottom: -4vh
+  }
+  .pagination button {
+    padding: .5vh 1.5vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+    
+  }
+  .SD-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -20px;
+}
+.episode h3 {
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.video-episodes {
+  position: absolute;
+  top: 5vh; /* Adjust this value to your liking */
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+}
+
+
+.back-button-container {
+  position: fixed;
+  top: 12px;
+  left: 4px;
+}
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}
+    
+  </style>
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <a href="https://9animetv.to/watch/slam-dunk-86?ep=1788">
+      <img src="icons/SD1.png" alt="SlamDunk" class="SD-logo">
+      </a>
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 16;
+    const episodes = Array(101).fill(0).map((_, i) => [
+  `Episode ${i + 1}`,
+i === 0 ? "https://www.facebook.com/100088228795126/videos/857182725498326" : 
+i === 1 ? "https://www.facebook.com/100089963140104/videos/3637974506455971" : 
+i === 2 ? "https://www.facebook.com/watch/?ref=search&v=559001081628003&external_log_id=21911c56-3786-43b9-b14c-59cf1b658b69&q=slamdunk%20tagalog%20episode%203" : 
+i === 3 ? "https://www.facebook.com/watch/?ref=search&v=612981537631543&external_log_id=6842a03c-98f0-4ec3-a2b2-73f642bc1ffa&q=slamdunk%20tagalog%20episode%204" : 
+i === 4 ? "https://www.facebook.com/watch/?ref=search&v=1204340607182624&external_log_id=7f1d0be4-45df-4802-a801-720099fa02d1&q=slamdunk%20ep%203%20tagalog" :
+i === 5 ? "https://www.facebook.com/watch/?ref=search&v=3417500385186493&external_log_id=fdc494ed-40e7-496c-8519-a98d1cd0575b&q=slamdunk%20ep%206%20tagalog" : 
+i === 6 ? "https://www.facebook.com/watch/?ref=search&v=280172936606522&external_log_id=f5c02ab2-5bf5-4b47-b77d-67457239b14f&q=slamdunk%20ep%207%20tagalog" : 
+i === 7 ? "https://www.facebook.com/watch/?ref=search&v=1280640282512642&external_log_id=eea930db-56f2-4210-bfd8-66c664d212bb&q=slamdunk%20ep%208%20tagalog" : 
+i === 8 ? "https://www.facebook.com/watch/?ref=search&v=841695703609249&external_log_id=97da55b4-9072-4e09-8dfd-d65211f16ffa&q=slamdunk%20ep%209%20tagalog" : 
+i === 9 ? "https://www.facebook.com/watch/?ref=search&v=1005220711105195&external_log_id=9ea31cce-b3f2-46a9-b2c1-eb4c2e91c9d2&q=slamdunk%20ep%2010%20tagalog" :
+i === 10 ? "https://www.facebook.com/61575275024179/videos/3959445620996519" : 
+i === 11 ? "https://www.facebook.com/watch/?ref=search&v=735555382020495&external_log_id=9f1b61f5-c5d1-48ba-97d1-27f561c6907f&q=slamdunk%20ep%2012%20tagalog" : 
+i === 12 ? "https://www.facebook.com/watch/?ref=search&v=191245387345811&external_log_id=501aa3a4-27cd-45ed-916f-6f3c15d8b2f8&q=slamdunk%20ep%2013%20tagalog" : 
+i === 13 ? "https://www.facebook.com/watch?ref=search&v=1404013293893216&external_log_id=284262bd-cf26-4823-9f98-5e8463cca6c9&q=Slamdunk%20Tagalog%20dub%20-%20Episode%2014" : 
+i === 14 ? "https://www.facebook.com/watch/?ref=search&v=842999473426432&external_log_id=c7b3831b-a08f-44eb-be66-85302c0e7783&q=slamdunk%20ep%2015" :
+i === 15 ? "https://www.facebook.com/61575275024179/videos/1229894908590299" : 
+i === 16 ? "https://www.facebook.com/61575275024179/videos/749267474304158" : 
+i === 17 ? "https://www.facebook.com/61575275024179/videos/1007439598204653" : 
+i === 18 ? "https://www.facebook.com/watch/?ref=search&v=1068973747135471&external_log_id=9283f2a6-f15f-4a6f-adbd-291a19acd51e&q=slamdunk%20ep%2019" : 
+i === 19 ? "https://www.facebook.com/61575275024179/videos/1077634510894791" :
+i === 20 ? "https://www.facebook.com/61562810683254/videos/526896689706089" : 
+i === 21 ? "https://www.facebook.com/61575275024179/videos/1463927488372405" : 
+i === 22 ? "https://www.facebook.com/61575275024179/videos/1449389779555816" :
+i === 23 ? "https://www.facebook.com/61564884144226/videos/657791887114351" :
+i === 24 ? "https://www.facebook.com/61575275024179/videos/1275313180892956" :
+i === 25 ? "https://www.facebook.com/61562810683254/videos/482338801294980" :
+i === 26 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/1270575777974677" :
+i === 27 ? "https://www.facebook.com/100084176981211/videos/674893381968570" :
+i === 28 ? "https://www.facebook.com/61562810683254/videos/1858305677991820" :
+i === 29 ? "https://www.facebook.com/watch/?ref=search&v=1348239869303162&external_log_id=47986ec8-3b85-433f-9d88-764a3c3db934&q=slamdunk%20ep%2030" :
+i === 30 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/9688328574615527" :
+i === 31 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/544384945095652" :
+i === 32 ? "https://www.facebook.com/100063913212791/videos/1062800232048840" :
+i === 33 ? "https://www.facebook.com/100084176981211/videos/2724074071129350" :
+i === 34 ? "https://www.facebook.com/100084176981211/videos/1056975276330649" :
+i === 35 ? "https://www.facebook.com/100063913212791/videos/1063690049191665" :
+i === 36 ? "http://facebook.com/jeremiahgenaldo/videos/168677882979063" :
+i === 37 ? "https://www.facebook.com/100063913212791/videos/1069590841764368" :
+i === 38 ? "https://www.facebook.com/100063913212791/videos/603272825600742" :
+i === 39 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/557022330387485" :
+i === 40 ? "https://www.facebook.com/100088228795126/videos/929670454830572" :
+i === 41 ? "https://www.facebook.com/watch/?ref=search&v=664122942136180&external_log_id=db35a27d-29b8-4fbc-9d66-e93d621f2486&q=slamdunk%20ep%2042" :
+i === 42 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/690572136897990" :
+i === 43 ? "http://facebook.com/WalangMagawaSaBuhay23/videos/1312649903155013" :
+i === 44 ? "https://www.facebook.com/100063913212791/videos/689302333913030" :
+i === 45 ? "https://www.facebook.com/100063913212791/videos/684139857927373" :
+i === 46 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/665798119580501" :
+i === 47 ? "https://www.facebook.com/61564884144226/videos/1182764876656129" :
+i === 48 ? "http://facebook.com/WalangMagawaSaBuhay23/videos/1077353054443428" :
+i === 49 ? "https://www.facebook.com/watch?ref=search&v=927919238561878&external_log_id=6bab4bc4-e7fc-409c-be3c-c6a0194f3d3e&q=slamdunk%20ep%2050" :
+i === 50 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/704740668597830" :
+i === 51 ? "https://www.facebook.com/100063913212791/videos/711359618291487" :
+i === 52 ? "https://www.facebook.com/100063913212791/videos/1015422377373674" :
+i === 53 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/680223691087850" :
+i === 54 ? "https://www.facebook.com/61575681556200/videos/722674096961267" :
+i === 55 ? "https://www.facebook.com/61575681556200/videos/2180060909132331" :
+i === 56 ? "https://www.facebook.com/61575681556200/videos/1763739574541515" :
+i === 57 ? "https://www.facebook.com/61575681556200/videos/744406831248779" :
+i === 58 ? "https://www.facebook.com/61575681556200/videos/690304870376218" :
+i === 59 ? "https://www.facebook.com/watch?ref=search&v=945432590413007&external_log_id=c17a2092-fbf2-4ed5-87a7-38757d8c90ff&q=slamdunk%20ep%2060" :
+i === 60 ? "https://www.facebook.com/61575681556200/videos/1051693776890821" :
+i === 61 ? "https://www.facebook.com/61575681556200/videos/1040361367591603" :
+i === 62 ? "https://www.facebook.com/100063913212791/videos/1781824169367150" :
+i === 63 ? "https://www.facebook.com/61575681556200/videos/708871571739577" :
+i === 64 ? "https://www.facebook.com/61575681556200/videos/1429577308047444" :
+i === 65 ? "https://www.facebook.com/61575681556200/videos/1427373318398797" :
+i === 66 ? "https://www.facebook.com/watch/?ref=search&v=1413834986006015&external_log_id=b7b83a6d-d748-4032-9851-8d199cfe3a9f&q=slamdunk%20ep%2067" :
+i === 67 ? "https://www.facebook.com/61575681556200/videos/730008623042737" :
+i === 68 ? "https://www.facebook.com/61575681556200/videos/1239861737539948" :
+i === 69 ? "https://www.facebook.com/61575681556200/videos/1377530866800206" :
+i === 70 ? "https://www.facebook.com/61575681556200/videos/29706799468968316" :
+i === 71 ? "https://www.facebook.com/61575681556200/videos/551690244663806" :
+i === 72 ? "https://www.facebook.com/61575681556200/videos/650858214583929" :
+i === 73 ? "https://www.facebook.com/61575681556200/videos/696761216079396" :
+i === 74 ? "https://www.facebook.com/61575681556200/videos/556517760602842" :
+i === 75 ? "https://www.facebook.com/61575681556200/videos/1545044889789791" :
+i === 76 ? "https://www.facebook.com/watch?ref=search&v=1333096284027835&external_log_id=23aba491-191d-4f51-bd4a-eb2ea6b33ec7&q=slamdunk%20ep%2077" :
+i === 77 ? "https://www.facebook.com/61575681556200/videos/723207143481532" :
+i === 78 ? "https://www.facebook.com/61575681556200/videos/653239170875382" :
+i === 79 ? "https://www.facebook.com/WalangMagawaSaBuhay23/videos/1346048223359606" :
+i === 80 ? "https://www.facebook.com/jeremiahgenaldo/videos/1247885852554786" :
+i === 81 ? "https://www.facebook.com/61575681556200/videos/2602765913254186" :
+i === 82 ? "https://www.facebook.com/61575681556200/videos/601382442334384" :
+i === 83 ? "https://www.facebook.com/61575681556200/videos/674934415434333" :
+i === 84 ? "https://www.facebook.com/61575681556200/videos/678724881732997" :
+i === 85 ? "https://www.facebook.com/61575681556200/videos/1409947970142930" :
+i === 86 ? "https://www.facebook.com/61551462568228/videos/294498223472621" :
+i === 87 ? "https://www.facebook.com/61575681556200/videos/994580882665183" :
+i === 88 ? "https://www.facebook.com/jeremiahgenaldo/videos/1306456273573065" :
+i === 89 ? "https://www.facebook.com/watch/?ref=search&v=618767110413137&external_log_id=7cac83e1-fc8a-4527-bca7-216ff19907ce&q=slamdunk%20ep%2090" :
+i === 90 ? "https://www.facebook.com/61575681556200/videos/635075659580408" :
+i === 91 ? "https://www.facebook.com/61575681556200/videos/1398838821241130" :
+i === 92 ? "https://www.facebook.com/61575681556200/videos/1004595905163322" :
+i === 93 ? "https://www.facebook.com/61575681556200/videos/670750409109341" :
+i === 94 ? "https://www.facebook.com/watch?ref=search&v=6979997102123046&external_log_id=a5af98d4-630e-4a2f-bd93-f43229fd15cd&q=slamdunk%20ep%2095" :
+i === 95 ? "https://www.facebook.com/61575681556200/videos/707597728396363" :
+i === 96 ? "https://www.facebook.com/100088228795126/videos/443345888364253/" :
+i === 97 ? "https://www.facebook.com/100088228795126/videos/1141062633564558/" :
+i === 98 ? "https://www.facebook.com/100088228795126/videos/7656687564363869/" :
+i === 99 ? "https://www.facebook.com/100088228795126/videos/307080152065090/" :
+i === 100 ? "https://www.facebook.com/100088228795126/videos/1133909240948081/" :
+  `episode-${i + 1}-id`,
+i === 0 ? "https://i.pinimg.com/originals/55/1a/47/551a47daeda7e9e39b41a6f6b0691aa9.gif" : 
+i === 1 ? "https://i.pinimg.com/originals/fd/67/f7/fd67f720a4197d0744bf5d0944ebf4c2.gif" : 
+i === 2 ? "https://66.media.tumblr.com/936a0749c247299d22c86e45355a3009/tumblr_inline_pepemrxlr21rfr2nv_540.gif" : 
+i === 3 ? "https://i0.wp.com/blushinggeek.com/wp-content/uploads/2021/03/slamdunk-takenori-akagi-blushinggeek.gif?resize=356%2C257&ssl=1" : 
+i === 4 ? "https://64.media.tumblr.com/37708a2dd5d1e2fc17c3fcda4f59766d/tumblr_oymghggonh1sg8uefo1_540.gif" :
+i === 5 ? "https://media.tenor.com/aCMGLfw8GHgAAAAM/cheerleader-cheering.gif" : 
+i === 6 ? "https://64.media.tumblr.com/d6d41ddcf5c94597ead7c82277509dff/fae37844c85d1d7f-a8/s540x810/ab5dfb48b5de8b5af62c4d32c2ec00a31d9d5b7f.gif" : 
+i === 7 ? "https://64.media.tumblr.com/1411fda73660751970765e3b2508087f/847f6e67a6a59de0-c2/s540x810/b1f52493fac4771c022936780e4b06fef3f9964c.gif" : 
+i === 8 ? "https://64.media.tumblr.com/354145c856ffb70daccf405b997f7a12/9ea65822d73282dc-f0/s500x750/465b510f3dfb8fc8f8df2e3630117c358129f927.gifv" : 
+i === 9 ? "https://64.media.tumblr.com/69a69088ba2e5c2ea6ca8dbff2a967d4/tumblr_ovbksrTZWw1v6xsm2o1_540.gif" :
+i === 10 ? "https://64.media.tumblr.com/f8d53869856e2cfeca50262ffef62f2a/58158537e5d4c866-82/s540x810/fb7e55a512feb719e2b9d5268efc6fa3559f5da6.gifv" : 
+i === 11 ? "https://i.pinimg.com/originals/4f/4d/42/4f4d42c0daaf00564c84f73d6b7f250b.gif" : 
+i === 12 ? "https://64.media.tumblr.com/tumblr_m4o7zxofgG1r99pzho1_250.gif" : 
+i === 13 ? "https://media.tenor.com/3JqZxm_cGrkAAAAC/slam-dunk-hanamichi-sakuragi.gif" : 
+i === 14 ? "https://64.media.tumblr.com/a033bfa7c2d439d44d6b6454b9e75dd4/tumblr_ooztdbKwwL1tysz53o1_500.gifv" :
+i === 15 ? "https://media.tenor.com/22Ak1t4CwxsAAAAM/basketball-play.gif" : 
+i === 16 ? "https://i.imgur.com/xSaLFeL.gif" : 
+i === 17 ? "https://cloudfront-us-east-1.images.arcpublishing.com/copesa/J4WAERU4UVG7DGU6LINTCVYEHE.gif" : 
+i === 18 ? "https://cloudfront-us-east-1.images.arcpublishing.com/copesa/MSDIYPRU4JC6HN72BTC5ZWKX54.gif" : 
+i === 19 ? "https://64.media.tumblr.com/789e5ff6eda934c1951445d2739cc2d7/tumblr_mmhhmnf5aW1qzdpr4o1_500.gif" :
+i === 20 ? "https://media.tenor.com/meMjAysaXh8AAAAM/miyagi-ryota-crying.gif" : 
+i === 21 ? "https://i.pinimg.com/originals/ef/3a/e6/ef3ae6c7089817660c20ab7547413073.gif" : 
+i === 22 ? "https://64.media.tumblr.com/659c86b7758639b71186971998be1175/tumblr_mnbrzsLI1D1qzdpr4o1_500.gif" : 
+i === 23 ? "https://i.makeagif.com/media/11-12-2019/-1kWwi.gif" : 
+i === 24 ? "https://i.makeagif.com/media/8-19-2015/3zYoo2.gif":
+i === 25 ? "https://i.pinimg.com/originals/5f/23/7e/5f237ed74ab18d0298068cd6afbf0452.gif" : 
+i === 26 ? "https://media.tenor.com/bFQVSPTeOYUAAAAM/slam-dunk-anzai-sensei.gif" : 
+i === 27 ? "https://64.media.tumblr.com/e96472d8ccbb0f8080b344d82bf22f85/tumblr_o9vk2peG0C1v6xsm2o1_540.gif" : 
+i === 28 ? "https://i.pinimg.com/originals/2c/6d/6b/2c6d6b2344982c4213caece57538e668.gif" : 
+i === 29 ? "https://media.tenor.com/RrxlQ7Ag730AAAAM/slam-dunk-anime.gif" :
+i === 30 ? "https://media.tenor.com/1KUqFVzAuOEAAAAM/slam-dunk-slam-dunk-anime.gif" : 
+i === 31 ? "https://media.tenor.com/_EP1KS1gF94AAAAM/hanamichi-sakuragi.gif" : 
+i === 32 ? "https://i.pinimg.com/originals/e7/7e/00/e77e00504f97ed9f211d07629c1c178b.gif" : 
+i === 33 ? "https://64.media.tumblr.com/c740f0a1544a78c86b277626124882bb/tumblr_mn9dr7CGgg1qzdpr4o1_500.gif" : 
+i === 34 ? "https://64.media.tumblr.com/d0cdf0b284c4484bd452a8751064e6ba/tumblr_mmwgurGgI81qzdpr4o1_500.gifv" :
+i === 35 ? "https://64.media.tumblr.com/238d2cbcfea1d8989b54b521e6c94770/tumblr_no9blsA1lX1uv72lbo1_400.gif" : 
+i === 36 ? "https://i.makeagif.com/media/4-05-2017/gKN8yI.gif": 
+i === 37 ? "https://i.makeagif.com/media/10-03-2016/XZ02fH.gif" : 
+i === 38 ? "https://i.makeagif.com/media/10-03-2016/CsRYx1.gif" : 
+i === 39 ? "https://media.tenor.com/dF8LuWPrXcQAAAAM/mitsui-shoot.gif" :
+i === 40 ? "https://i.pinimg.com/originals/13/a1/08/13a108d209035a145f9170473cb093b8.gif" : 
+i === 41 ? "https://i.pinimg.com/originals/b9/74/5d/b9745db3604e264e96850e91085cb6fe.gif" : 
+i === 42 ? "https://64.media.tumblr.com/a1f0da38ce63ca7cfbc48c9fabde6823/bb3c7b6604ddb5e3-dd/s1280x1920/574f7138af5b6d4b4a848000468a3a62ebc36544.gif" : 
+i === 43 ? "https://media.tenor.com/8hROnvis560AAAAM/mitsui-slam-dunk.gif" : 
+i === 44 ? "https://media.tenor.com/LBmJRtlUCpIAAAAM/mitsui-slam-dunk.gif" :
+i === 45 ? "https://pa1.aminoapps.com/6178/9c910b28324ca7ebcafcdd68dfd7994d3560f94c_hq.gif" : 
+i === 46 ? "https://i.pinimg.com/originals/f0/1e/32/f01e320dd2668a1bbda3f23febffd0c9.gif" : 
+i === 47 ? "https://64.media.tumblr.com/762ea0b2c8f416c5aed494e5d1b1a635/c12401fa60c78354-8f/s500x750/a9a4c7cf41c2a69c2b9eb69c3f987d6245313594.gif" : 
+i === 48 ? "https://d.wattpad.com/story_parts/719952522/images/1595b92d3a87188e161755743137.gif" : 
+i === 49 ? "https://media.tenor.com/0bCc1dWfZ6EAAAAM/kaede-rukawa.gif" :
+i === 50 ? "https://64.media.tumblr.com/d2689325e2b285d3ea96ab20792f4ea1/fba5fb61a265686d-d3/s400x600/4750176f787f71ab66a6c0dab2fd3304e127ff5e.gif" : 
+i === 51 ? "https://64.media.tumblr.com/6c24ad299b9070281cbd84ca7057cf80/8c5add7a96e1b307-ee/s400x600/82c2d21cebc1dde507178bc438b1bfacd27792cc.gif" : 
+i === 52 ? "https://64.media.tumblr.com/d772f56873db0d84a6c823dc89032029/af91b352e6d6ae8b-9b/s400x600/2159f1144f526455774a0e1c528b10c7e5b2ab5b.gifv" : 
+i === 53 ? "https://media.tenor.com/a7pMkhSrcPkAAAAM/hanamichi-sakuragi.gif" : 
+i === 54 ? "https://64.media.tumblr.com/6be46c4295cc0639b673b22f73204a67/tumblr_n4j4yaNKAm1qe1i57o3_r1_250.gifv" :
+i === 55 ? "https://64.media.tumblr.com/af3d4df84d8d160ce4394fdb29c5a513/tumblr_n4j4yaNKAm1qe1i57o4_r4_250.gifv" : 
+i === 56 ? "https://media.tenor.com/w98h0jJCWUMAAAAM/maki-ryota-miyagi.gif" : 
+i === 57 ? "https://storage.qoo-img.com/album/8c6/229/cbd8f92267033872cf08937d14.gif" :
+i === 58 ? "https://media.tenor.com/1UKO9ukoipYAAAAM/sakuragi-hanamichi-slam-dunk.gif" : 
+i === 59 ? "https://media.tenor.com/IZV61dxZ3VUAAAAM/slam-dunk-sakuragu-hanamichi.gif" :
+i === 60 ? "https://c.tenor.com/ZRmKGlWN4XEAAAAC/sakuragi-hanamichi.gif" : 
+i === 61 ? "https://media.tenor.com/oQdWJYNIZN4AAAAM/slam-dunk-slam-dunk-gifs.gif" : 
+i === 62 ? "https://64.media.tumblr.com/54fa4616effffe6891c2e794fa0eebf1/5bf2ee9b382a8695-0d/s540x810/94761244515abebb093b89fcca868f5c6f522ff9.gif" : 
+i === 63 ? "https://media.tenor.com/r6kLn_2eRAQAAAAM/sendoh-slam-dunk.gif" : 
+i === 64 ? "https://media.tenor.com/DxL8mHlqNkEAAAAM/sendoh.gif" :
+i === 65 ? "https://64.media.tumblr.com/aa5579d36d157885aebcc9985f462b42/tumblr_mmq6bx1eB11qzdpr4o3_250.gif" : 
+i === 66 ? "https://64.media.tumblr.com/42f8a82344f704dffd069c1c147fb324/tumblr_molfxd4tIj1qzdpr4o1_500.gif" : 
+i === 67 ? "https://media.tenor.com/8nwPai6rtPoAAAAM/slam-dunk-anime.gif" : 
+i === 68 ? "https://labaravolante.it/wp-content/uploads/2024/03/tiri-liberi.gif" : 
+i === 69 ? "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f5988bcf-6660-4f47-afd8-888d72d92eae/d301qv1-2874c327-a64d-43e3-b1c9-f58106a502da.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1OTg4YmNmLTY2NjAtNGY0Ny1hZmQ4LTg4OGQ3MmQ5MmVhZVwvZDMwMXF2MS0yODc0YzMyNy1hNjRkLTQzZTMtYjFjOS1mNTgxMDZhNTAyZGEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.EtHlfgtuWivQyQJmS_hKEHkhiV7DIXzivLAG0YPVHKc" :
+i === 70 ? "https://media.tenor.com/H0R9CWO6Gs0AAAAM/hanamichi-sakuragi.gif" : 
+i === 71 ? "https://media.tenor.com/8IeUi0tsMlMAAAAM/sendoh-rukawa.gif" : 
+i === 72 ? "https://gifdb.com/images/high/slam-dunk-498-x-315-gif-tbk5lb2nrsjpfc2x.gif" : 
+i === 73 ? "https://i.makeagif.com/media/8-16-2020/U1kwPy.gif" : 
+i === 74 ? "https://media.tenor.com/WLQDAWqaeYkAAAAM/sendoh-slam-dunk.gif" :
+i === 75 ? "https://media.tenor.com/5xbZkNY51NsAAAAM/sendoh-slam-dunk.gif" : 
+i === 76 ? "https://media.tenor.com/vUBoHTUR2nMAAAAM/hanamichi-sakuragi.gif" : 
+i === 77 ? "https://i.gifer.com/origin/75/75ed532b657fc77dee44627157a3dc9c_w200.gif" : 
+i === 78 ? "https://media.tenor.com/Uaw0i2fXbPQAAAAM/sendoh-slam-dunk.gif" : 
+i === 79 ? "https://media.tenor.com/_SCDOVpXq5YAAAAM/sendoh-akir.gif" :
+i === 80 ? "https://media.tenor.com/bbdtpCCNyvgAAAAM/sendoh-victory.gif" : 
+i === 81 ? "https://media.tenor.com/nyIrwvnD29MAAAAM/sendoh-rukawa.gif" : 
+i === 82 ? "https://64.media.tumblr.com/10013f8db483779afe16ce25aaf39a03/747e726d235eccde-25/s540x810/95db7646de1cadaa87ded617e78a2aad9e752972.gifv" : 
+i === 83 ? "https://media.tenor.com/ifRdWIv4N8IAAAAM/slam-dunk-hanamichi.gif" : 
+i === 84 ? "https://media.tenor.com/4CB6IQ7hGgIAAAAM/ryota-miyagi-slam-dunk.gif" :
+i === 85 ? "https://i.gifer.com/9Qlf.gif" : 
+i === 86 ? "https://64.media.tumblr.com/502b7aa6716b4a6abc11adac8e8cb6e0/faa0911af803b3a1-f2/s500x750/4d63937b9fadeae105ef1955a3e0f6569aeb2295.gifv" : 
+i === 87 ? "https://64.media.tumblr.com/ab3939888cfaa92f73377691b5a2a6c0/faa0911af803b3a1-75/s400x600/d35ce313ee8917504db49900b9eef420cf4ddd46.gifv" : 
+i === 88 ? "https://media.tenor.com/ieB8X2Q2_2cAAAAM/cheerleading-go-for-it.gif" : 
+i === 89 ? "https://media.tenor.com/jjKqUA5HSnMAAAAM/hanamichi-sakuragi.gif" :
+i === 90 ? "https://canodreamer.wordpress.com/wp-content/uploads/2023/06/haruko-hello.gif" : 
+i === 91 ? "https://media.tenor.com/RgJB8wq7lKgAAAAM/hanamichi-sakuragi.gif" : 
+i === 92 ? "https://media.tenor.com/rjs-exvqICIAAAAM/slam-dunk.gif" : 
+i === 93 ? "https://i.pinimg.com/originals/b3/7b/e8/b37be8bca1e7f03763de73ce47632de7.gif" : 
+i === 94 ? "https://media.tenor.com/L2Bu_XpRh1EAAAAM/sakuragi-sakuragi-hanamichi.gif" :
+i === 95 ? "https://i.pinimg.com/originals/62/08/ac/6208ac0bd16cbc3805ae22a1259368db.gif" : 
+i === 96 ? "https://media.tenor.com/UcYOQy5j9-sAAAAM/sakuragi-tease.gif" : 
+i === 97 ? "https://64.media.tumblr.com/d04ec46af89323ff4a6b3abcea843f69/b357402c56fd06b6-25/s540x810/efd990fd7412d951ad733dd079e156a7725a9578.gif" : 
+i === 98 ? "https://i.gifer.com/LuRz.gif" : 
+i === 99 ? "https://media.tenor.com/LF472V_g07cAAAAM/slam-dunk-sd-sd.gif" :
+i === 100 ? "https://pa1.aminoapps.com/6788/858a988854a0ed47d4d71877558c99a58b921d79_hq.gif": 
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+ <div class="back-button-container">
+    <a href="anime.html"  class="back-button"> Back</a>
+  </div>
+
+  <audio id="myAudio" loop playsinline>
+    <source src="sounds/SD.weba" type="audio/webm">
+  </audio>
+  
+  <audio id="myAudio" loop playsinline>
+    <source src="sounds/SD.weba" type="audio/webm">
+  </audio>
+  
+  <button class="play-button" id="playButton" onclick="toggleAudio()">Play Me</button>
+
+<script>
+  function toggleAudio() {
+    const audio = document.getElementById('myAudio');
+    const button = document.getElementById('playButton');
+
+    if (audio.paused) {
+      audio.play();
+      button.textContent = 'Stop';
+    } else {
+      audio.pause();
+      button.textContent = 'Play Me';
+    }
+  }
+</script>
+  
+</body>
+</html>
