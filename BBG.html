@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BubbleGang</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+ body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.video-episodes {
+ 
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+  
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 4.5vw;
+  height: 4.5vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 1vh;
+}
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.ndo-logo {
+    width: 15vw;
+    height: auto;
+     margin-bottom: -10px;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+     margin-bottom: -4vh
+  }
+  .pagination button {
+    padding: .5vh 1.5vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+    
+  }
+  .ndo-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -10px;
+}
+.episode h3 {
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.video-episodes {
+  position: absolute;
+  top: 5vh; /* Adjust this value to your liking */
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+}
+
+/* BBG Hover effect */
+.complete-episode {
+  color: pink;
+  position: relative;
+}
+
+.complete-episode:hover::after {
+  content: "Complete Episode";
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 2px 5px;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+  color: rgb(194, 63, 106);
+}
+
+
+.back-button-container {
+          position: fixed;
+          top: 12px;
+          left: 4px;
+       }
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}   
+
+
+
+  </style>
+
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <img src="icons/bbg.webp" alt="NDO" class="ndo-logo">
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+const episodesPerPage = 12;
+const episodes = Array(92).fill(0).map((_, i) => [
+i === 35 ? "<span class='complete-episode'>BBG GAGS</span>": i === 60 ? "<span class='complete-episode'>Mr. Assimo</span>" : `BBG ${i + 1}`,
+
+i === 0 ? "https://www.dailymotion.com/video/xgu4mv" : 
+i === 1 ? "https://www.youtube.com/watch?v=8O_Z99NmLjg" : 
+i === 2 ? "https://www.youtube.com/watch?v=NxAmYF9KzPk" : 
+i === 3 ? "https://www.youtube.com/watch?v=D2RYFOkBXnA" : 
+i === 4 ? "https://www.youtube.com/watch?v=vIB3hTCV9k4" : 
+i === 5 ? "https://www.youtube.com/watch?v=oWQFwEMFT3o" : 
+i === 6 ? "https://www.youtube.com/watch?v=pM0Xkzvued8" : 
+i === 7 ? "https://www.youtube.com/watch?v=0uo32In_aDY" : 
+i === 8 ? "https://www.youtube.com/watch?v=nkrUFcorXg4" : 
+i === 9 ? "https://www.youtube.com/watch?v=i0rdE2FFPNM" : 
+i === 10 ? "https://www.youtube.com/watch?v=cMM7qpKrXMs" : 
+i === 11 ? "https://www.youtube.com/watch?v=LvVFGKoUHFY" : 
+i === 12 ? "https://www.youtube.com/watch?v=OaEw8QyKUxY" : 
+i === 13 ? "https://www.youtube.com/watch?v=T2hJzvkEuaU" : 
+i === 14 ? "https://www.youtube.com/watch?v=3LNPVv9A8es" : 
+i === 15 ? "https://www.youtube.com/watch?v=w9TQtmvcdb0" : 
+i === 16 ? "https://www.youtube.com/watch?v=hOwPYTbDtDc" : 
+i === 17 ? "https://www.youtube.com/watch?v=0Ermsyg5FNA" : 
+i === 18 ? "https://www.youtube.com/watch?v=mQXun_HnK0s" : 
+i === 19 ? "https://www.youtube.com/watch?v=KFvMVw-pmkI" : 
+i === 20 ? "https://www.youtube.com/watch?v=zt_BrNEFc-c" : 
+i === 21 ? "https://www.youtube.com/watch?v=VjX4yGhIe0M" : 
+i === 22 ? "https://www.youtube.com/watch?v=QvksfUVKRHE" : 
+i === 23 ? "https://www.youtube.com/watch?v=s-5tCI2SnKI" :
+i === 24 ? "https://www.youtube.com/watch?v=JrTnFlomVcA" :
+i === 25 ? "https://www.youtube.com/watch?v=zB3eg64PZ9s" :
+i === 26 ? "https://www.youtube.com/watch?v=E1XfVUcMTC0" :
+i === 27 ? "https://www.youtube.com/watch?v=byA8XGK6bB0" :
+i === 28 ? "https://www.youtube.com/watch?v=AEy4_xcBX_k" :
+i === 29 ? "https://www.youtube.com/watch?v=JiK29jLPMaA" :
+i === 30 ? "https://www.youtube.com/watch?v=FSyn5RBQtcc" :
+i === 31 ? "https://www.youtube.com/watch?v=ZcDDynZIiXM" :
+i === 32 ? "https://www.youtube.com/watch?v=GRXPxzNwov0" :
+i === 33 ? "https://www.youtube.com/watch?v=Po40Oyz22eE" :
+i === 34 ? "https://www.youtube.com/watch?v=2Igx_6p-tUQ" :
+i === 35 ? "https://www.youtube.com/watch?v=PdJIcQPbpeA&list=PLRXCz8lcNbcCMm6wMZKxfptk0CzOm5aaK" :
+i === 36 ? "https://www.youtube.com/watch?v=tlTUJu0UlDg" :
+i === 37 ? "https://www.youtube.com/watch?v=HQVv5VziIOc" :
+i === 38 ? "https://www.youtube.com/watch?v=pm1CgONGXJg" :
+i === 39 ? "https://www.youtube.com/watch?v=CFakYsvFECE" :
+i === 40 ? "https://www.youtube.com/watch?v=MA6qQkJGPoM" :
+i === 41 ? "https://www.youtube.com/watch?v=C-_xeF9fqBM" :
+i === 42 ? "https://www.youtube.com/watch?v=U-baM9NgVHM" :
+i === 43 ? "https://www.youtube.com/watch?v=U5-vY95Z_Hg" :
+i === 44 ? "https://www.youtube.com/watch?v=wpB1PXDVGqE" :
+i === 45 ? "https://www.youtube.com/watch?v=k2z2I1mghdY" :
+i === 46 ? "https://www.youtube.com/watch?v=b2chXcxit1Y" :
+i === 47 ? "https://www.youtube.com/watch?v=_hWuX618oJc" :
+i === 48 ? "https://www.youtube.com/watch?v=Yiqac1gnkMk" :
+i === 49 ? "https://www.youtube.com/watch?v=cUmDgqigOoU" :
+i === 50 ? "https://www.youtube.com/watch?v=q_r1Yd1H_5g" :
+i === 51 ? "https://www.youtube.com/watch?v=PbZD-_s8LWs" :
+i === 52 ? "https://www.youtube.com/watch?v=ht4nKX8IGh0" :
+i === 53 ? "https://www.youtube.com/watch?v=NJ6D7FXlNIE" :
+i === 54 ? "https://www.youtube.com/watch?v=jDo-n5CP_80" :
+i === 55 ? "https://www.youtube.com/watch?v=xZECIJ-4PNM" :
+i === 56 ? "https://www.youtube.com/watch?v=2Z3BZH7G_8k" :
+i === 57 ? "https://www.youtube.com/watch?v=YZ3tPoNslfw" :
+i === 58 ? "https://www.youtube.com/watch?v=mUEnVQlC3bg&list=PL0G3u7gi4ufjfPb7NJdnDsn37k32k3-jG&index=63" :
+i === 59 ? "https://www.youtube.com/watch?v=TyNiHNnP10E" :
+i === 60 ? "https://www.youtube.com/watch?v=YI2ALGTg2Ak&list=PLCDtsGEtuIDPMzU4sozBe0soEw-dvpqvZ" :
+i === 61 ? "https://www.youtube.com/watch?v=gmprupvpFiE" :
+i === 62 ? "https://www.youtube.com/watch?v=VT3XBDZEXj0" :
+i === 63 ? "https://www.youtube.com/watch?v=tBSTEo_D1kE&pp=ygUQYnViYmxlIGdhbmcgMjAxNw%3D%3D" :
+i === 64 ? "https://www.youtube.com/watch?v=0H6vE4Qr6ec&t=14s&pp=ygUQYnViYmxlIGdhbmcgMjAxNw%3D%3D" :
+i === 65 ? "https://www.youtube.com/watch?v=LVOmRkb5WFk" :
+i === 66 ? "https://www.youtube.com/watch?v=WcPBfHp9ewo" :
+i === 67 ? "https://www.youtube.com/watch?v=MDvOrA3rT-U" :
+i === 68 ? "https://www.youtube.com/watch?v=V3gYsdS0ugE" :
+i === 69 ? "https://www.youtube.com/watch?v=Vfuei4WTz84" :
+i === 70 ? "https://www.youtube.com/watch?v=ryWuayNGpS4" :
+i === 71 ? "https://www.youtube.com/watch?v=fcut7TLJWiA" :
+i === 72 ? "https://www.youtube.com/watch?v=vLtSrN6YrcI" :
+i === 73 ? "https://www.youtube.com/watch?v=BXFsvCZjPSk" :
+i === 74 ? "https://www.youtube.com/watch?v=_uIPnJARQq8" :
+i === 75 ? "https://www.youtube.com/watch?v=EBK0XIPnBIs" :
+i === 76 ? "https://www.youtube.com/watch?v=dhN18UxYCCo" :
+i === 77 ? "https://www.youtube.com/watch?v=ibjmJq3KCmU" :
+i === 78 ? "https://www.youtube.com/watch?v=JCzo3j7MEEU" :
+i === 79 ? "https://www.youtube.com/watch?v=F1nNrry4GOs" :
+i === 80 ? "https://www.youtube.com/watch?v=kFFg5PkQI4c" :
+i === 81 ? "https://www.youtube.com/watch?v=b6vJ5RpoWCA" :
+i === 82 ? "https://www.youtube.com/watch?v=jiIViowuOgU&list=PL1P5VWSFvAlTxCyg3cFBdJt9KkknkDTEu&index=13" :
+i === 83 ? "https://www.youtube.com/watch?v=m-_yddo1FY4" :
+i === 84 ? "https://www.youtube.com/watch?v=LXWVVYMyu0k" :
+i === 85 ? "https://www.youtube.com/watch?v=HOkxAClRnYo&t=13s" :
+i === 86 ? "https://www.youtube.com/watch?v=0mfdV4IcrbE" :
+i === 87 ? "https://www.youtube.com/watch?v=rtu9kTRcdTw" :
+i === 88 ? "https://www.youtube.com/watch?v=5P1Mcso3KYE" :
+i === 89 ? "https://www.youtube.com/watch?v=6450E2KF7Ps" :
+i === 90 ? "https://www.youtube.com/watch?v=EaTwG9BbcXU" :
+i === 91 ? "https://www.youtube.com/watch?v=SD2MbkF2JpE" :
+
+  `episode-${i + 1}-id`,
+i === 0 ? "https://s1.dmcdn.net/v/1huBt1cm4mdjQbo53/x720" : 
+i === 1 ? "https://i.ytimg.com/vi/8O_Z99NmLjg/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAYUWtBsUfLkJwnVUpzC7a9f0mtEQ" : 
+i === 2 ? "https://i.ytimg.com/vi/NxAmYF9KzPk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAL2dnhGQEO6I2hnK4WfEv0ujIyMA" : 
+i === 3 ? "https://i.ytimg.com/vi/D2RYFOkBXnA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA5kuOEiMCzDiCqsQNP3XfIbN33Eg" : 
+i === 4 ? "https://i.ytimg.com/vi/vIB3hTCV9k4/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLADkEHt-7a3_kqvigbaKZN-6zXIxQ" : 
+i === 5 ? "https://i.ytimg.com/vi/oWQFwEMFT3o/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCvkw0pDK9qt8KcYgugbmlGKmaBVA" : 
+i === 6 ? "https://i.ytimg.com/vi/pM0Xkzvued8/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCyA6JorNEUN2cLSQK6-li0jm-kyQ" : 
+i === 7 ? "https://i.ytimg.com/vi/0uo32In_aDY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCFeawWv-Z68krWn7_T6GaBU6mNbw" : 
+i === 8 ? "https://i.ytimg.com/vi/nkrUFcorXg4/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDcO2Bu5FbfHIk6SH6NuCrFwqEFZA" : 
+i === 9 ? "https://i.ytimg.com/vi/i0rdE2FFPNM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCuaWyPy57QQT02EQzFbR5pRKz6EA" : 
+i === 10 ? "https://i.ytimg.com/vi/cMM7qpKrXMs/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDBkkSyqHyepF1dCqaFECl5L0itcA" : 
+i === 11 ? "https://i.ytimg.com/vi/LvVFGKoUHFY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDyHU2_kKLOLipIs94KkejOpvn2UQ" : 
+i === 12 ? "https://i.ytimg.com/vi/OaEw8QyKUxY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLACw91bLZ3yTVkZXqcLZd4POBENfA" : 
+i === 13 ? "https://i.ytimg.com/vi/T2hJzvkEuaU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDE6w2lZDLEj0t-Zeyq3uM1kZuFMw" : 
+i === 14 ? "https://i.ytimg.com/vi/3LNPVv9A8es/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD73u6V7x6j6rqZLlYjQprflKrV2A" : 
+i === 15 ? "https://i.ytimg.com/vi/w9TQtmvcdb0/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA50zyUMvdGYeV996OzDaVYFLNrnQ" : 
+i === 16 ? "https://i.ytimg.com/vi/hOwPYTbDtDc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCAvxrO3FPC2L2MokfmVvGfmJ53sw" : 
+i === 17 ? "https://i.ytimg.com/vi/0Ermsyg5FNA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBMAryPJMxu4_TLp25F-Rpb2p1igQ" : 
+i === 18 ? "https://i.ytimg.com/vi/mQXun_HnK0s/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCotzrcpKLKTTrjO0HFOayAX1I_iA" : 
+i === 19 ? "https://i.ytimg.com/vi/KFvMVw-pmkI/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD9E48oup0YYLv9aSbjZM7MGT0ttA" : 
+i === 20 ? "https://i.ytimg.com/vi/zt_BrNEFc-c/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAG66kR_BBYgt7L0CHQ1Y7dSnk2GA" : 
+i === 21 ? "https://i.ytimg.com/vi/VjX4yGhIe0M/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBOp8Tn9JYboj9L_KFZ-ENDK9829w" : 
+i === 22 ? "https://i.ytimg.com/vi/QvksfUVKRHE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCxK5RbD8gqG6AqwTvNeknUos2pdg" : 
+i === 23 ? "https://i.ytimg.com/vi/s-5tCI2SnKI/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAFiJhox1U4rndevjuf1rgOwmpwyw" :
+i === 24 ? "https://i.ytimg.com/vi/JrTnFlomVcA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLALT1Fk05EI6ozy3nlSW-zSfjgYHw" :
+i === 25 ? "https://i.ytimg.com/vi/zB3eg64PZ9s/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDFROozCV8rw0iCP3hvqTtlda7mfg" :
+i === 26 ? "https://i.ytimg.com/vi/E1XfVUcMTC0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAP6xgylSZYz5GNlnKNlrf8ztz4yw" :
+i === 27 ? "https://i.ytimg.com/vi/byA8XGK6bB0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLByArhPdLZNlqTtUqIQyRc5J_UuYA" :
+i === 28 ? "https://i.ytimg.com/vi/AEy4_xcBX_k/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB3SMGpzkUOrWw0cKDzg3QVOKASkA" :
+i === 29 ? "https://i.ytimg.com/vi/JiK29jLPMaA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBCM91McusHpAF2Bw6qIymAWXTO9Q" :
+i === 30 ? "https://i.ytimg.com/vi/FSyn5RBQtcc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBw_NioEMLv2nbu0gD5-NIVDHmeiA" :
+i === 31 ? "https://i.ytimg.com/vi/ZcDDynZIiXM/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA_zp2grfABGQgprMYgKT_5ylJniw" :
+i === 32 ? "https://i.ytimg.com/vi/GRXPxzNwov0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB6wPMFNqocPXx6r5LR8L63DrN7NA" :
+i === 33 ? "https://i.ytimg.com/vi/Po40Oyz22eE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC53vTik7qwgsfbpDEo-HJhTU4y5Q" :
+i === 34 ? "https://i.ytimg.com/vi/2Igx_6p-tUQ/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBwZZ0dO7aGKSAV2xfwjtmHhDnc1g" :
+i === 35 ? "https://i.ytimg.com/vi/PdJIcQPbpeA/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLB72JlbRVMRYAukq05AJUyR-yfPDQ" :
+i === 36 ? "https://i.ytimg.com/vi/tlTUJu0UlDg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCo4w5qmoFsM3xbPNgYJuV1sOD5NQ" :
+i === 37 ? "https://i.ytimg.com/vi/HQVv5VziIOc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDN6IEy7iY15y7MAg2Ozx6WStmF4Q" :
+i === 38 ? "https://i.ytimg.com/vi/pm1CgONGXJg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBz98AZ_2Xo5QNiNvCck3N7MrsYiA" :
+i === 39 ? "https://i.ytimg.com/vi/CFakYsvFECE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAWL6VwM6UyH9MbqYIK8vKYKF9Jpw" :
+i === 40 ? "https://i.ytimg.com/vi/MA6qQkJGPoM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBNTKxYcKGjAKAw-MRjxlYaM28-Bg" :
+i === 41 ? "https://i.ytimg.com/vi/C-_xeF9fqBM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDlYeE6kowOwMAgs7OkNYIId0IzsA" :
+i === 42 ? "https://i.ytimg.com/vi/U-baM9NgVHM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCDx06zW3ImmumXmeZkni_1W9Dq9Q" :
+i === 43 ? "https://i.ytimg.com/vi/U5-vY95Z_Hg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDy62dTi9WUyntZsEY3y3bqgEDBgQ" :
+i === 44 ? "https://i.ytimg.com/vi/wpB1PXDVGqE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBAMFVMKcsFXPmqxaVBYRix0BqLnw" :
+i === 45 ? "https://i.ytimg.com/vi/k2z2I1mghdY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDG-pvKR8abaOkNUtDzWyESMURQ9w" :
+i === 46 ? "https://i.ytimg.com/vi/b2chXcxit1Y/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBrPJr4BgbA7GkYN-E1LorG-H0L-A" :
+i === 47 ? "https://i.ytimg.com/vi/_hWuX618oJc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDvKfbp1Hfv6b8yDbcsDFJSSDGEzg" :
+i === 48 ? "https://i.ytimg.com/vi/Yiqac1gnkMk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBJXXDvHZNMn2YBZ6DMGj0dTq2rHQ" :
+i === 49 ? "https://i.ytimg.com/vi/cUmDgqigOoU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCFEfqeeN_Hr-7xJDRsgA5EX_1QOg" :
+i === 50 ? "https://i.ytimg.com/vi/q_r1Yd1H_5g/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAoQ7lIX48bfUJxeOyO-SMIaKDuVA" :
+i === 51 ? "https://i.ytimg.com/vi/PbZD-_s8LWs/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDIxJaO1xOtqGoIo1qHJgbmugtzRQ" :
+i === 52 ? "https://i.ytimg.com/vi/ht4nKX8IGh0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCwP7IMOPdkmYBSwNKA-ttpqnvk1g" :
+i === 53 ? "https://i.ytimg.com/vi/NJ6D7FXlNIE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBZnrjvToUVVGgIISb94zvAYmk1xg" :
+i === 54 ? "https://i.ytimg.com/vi/jDo-n5CP_80/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAUEkwJhv1I1pg7A0Ot9TRqHy74jw" :
+i === 55 ? "https://i.ytimg.com/vi/xZECIJ-4PNM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAl3dTllLQJK8-ZXhBkTmhKmnZZXQ" :
+i === 56 ? "https://i.ytimg.com/vi/2Z3BZH7G_8k/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBMmaap4H2pgl2NcQOoP5qJYtXi-w" :
+i === 57 ? "https://i.ytimg.com/vi/YZ3tPoNslfw/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBx4eiVcrhVmnNOzTYJeyCNZVI2hg" :
+i === 58 ? "https://i.ytimg.com/vi/mUEnVQlC3bg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDi8YxBb6p1gd-bkIBD4wKzBtDqBg" :
+i === 59 ? "https://i.ytimg.com/vi/TyNiHNnP10E/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDXe867_V9FaAUNs3ZED-7VgF9zIA" :
+i === 60 ? "https://i.ytimg.com/vi/YI2ALGTg2Ak/hqdefault.jpg?sqp=-oaymwFACKgBEF5IWvKriqkDMwgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAHwAQH4Ac4FgALgA4oCDAgAEAEYZSBWKFgwDw==&rs=AOn4CLBLncuF9jwUHDCBpirqqqB9mjYd-Q" :
+i === 61 ? "https://i.ytimg.com/vi/gmprupvpFiE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCM65fCd_gvuZS6GChLzY1gTPW_sw" :
+i === 62 ? "https://i.ytimg.com/vi/VT3XBDZEXj0/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBa9BvPBPnosRgx4UkMPq8czYUr5w" :
+i === 63 ? "https://i.ytimg.com/vi/tBSTEo_D1kE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDBm3OLaMjqLYCaw8c7Ehg8hPYEFg" :
+i === 64 ? "https://i.ytimg.com/vi/0H6vE4Qr6ec/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB0qkHvEk6kA8TTnnHGemIHd-agZQ" :
+i === 65 ? "https://i.ytimg.com/vi/LVOmRkb5WFk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAis9ClXrVjYUSRUDpSQgg_zixx4g" :
+i === 66 ? "https://i.ytimg.com/vi/WcPBfHp9ewo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCX4UZbetLeMiH6P8t7W9IhnjqF6A" :
+i === 67 ? "https://i.ytimg.com/vi/MDvOrA3rT-U/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBeGMQ6-Yh5tpl2Moez9OJ5RsW2NQ" :
+i === 68 ? "https://i.ytimg.com/vi/V3gYsdS0ugE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBcozPXDLMFUrku2wFv0EYbOJoSZw" :
+i === 69 ? "https://i.ytimg.com/vi/Vfuei4WTz84/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAlrLS9aNtBHvb57lvBRZoGB0zPuw" :
+i === 70 ? "https://i.ytimg.com/vi/ryWuayNGpS4/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB8gLkgx8wP-2jXxpU6XEXwxwuGQg" :
+i === 71 ? "https://i.ytimg.com/vi/fcut7TLJWiA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDKLtB6UkGRWuo8Gyak697hq3KBgg" :
+i === 72 ? "https://i.ytimg.com/vi/vLtSrN6YrcI/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAUt313exaROZMrreUSSg_3jga8Pw" :
+i === 73 ? "https://i.ytimg.com/vi/BXFsvCZjPSk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDmOLD2WPS07yCYzZMM6CacFVxV2A" :
+i === 74 ? "https://i.ytimg.com/vi/_uIPnJARQq8/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA4bI2dVyViQ4NGG6KNPe3X4Bc4WA" :
+i === 75 ? "https://i.ytimg.com/vi/EBK0XIPnBIs/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBCeNruSWJkBEdC8Hdlj63Jd-u7BA" :
+i === 76 ? "https://i.ytimg.com/vi/dhN18UxYCCo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB28OiMY4_wI0xlgUSgaRS9nq7lLQ" :
+i === 77 ? "https://i.ytimg.com/vi/ibjmJq3KCmU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCIgrVGprhvp-UlTzGkBMjqvFvPIg" :
+i === 78 ? "https://i.ytimg.com/vi/JCzo3j7MEEU/hq2.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAXD0gKwjfwa0YDlwYhER3KFeKTVQ" :
+i === 79 ? "https://i.ytimg.com/vi/F1nNrry4GOs/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCkExAz8aAMdRX3Fq-B9ABp3ciRkg" :
+i === 80 ? "https://i.ytimg.com/vi/kFFg5PkQI4c/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC2ORUip-t5tp6nMCrM7U2hY0581g" :
+i === 81 ? "https://i.ytimg.com/vi/b6vJ5RpoWCA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDL-u-l3v28yJIW-YRt4R5KrBEkMA" :
+i === 82 ? "https://i.ytimg.com/vi/jiIViowuOgU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC_8j6_3uGHdIwytSOBQ3TsX6psYA" :
+i === 83 ? "https://i.ytimg.com/vi/m-_yddo1FY4/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBxf3Q3YtiFkdyUA68lFMqWLHU34w" :
+i === 84 ? "https://i.ytimg.com/vi/LXWVVYMyu0k/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAjxeLRNxoBKc3RiGRYATg-dNJDLA" :
+i === 85 ? "https://i.ytimg.com/vi/HOkxAClRnYo/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCdbeNy93eU2Py-mnQVsDGGpjQj7A" :
+i === 86 ? "https://i.ytimg.com/vi/0mfdV4IcrbE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB5lQtL8Bw8dxoB6qCXW3MfcKRyBA" :
+i === 87 ? "https://i.ytimg.com/vi/rtu9kTRcdTw/hqdefault.jpg?sqp=-oaymwFBCOADEI4CSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-BIAC6AKKAgwIABABGGUgWChQMA8=&rs=AOn4CLBDmErJyoUOY1vIrFuOTAXDZc8_5A" :
+i === 88 ? "https://i.ytimg.com/vi/5P1Mcso3KYE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBFs9JXyAayv8-LLKcCm7EdWAiDiA" :
+i === 89 ? "https://i.ytimg.com/vi/6450E2KF7Ps/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBjgge4yzhRSYH20BeOvH7gwVw_Gw" :
+i === 90 ? "https://i.ytimg.com/vi/EaTwG9BbcXU/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCQHp6lYBtL9xKzpHM_ASMYS2nwuA" :
+i === 91 ? "https://i.ytimg.com/vi/SD2MbkF2JpE/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAllsFvvlXWJSF4OXUMOR-Dm3Hung" :
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+ <div class="back-button-container">
+    <a href="Funnyvidz.html"  class="back-button"> Back</a>
+  </div>
+
+  <audio id="tomahhhhh" playsinline>
+  <source src="sounds/tomahhhhhh!.weba" type="audio/webm">
+</audio>
+
+<audio id="tomscream" playsinline>
+  <source src="sounds/Tomscream.weba" type="audio/webm">
+</audio>
+
+<button class="play-button" onclick="playRandomAudio()">Play Me</button>
+
+<script>
+  function playRandomAudio() {
+    const audios = ["tomahhhhh", "tomscream"];
+    const randomAudio = audios[Math.floor(Math.random() * audios.length)];
+    document.getElementById(randomAudio).play();
+  }
+</script>
+  
+</body>
+</html>
