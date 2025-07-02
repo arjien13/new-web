@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wwe funny</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+ body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.video-episodes {
+ 
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+  
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 4.5vw;
+  height: 4.5vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 1vh;
+}
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.ndo-logo {
+    width: 15vw;
+    height: auto;
+     margin-bottom: 1px;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+     margin-bottom: -4vh;
+  }
+  .pagination button {
+    padding: .5vh 1.5vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+    
+  }
+  .ndo-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 3px;
+}
+.episode h3 {
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.video-episodes {
+  position: absolute;
+  top: 5vh; /* Adjust this value to your liking */
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+}
+
+
+.back-button-container {
+          position: fixed;
+          top: 12px;
+          left: 4px;
+       }
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}   
+  </style>
+
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <img src="https://wallpapers.com/images/featured/wwe-logo-a9kuo4toq0u6s0t7.jpg" alt="NDO" class="ndo-logo">
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 12;
+    const episodes = Array(24).fill(0).map((_, i) => [
+ `wwe ${i + 1}`,
+i === 0 ? "https://www.youtube.com/watch?v=xp6ruCqGYKM" : 
+i === 1 ? "https://www.youtube.com/watch?v=4cEgYyvblDc" : 
+i === 2 ? "https://www.youtube.com/watch?v=10ivQ3ogO1M" : 
+i === 3 ? "https://www.youtube.com/watch?v=_fd-infB0VQ&t=180s" : 
+i === 4 ? "https://www.youtube.com/watch?v=ZyBytgnvsdw" : 
+i === 5 ? "https://www.youtube.com/watch?v=JLSB-GCCkqE" : 
+i === 6 ? "https://www.youtube.com/watch?v=vCj3ZJmgaNA" : 
+i === 7 ? "https://www.youtube.com/watch?v=qdvqTNSU-Gg" : 
+i === 8 ? "https://www.youtube.com/watch?v=LdGaMsjKLXY" : 
+i === 9 ? "https://www.youtube.com/watch?v=QzzaS2gaiLA" : 
+i === 10 ? "https://www.youtube.com/watch?v=vRiNdTGuv4k" : 
+i === 11 ? "https://www.youtube.com/watch?v=efla1ZVD8OY" : 
+i === 12 ? "https://www.youtube.com/watch?v=O0lyqjgv64o" :
+i === 13 ? "https://www.youtube.com/watch?v=jgPate0NIdk" :
+i === 14 ? "https://www.youtube.com/watch?v=YGmrQYc97cI" :
+i === 15 ? "https://www.youtube.com/watch?v=BvX2XV8mHS4" :
+i === 16 ? "https://www.youtube.com/watch?v=eMs1zzJ6M3I" :
+i === 17 ? "https://www.youtube.com/watch?v=hWC53H-a7ss&t=306s" :
+i === 18 ? "https://www.youtube.com/watch?v=u_UDgp4Xtxw" :
+i === 19 ? "https://www.youtube.com/watch?v=Co3P01U8n-s" :
+i === 20 ? "https://www.youtube.com/watch?v=H1R4XSzaf80" :
+i === 21 ? "https://www.youtube.com/watch?v=vVVtqoqzgNw&list=PL7iXsZL4Sh3nmUnd4FdMkLvCQKka3bJNG" :
+i === 22 ? "" :
+i === 23 ? "" :
+  `episode-${i + 1}-id`,
+i === 0 ? "https://i.ytimg.com/vi/xp6ruCqGYKM/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDOVMfFyK5Pik3ipwuYLin4G2E5cA" : 
+i === 1 ? "https://i.ytimg.com/vi/4cEgYyvblDc/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDhJRAN8X8krlrJDU1kLbPLaBoPUA" : 
+i === 2 ? "https://i.ytimg.com/vi/10ivQ3ogO1M/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBI-MGe8RhWeZB5mn_t3USkaPxOUw" : 
+i === 3 ? "https://i.ytimg.com/vi/_fd-infB0VQ/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD0GWdTzIEwFlQ0IJFpJr1wz3QIJQ" : 
+i === 4 ? "https://i.ytimg.com/vi/ZyBytgnvsdw/hq720.jpg?sqp=-oaymwFBCNAFEJQDSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYAC0AWKAgwIABABGGUgSChSMA8=&rs=AOn4CLBqnqsWRg5uqtGBK16pyhJWUvBLlQ" : 
+i === 5 ? "https://i.ytimg.com/vi/JLSB-GCCkqE/hqdefault.jpg?sqp=-oaymwFBCOADEI4CSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-BIAC5gKKAgwIABABGGUgSyhEMA8=&rs=AOn4CLDIiLT1nj5mNegd3gCGcavI-yoQrg" : 
+i === 6 ? "https://i.ytimg.com/vi/vCj3ZJmgaNA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAuIovTzxmz9aOoq7uzQiYqAxBC5w" : 
+i === 7 ? "https://i.ytimg.com/vi/qdvqTNSU-Gg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDGTcSejVrAsWDfhf4LTSitrMvvwQ" : 
+i === 8 ? "https://i.ytimg.com/vi/LdGaMsjKLXY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDl5a8wvGdlqJTGuwVE17eK3POHyw" : 
+i === 9 ? "https://i.ytimg.com/vi/QzzaS2gaiLA/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDa5YZOZbNjKDHg-DqXyaq_Mk7Abw" : 
+i === 10 ? "https://i.ytimg.com/vi/vRiNdTGuv4k/hq720.jpg?sqp=-oaymwFBCNAFEJQDSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYAC0AWKAgwIABABGGUgUyhPMA8=&rs=AOn4CLAoqtBm7TtJyyvj6UJf09a5VWnxyw" : 
+i === 11 ? "https://i.ytimg.com/vi/efla1ZVD8OY/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDASOlvRzaggN638sPCsVe8vVzGBA" : 
+i === 12 ? "https://i.ytimg.com/vi/O0lyqjgv64o/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC6CQRVAyGrnBOkdRa9_wxRZ0rVyg" :
+i === 13 ? "https://i.ytimg.com/vi/jgPate0NIdk/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD2QBQZpNbHkObdGMXikF3zzsgsZQ" :
+i === 14 ? "https://i.ytimg.com/vi/YGmrQYc97cI/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD1icgzBJm4HPa8y-3mQ58LSmX3uQ" :
+i === 15 ? "https://i.ytimg.com/vi/BvX2XV8mHS4/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBRxPewrZhFc6uF8dzvZqJC9-J_Ow" :
+i === 16 ? "https://i.ytimg.com/vi/eMs1zzJ6M3I/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBehuechfOk7fVnQ2CjNdt8WYq2DA" :
+i === 17 ? "https://i.ytimg.com/vi/hWC53H-a7ss/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCfidJyIqP0j_8487mFgKp8LsvBpg" :
+i === 18 ? "https://i.ytimg.com/vi/u_UDgp4Xtxw/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCz8XW8Oi5JUTyW5KfqCu7GHutH2A" :
+i === 19 ? "https://i.ytimg.com/vi/Co3P01U8n-s/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLARahWAHnUy90XAl_2RdWeOdafiVg" :
+i === 20 ? "https://i.ytimg.com/vi/H1R4XSzaf80/hq720.jpg?sqp=-oaymwFBCNAFEJQDSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYAC0AWKAgwIABABGGUgTihgMA8=&rs=AOn4CLCZH_djT2Rtm5V4ycCVnnM--0W1JA" :
+i === 21 ? "https://i.ytimg.com/vi/vVVtqoqzgNw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAuEcvBXrZzGYnDkl_GwHdOXqpMjQ" :
+i === 22 ? "" :
+i === 23 ? "" :
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+ <div class="back-button-container">
+    <a href="Funnyvidz.html"  class="back-button"> Back</a>
+  </div>
+
+  <audio id="tomahhhhh" playsinline>
+  <source src="sounds/tomahhhhhh!.weba" type="audio/webm">
+</audio>
+
+<audio id="tomscream" playsinline>
+  <source src="sounds/Tomscream.weba" type="audio/webm">
+</audio>
+
+<button class="play-button" onclick="playRandomAudio()">Play Me</button>
+
+<script>
+  function playRandomAudio() {
+    const audios = ["tomahhhhh", "tomscream"];
+    const randomAudio = audios[Math.floor(Math.random() * audios.length)];
+    document.getElementById(randomAudio).play();
+  }
+</script>
+  
+</body>
+</html>
