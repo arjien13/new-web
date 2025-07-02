@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinoy Funny Videos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+ body {
+  background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.video-episodes {
+ 
+  max-width: 80vw;
+  margin: 5vh auto;
+  text-align: center;
+  
+}
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.episode {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1vh 1vw;
+  border-radius: 0.5vw;
+  box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode img {
+  width: 4.5vw;
+  height: 4.5vw;
+  object-fit: cover;
+  border-radius: 0.5vw;
+}
+
+.episode h3 {
+  font-size: .8vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.episode a {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.pagination {
+  margin-top: 1vh;
+}
+.pagination button {
+  margin: 0 .5vw;
+  padding: .8vh .8vw;
+  border: none;
+  border-radius: 0.5vw;
+  background-color: #d3d3d3; /* Light gray background color */
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  font-size: 1vw;
+}
+
+.pagination button:hover {
+  background-color: #ccc; /* Lighter gray hover background color */
+}
+
+.pagination button.active {
+  background-color: #999; /* Darker gray active background color */
+}
+
+.ndo-logo {
+    width: 15vw;
+    height: auto;
+     margin-bottom: -80px;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .episode-list {
+    grid-template-columns: repeat(4, 1fr);
+     margin-bottom: -4vh
+  }
+  .pagination button {
+    padding: .5vh 1.5vw;
+    font-size: 3vw;
+  }
+  .episode img {
+    width: 15vw;
+    height: 15vw;
+    
+  }
+  .ndo-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: -50px;
+}
+.episode h3 {
+  font-size: 2.5vw;
+  margin-top: 1vh;
+  font-weight: 450;
+}
+
+.video-episodes {
+  position: absolute;
+  top: 5vh; /* Adjust this value to your liking */
+  
+}
+
+.pagination {
+  margin-top: 5vh;
+}
+
+}
+
+
+.back-button-container {
+          position: fixed;
+          top: 12px;
+          left: 4px;
+       }
+.back-button {
+  background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #212220;
+}
+
+.play-button {
+    position: fixed;
+    top: -5px;
+    right: -7px;
+    margin: 10px;
+    padding: 1rem;
+    background-color: #acadac;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+  cursor: pointer;
+  font-size: 13px;
+  }
+  .play-button:hover {
+  background-color: #212220;
+}   
+  </style>
+
+</head>
+<body>
+  <section class="video-episodes">
+    <h2 style="text-align: center;">
+      <img style="mix-blend-mode: multiply;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOnWIHNH68zoTGpZk4gJi6dDEi90L_Iv5hPQ&s" alt="NDO" class="ndo-logo">
+    </h2>
+    <ul class="episode-list" id="episode-list"></ul>
+    <div class="pagination" id="pagination"></div>
+    <div id="video-container"></div>
+</section>
+
+  <script>
+    const episodesPerPage = 12;
+    const episodes = Array(24).fill(0).map((_, i) => [
+ `PinoyVidz ${i + 1}`,
+i === 0 ? "https://www.youtube.com/watch?v=VZI2SMRXPb8&t=40s" : 
+i === 1 ? "https://www.youtube.com/watch?v=ceyY_YfT-aI" : 
+i === 2 ? "https://www.youtube.com/watch?v=_YIopW7VGfM" : 
+i === 3 ? "https://www.youtube.com/watch?v=PsVoDnk_87Q" : 
+i === 4 ? "https://www.youtube.com/watch?v=zd-K-P9tZCM" : 
+i === 5 ? "https://www.youtube.com/watch?v=QicwyQz-ApU" : 
+i === 6 ? "https://www.youtube.com/watch?v=deeBSdcb14s" : 
+i === 7 ? "https://www.youtube.com/watch?v=vJVOZn8Dzhg" : 
+i === 8 ? "https://www.youtube.com/watch?v=B9FSdmpgG2o" : 
+i === 9 ? "https://www.youtube.com/watch?v=LHe9FPRP-gg&t=11s" : 
+i === 10 ? "https://www.facebook.com/watch?ref=search&v=1807324209566290&external_log_id=c66fb047-6794-4fef-bb85-d2eb54a4e2e0&q=gusto%20ko%20maging%20nanay%20wowowin" : 
+i === 11 ? "https://www.youtube.com/watch?v=kAn80Hs1bUA&t=288s" : 
+i === 12 ? "https://www.youtube.com/watch?v=6puafgSsNC8" : 
+i === 13 ? "https://www.youtube.com/watch?v=9Pbvub7GgeM" : 
+i === 14 ? "https://www.youtube.com/watch?v=MD8EjihBbZk" : 
+i === 15 ? "https://www.youtube.com/watch?v=a9KjGqik5QU" : 
+i === 16 ? "https://www.youtube.com/watch?v=8MJkBPvlhIM" : 
+i === 17 ? "https://www.youtube.com/watch?v=Lr39gC_HvKU" : 
+i === 18 ? "https://www.youtube.com/watch?v=qzEk46KTvLE" : 
+i === 19 ? "https://www.youtube.com/watch?v=4txK-7LNoQY" : 
+i === 20 ? "" : 
+i === 21 ? "" : 
+i === 22 ? "" : 
+i === 23 ? "" :
+  `episode-${i + 1}-id`,
+i === 0 ? "https://i.ytimg.com/vi/VZI2SMRXPb8/hqdefault.jpg?sqp=-oaymwFBCOADEI4CSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AHeAoAC8AGKAgwIABABGFogPih_MA8=&rs=AOn4CLDkBPF44CwFCTmKfTYedd26l3yqCw" : 
+i === 1 ? "https://i.ytimg.com/vi/ceyY_YfT-aI/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDQga50XFyPstKUOt-gdZV8cWOtyw" : 
+i === 2 ? "https://i.ytimg.com/vi/_YIopW7VGfM/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAuFttNc_xNTJcAHZ1gxNt7s66iMA" : 
+i === 3 ? "https://i.ytimg.com/vi/PsVoDnk_87Q/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLD7xcp6LJlMyqWM2HdIGDmABnEdPQ" : 
+i === 4 ? "https://i.ytimg.com/vi/zd-K-P9tZCM/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAk5ERhW2cgZk9mhrFwHjP3emxaKQ" : 
+i === 5 ? "https://i.ytimg.com/vi/QicwyQz-ApU/hqdefault.jpg?sqp=-oaymwFBCOADEI4CSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AHcA4AC6AKKAgwIABABGEwgTihlMA8=&rs=AOn4CLCERYWt8TgOl-qEEvogdtH65cnM2g" : 
+i === 6 ? "https://i.ytimg.com/vi/deeBSdcb14s/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA8OJ_0ptKRTlj8wDcZ0X1aLwn26A" : 
+i === 7 ? "https://i.ytimg.com/vi/vJVOZn8Dzhg/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLA32rgaydKP_7JHNxiVjy9TuLor7w" : 
+i === 8 ? "https://i.ytimg.com/vi/B9FSdmpgG2o/hqdefault.jpg?sqp=-oaymwFBCOADEI4CSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AHUBoAC4AOKAgwIABABGGUgYChFMA8=&rs=AOn4CLCaISd0Pb221S_lbAlyBvuZXGxJ4w" : 
+i === 9 ? "https://i.ytimg.com/vi/LHe9FPRP-gg/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLALSyGhsmZn4sLMgVpAXmNAxufr2Q" : 
+i === 10 ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY02Thm57C0LNhq-PS0Cp20i5FDwUxwJQZ8w&s" : 
+i === 11 ? "https://i.ytimg.com/vi/kAn80Hs1bUA/hqdefault.jpg?sqp=-oaymwFBCOADEI4CSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AHeAoAChgKKAgwIABABGGUgTShRMA8=&rs=AOn4CLCmIwe0M0sxoh2erLde2rE5jM1_cQ" : 
+i === 12 ? "https://i.ytimg.com/vi/6puafgSsNC8/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDRBk1koJ3p8xSBYIIVHM7hK_Y6qA" : 
+i === 13 ? "https://i.ytimg.com/vi/9Pbvub7GgeM/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBxNrg9VFqC_YJIv4jS6znPpi7zVg" : 
+i === 14 ? "https://i.ytimg.com/vi/MD8EjihBbZk/hq720.jpg?sqp=-oaymwEnCNAFEJQDSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLB-lk2dotzrduO11nE7tnMrPZhiJw" : 
+i === 15 ? "https://i.ytimg.com/vi/a9KjGqik5QU/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLC6aPv85pefHojlRwaiJdMrnp4u9g" : 
+i === 16 ? "https://i.ytimg.com/vi/8MJkBPvlhIM/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBJQ_5EhVSHH03HqE6ctdnx2kc1rQ" : 
+i === 17 ? "https://i.ytimg.com/vi/Lr39gC_HvKU/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLAuwjE2Xibrgqy6rwGJwI5kxNrpeg" : 
+i === 18 ? "https://i.ytimg.com/vi/qzEk46KTvLE/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBwP2J0_DEcx671Yd8wALPhe_Mc8A" : 
+i === 19 ? "https://i.ytimg.com/vi/4txK-7LNoQY/hqdefault.jpg?sqp=-oaymwEnCOADEI4CSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLClxzegbzfqSGSA9ROS1sO-Qh14mQ" : 
+i === 20 ? "" : 
+i === 21 ? "" : 
+i === 22 ? "" : 
+i === 23 ? "" :
+   ''
+]);
+
+    let currentPage = 1;
+
+    function generateEpisodeList(page) {
+  const start = (page - 1) * episodesPerPage;
+  const end = start + episodesPerPage;
+  const list = document.getElementById('episode-list');
+  list.innerHTML = '';
+  episodes.slice(start, end).forEach(([title, id, image], index) => {
+    list.insertAdjacentHTML('beforeend', `
+  <li class="episode">
+    <a href="${id}" target="_blank">
+      <img src="${image}" alt="${title}">
+      <h3>${title}</h3>
+    </a>
+  </li>
+`);
+});
+}
+
+    
+
+    function generatePagination() {
+      const pagination = document.getElementById('pagination');
+      const totalPages = Math.ceil(episodes.length / episodesPerPage);
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+          currentPage = i;
+          generateEpisodeList(currentPage);
+          updateActiveButton();
+        };
+        pagination.appendChild(button);
+      }
+      updateActiveButton();
+    }
+
+    function updateActiveButton() {
+  const buttons = document.querySelectorAll('#pagination button');
+  buttons.forEach((button, index) => {
+    if (index + 1 === currentPage) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+    generateEpisodeList(currentPage);
+    generatePagination();
+  </script>
+ <div class="back-button-container">
+    <a href="Funnyvidz.html"  class="back-button"> Back</a>
+  </div>
+
+  <audio id="tomahhhhh" playsinline>
+  <source src="sounds/tomahhhhhh!.weba" type="audio/webm">
+</audio>
+
+<audio id="tomscream" playsinline>
+  <source src="sounds/Tomscream.weba" type="audio/webm">
+</audio>
+
+<button class="play-button" onclick="playRandomAudio()">Play Me</button>
+
+<script>
+  function playRandomAudio() {
+    const audios = ["tomahhhhh", "tomscream"];
+    const randomAudio = audios[Math.floor(Math.random() * audios.length)];
+    document.getElementById(randomAudio).play();
+  }
+</script>
+  
+</body>
+</html>
